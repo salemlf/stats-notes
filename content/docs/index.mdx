@@ -1,0 +1,121 @@
+---
+title: Links and Images (the basics)
+description: Linking to other pages, headings, external links, and images
+---
+
+import Link from "fumadocs-core/link";
+
+# Links
+
+More documentation on links can be found here: [Fumadocs link documentation](https://fumadocs.vercel.app/docs/headless/components/link)
+
+## Linking to Other Pages
+
+Use the `Link` component to link to other pages in your documentation.
+The `href` prop should be the path to the page you want to link to, starting within the `docs` directory.
+
+**Syntax**
+
+```mdx
+<Link href="/docs/test">Link to Test page</Link>
+```
+
+**Example**
+
+<Link href="/docs/test">Link to Test page</Link>
+
+## Linking to Heading on Current Page
+
+You can link to a heading on the current page by using the `href="#<HEADING_NAME>"` syntax, where
+`HEADING_NAME` is the name of the heading, all lowercase and with spaces replaced by hyphens.
+
+**Syntax**
+
+```mdx
+<Link href="#the-last-heading">Link to last heading on current page</Link>
+```
+
+**Example**
+
+<Link href="#the-last-heading">Link to last heading on current page</Link>
+
+## Linking to Heading on Another Page
+
+You can combine the two previous methods to link to a heading on another page.
+**Syntax**
+
+```mdx
+<Link href="/docs/test#code-blocks">
+  Link to code block heading on another page
+</Link>
+```
+
+**Example**
+
+<Link href="/docs/test#code-blocks">
+  Link to code block heading on another page
+</Link>
+
+## External Links
+
+You can create external links using the normal markdown syntax or using the `Link` component with the `external` prop. If you'd prefer HTML, you can use also use the normal anchor (`<a></a>`) tag.
+
+### Normal Markdown Syntax
+
+**Syntax**
+
+```md
+[Kagi Search Engine](https://kagi.com/)
+```
+
+**Example**
+
+[Kagi Search Engine](https://kagi.com/)
+
+### Link component with `external` Prop
+
+**Syntax**
+
+```mdx
+<Link href="https://kagi.com/" external>
+  Kagi Search Engine
+</Link>
+```
+
+**Example**
+
+<Link href="https://kagi.com/" external>
+  Kagi Search Engine
+</Link>
+
+### HTML Anchor Tag
+
+Of course, you can also use the normal HTML anchor tag to create external links.
+Make sure to use the `target="_blank"` attribute if you'd like to open the link in a new tab.
+
+**Syntax**
+
+```html
+<a href="https://kagi.com/" target="_blank">Kagi Search Engine</a>
+```
+
+**Example**
+
+<a href="https://kagi.com/" target="_blank">
+  Kagi Search Engine
+</a>
+
+### The Last Heading
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+# Images
+
+...
+
+## What's Next?
+
+<Cards>
+  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
+  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
+</Cards>
