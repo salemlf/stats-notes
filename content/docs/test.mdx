@@ -3,13 +3,13 @@ title: Callouts, Code Blocks, and Cards
 description: Tutorial on how to use Callouts, Code Blocks, and Cards in this project
 ---
 
-import { Callout } from "fumadocs-ui/components/callout";
+import Callout from "../../app/components/Callout.tsx";
 
 ## Callouts
 
 More documentation about Callouts can be found [here](https://fumadocs.vercel.app/docs/ui/components/callout).
 
-### Info Callout
+### Info
 
 This is the default callout type.
 
@@ -23,7 +23,39 @@ This is the default callout type.
 
 <Callout title="Info Callout">Content here</Callout>
 
-### Warning Callout
+### Tip
+
+**Syntax**
+
+```mdx
+<Callout title="Tip Callout" type="tip">
+  Content here
+</Callout>
+```
+
+**Example**
+
+<Callout title="Tip Callout" type="tip">
+  Content here
+</Callout>
+
+### Note
+
+**Syntax**
+
+```mdx
+<Callout title="Note Callout" type="note">
+  Content here
+</Callout>
+```
+
+**Example**
+
+<Callout title="Note Callout" type="note">
+  Content here
+</Callout>
+
+### Warning
 
 **Syntax**
 
@@ -35,11 +67,11 @@ This is the default callout type.
 
 **Example**
 
-<Callout title="Info Callout" type="warn">
+<Callout title="Warning Callout" type="warn">
   Content here
 </Callout>
 
-### Error Callout
+### Error
 
 **Syntax**
 
