@@ -32,6 +32,12 @@
 
   --ring: 225 27% 51%;
   --radius: 0.5rem;
+
+  --callout-info: #c7d7d7;
+  --callout-tip: #d3ecc9;
+  --callout-note: #e0ded7;
+  --callout-warn: #f1e5c7;
+  --callout-error: #f1d3cc;
 }
 
 .dark {
@@ -64,4 +70,10 @@
 
   --ring: 225 27% 51%;
   --radius: 0.5rem;
+
+  --callout-info: #193c47;
+  --callout-tip: #013100;
+  --callout-note: #474748;
+  --callout-warn: #4d3800;
+  --callout-error: #4b1113;
 }
