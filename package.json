@@ -8,6 +8,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
     "fumadocs-core": "8.2.0",
     "fumadocs-mdx": "^8.0.3",
     "fumadocs-ui": "8.2.0",
