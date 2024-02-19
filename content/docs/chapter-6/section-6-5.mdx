@@ -1,0 +1,152 @@
+---
+title: "6.5: The Method of Moment-Generating Functions"
+---
+
+import Accordion from "../../../app/components/Accordion.tsx";
+import Callout from "../../../app/components/Callout.tsx";
+
+import ExCh6Num37 from "../../exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-37.mdx";
+
+<Callout title="Theorem 6.1" type="note">
+  Let $m_X(t)$ and $m_Y(t)$ denote the moment-generating functions of random
+  variables $X$ and $Y$, respectively. If both moment-generating functions exist
+  and $m_X(t) = m_Y(t)$ for all values of $t$, then $X$ and $Y$ have the same
+  probability distribution.
+</Callout>
+
+(The proof of Theorem 6.1 is beyond the scope of this text.)
+
+<Callout title="Theorem 6.2" type="note" id="thm-6-2">
+    Let $Y_1, Y_2, ..., Y_n$ be independent random variables with
+    moment-generating functions $m_{Y_1}(t), m_{Y_2}(t), ..., m_{Y_n}(t)$,
+    respectively. If $U = Y_1 + Y_2 + ... + Y_n$, then
+  
+    $$
+    m_{U}(t) = m_{Y_1}(t) \times m_{Y_2}(t) \times ... \times m_{Y_n}(t).
+    $$
+
+    <Accordion title="Proof">
+        We know that, because the random variables $Y_1, Y_2, ..., Y_n$ are
+        independent (see Theorem 5.9),
+
+        $$
+        \begin{align*}
+            m_{U}(t) & = E \left[e^{t(Y_1 + Y_2 + ... + Y_n)} \right] = E \left(e^{tY_1} e^{tY_2} \cdots e^{tY_n} \right)\\
+            & = E \left(e^{tY_1} \right) \times E \left(e^{tY_2} \right) \times \cdots \times E \left(e^{tY_n} \right).
+        \end{align*}
+        $$
+
+        Thus, by the definition of moment-generating functions,
+
+        $$
+        m_U(t) = m_{Y_1}(t) \times m_{Y_2}(t) \times \cdots \times m_{Y_n}(t).
+        $$
+    </Accordion>
+
+</Callout>
+
+<br></br>
+
+<Callout title="Theorem 6.3" type="note">
+    Let $Y_1, Y_2, ..., Y_n$ be independent normally distributed random variables
+    with $E(Y_i) = \mu_i$ and $V(Y_i) = \sigma_i^2$, for $i = 1, 2, ..., n$, and
+    let $a_1, a_2, ..., a_n$ be constants. If
+
+    $$
+    U = \sum_{i = 1}^n a_i Y_i = a_1 Y_1 + a_2 Y_2 + ... + a_n Y_n,
+    $$
+
+    then $U$ is a normally distributed random variable with
+
+    $$
+    E(U) = \sum_{i = 1}^n a_i \mu_i = a_1 \mu_1 + a_2 \mu_2 + ... + a_n \mu_n
+    $$
+
+    and
+
+    $$
+    V(U) = \sum_{i = 1}^n a_i \sigma_i^2 = a_1 \sigma_1^2 + a_2 \sigma_2^2 + ... + a_n \sigma_n^2.
+    $$
+
+    <Accordion title="Proof">
+        Because $Y_i$ is normally distributed with mean $\mu_i$ and variance $\sigma_i^2$, $Y_i$ has moment-generating function given by
+
+        $$
+        m_{Y_i}(t) = \exp \left(\mu_i t + \frac{\sigma_i^2 t^2}{2} \right).
+        $$
+
+        [Recall that $\exp(\cdot)$ is a more convenient way to write $e^{(\cdot)}$ when the term in the exponent is long or complex.]
+        Therefore, $a_i Y_i$ has moment-generating function given by
+
+        $$
+        m_{a_i Y_i}(t) = E \left(e^{ta_i Y_i} \right) = m_{Y_i}(a_i t) = \exp \left(\mu_i a_i t + \frac{a_i^2 \sigma_i^2 t^2}{2} \right).
+        $$
+
+        Because the random variables $Y_i$ are independent, the random variables $a_i Y_i$ are independent, for $i = 1, 2, ..., n$, and Theorem 6.2 implies that
+
+        $$
+        \begin{align*}
+            m_{U}(t) & = m_{a_1 Y_1}(t) \times m_{a_2 Y_2}(t) \times \cdots \times m_{a_n Y_n}(t)\\
+            & = \exp \left(\mu_1 a_1 t + \frac{a_1^2 \sigma_1^2 t^2}{2} \right) \times \cdots \times \exp \left(\mu_n a_n t + \frac{a_n^2 \sigma_n^2 t^2}{2} \right)\\
+            & = \exp \left(t \sum_{i = 1}^n a_i \mu_i + \frac{t^2}{2} \sum_{i = 1}^n a_i^2 \sigma_i^2 \right).
+        \end{align*}
+        $$
+
+        Thus, $U$ has a normal distribution with mean $\sum_{i = 1}^n a_i \mu_i$ and variance $\sum_{i = 1}^n a_i^2 \sigma_i^2$.
+    </Accordion>
+
+</Callout>
+
+<br></br>
+
+<Callout title="Theorem 6.4" type="note">
+    Let $Y_1, Y_2, ..., Y_n$ be defined as in Theorem 6.3 and defined $Z_i$ by
+
+    $$
+    Z_i = \frac{Y_i - \mu_i}{\sigma_i}, \quad i = 1, 2, ..., n.
+    $$
+
+    Then $\sum_{i = 1}^n Z_i^2$ has a $\chi^2$ distribution with $n$ degrees of freedom.
+
+    <Accordion title="Proof">
+        Because $Y_i$ is normally distributed with mean $\mu_i$ and variance $\sigma_i^2$, the result of Example 6.10 implies that $Z_i$ is normally distributed with mean $0$ and variance $1$.
+        From Example 6.11, we then have that $Z_i^2$ is a $\chi^2$-distributed random variable with 1 degree of freedom.
+        Thus,
+
+        $$
+        m_{Z_i^2}(t) = (1 - 2t)^{-1 / 2},
+        $$
+
+        and from Theorem 6.2, with $V = \sum_{i = 1}^n Z_i^2$,
+
+        $$
+        \begin{align*}
+            m_V(t) & = m_{Z_1^2}(t) \times m_{Z_2^2}(t) \times \cdots \times m_{Z_n^2}(t)\\
+            & = (1 - 2t)^{-1 / 2} \times (1 - 2t)^{-1 / 2} \times \cdots \times (1 - 2t)^{-1 / 2} = (1 - 2t)^{-n / 2}.
+        \end{align*}
+        $$
+
+        Because moment-generating functions are unique, $V$ has a $\chi^2$ distribution with $n$ degrees of freedom.
+    </Accordion>
+
+</Callout>
+
+<br></br>
+
+<Callout title="Summary of the Moment-Generating Function Method" type="info">
+  Let $U$ be a function of the random variables $Y_1, Y_2, ..., Y_n$.
+
+  <ol>
+    <li>Find the moment-generating function for $U$, $m_U(t)$.</li>
+    <li>
+        Compare $m_U(t)$ with other well-known moment-generating functions.
+        If $m_U(t) = m_V(t)$ for all values of $t$, Theorem 6.1 implies that $U$ and $V$ have identical distributions.
+    </li>
+  </ol>
+</Callout>
+
+## <u>Exercises</u>
+
+### <u>6.37</u>
+
+<ExCh6Num37 />
