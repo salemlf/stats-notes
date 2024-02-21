@@ -1,0 +1,14 @@
+Let $g(Y_1) = e^{a_1 t Y_1}$ be a function solely of $Y_1$ and $h(Y_2) = e^{a_2 t Y_2}$ be a function solely of $Y_2$.
+Then
+
+$$
+\begin{align*}
+    m_U(t) & = E \left(e^{tU} \right)\\
+    & = E \left(e^{t(a_1 Y_1 + a_2 Y_2)} \right)\\
+    & =E \left(e^{a_1 t Y_1} e^{a_2 t Y_2} \right)\\
+    & = E(g(Y_1)h(Y_2))\\
+    & = E(g(Y_1))E(h(Y_2)) \quad \left(\text{by Theorem 5.9} \right)\\
+    & = E(e^{(a_1 t) Y_1}) E(e^{(a_2 t) Y_2})\\
+    & = m_{Y_1}(a_1 t) \times m_{Y_2}(a_2 t).
+\end{align*}
+$$
