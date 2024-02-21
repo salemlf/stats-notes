@@ -1,0 +1,46 @@
+a)
+
+$$
+\begin{align*}
+    m_{Y_1}(t) = E \left(e^{tY_1} \right) & = \sum_{y_1 = 0}^1 e^{ty_1} p(y_1)\\
+    & = e^{t(0)} p(0) + e^{t(1)} p(1)\\
+    & = 1 \cdot (1 - p) + e^t \cdot p\\
+    & = [pe^t + (1 - p)]^1
+\end{align*}
+$$
+
+This is the moment-generating function for a binomial random distribution with parameters $n = 1$ and $p$.
+
+---
+
+b)
+
+$$
+\begin{align*}
+    m_W(t) & = m_{Y_1 + Y_2 + ... + Y_n}(t) = E \left(e^{t(Y_1 + Y_2 + Y_n)} \right) = E \left(e^{tY_1} e^{tY_2} \cdots e^{tY_n} \right)\\
+    & = \sum_{y_n = 0}^1 ... \sum_{y_2 = 0}^1 \sum_{y_1 = 0}^1 e^{ty_1} e^{ty_2} \cdots e^{ty_n} p(y_1) p(y_2) \cdots p(y_n)\\
+    & = \sum_{y_n = 0}^1 e^{ty_n} p(y_n) \left(... \sum_{y_2 = 0}^1 e^{ty_2} p(y_2) \left(\sum_{y_1 = 0}^1 e^{ty_1} p(y_1) \right) \right)\\
+    & = \sum_{y_n = 0}^1 e^{ty_n} p(y_n) \left(... \sum_{y_2 = 0}^1 e^{ty_2} p(y_2) \left[pe^t + (1 - p) \right] \right)\\
+    & = \sum_{y_n = 0}^1 e^{ty_n} p(y_n) \left(... \left[pe^t + (1 - p) \right] \sum_{y_2 = 0}^1 e^{ty_2} p(y_2) \right)\\
+    & = \sum_{y_n = 0}^1 e^{ty_n} p(y_n) \left(... \left[pe^t + (1 - p) \right] \left[pe^t + (1 - p) \right] \right)\\
+    & = \sum_{y_n = 0}^1 e^{ty_n} p(y_n) \left[pe^t + (1 - p) \right]^{n - 1}\\
+    & = \left[pe^t + (1 - p) \right]^{n - 1} \sum_{y_n = 0}^1 e^{ty_n} p(y_n)\\
+    & = \left[pe^t + (1 - p) \right]^{n - 1} \left[pe^t + (1 - p) \right]\\
+    & = \left[pe^t + (1 - p) \right]^n
+\end{align*}
+$$
+
+Alternatively, by Theorem 6.2,
+
+$$
+\begin{align*}
+    m_W(t) & = m_{Y_1 + Y_2 + ... + Y_n}(t)\\
+    & = m_{Y_1}(t) \times m_{Y_2}(t) \times \cdots m_{Y_n}(t)\\
+    & = [pe^t + (1 - p)] \cdot \left[pe^t + (1 - p) \right] \cdots \left[pe^t + (1 - p) \right]\\
+    & = \left[pe^t + (1 - p) \right]^n
+\end{align*}
+$$
+
+---
+
+c) By comparing $m_W(t)$ to well-known moment-generating functions and using Theorem 6.1, $W$ has a binomial distribution with parameters $n$ and $p$.

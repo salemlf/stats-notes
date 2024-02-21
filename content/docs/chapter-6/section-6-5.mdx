@@ -5,7 +5,34 @@ title: "6.5: The Method of Moment-Generating Functions"
 import Accordion from "../../../app/components/Accordion.tsx";
 import Callout from "../../../app/components/Callout.tsx";
 
-import ExCh6Num37 from "../../exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-37.mdx";
+import Ch6Ex37 from "../../exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-37.mdx";
+import Ch6Ex38 from "../../exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-38.mdx";
+import Ch6Ex39 from "../../exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-39.mdx";
+import Ch6Ex40 from "../../exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-40.mdx";
+import Ch6Ex41 from "../../exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-41.mdx";
+import Ch6Ex42 from "../../exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-42.mdx";
+import Ch6Ex43 from "../../exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-43.mdx";
+import Ch6Ex44 from "../../exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-44.mdx";
+import Ch6Ex45 from "../../exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-45.mdx";
+import Ch6Ex46 from "../../exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-46.mdx";
+import Ch6Ex47 from "../../exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-47.mdx";
+import Ch6Ex48 from "../../exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-48.mdx";
+import Ch6Ex49 from "../../exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-49.mdx";
+import Ch6Ex50 from "../../exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-50.mdx";
+import Ch6Ex51 from "../../exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-51.mdx";
+import Ch6Ex52 from "../../exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-52.mdx";
+import Ch6Ex53 from "../../exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-53.mdx";
+import Ch6Ex54 from "../../exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-54.mdx";
+import Ch6Ex55 from "../../exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-55.mdx";
+import Ch6Ex56 from "../../exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-56.mdx";
+import Ch6Ex57 from "../../exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-57.mdx";
+import Ch6Ex58 from "../../exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-58.mdx";
+import Ch6Ex59 from "../../exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-59.mdx";
+import Ch6Ex60 from "../../exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-60.mdx";
+import Ch6Ex61 from "../../exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-61.mdx";
+import Ch6Ex62 from "../../exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-62.mdx";
+
+import Ch6Ex37Sol from "../../solutions/chapter-6-solutions/section-6-5-solutions/_exercise-6-37-solution.mdx";
 
 <Callout title="Theorem 6.1" type="note">
   Let $m_X(t)$ and $m_Y(t)$ denote the moment-generating functions of random
@@ -15,6 +42,83 @@ import ExCh6Num37 from "../../exercises/chapter-6-exercises/section-6-5-exercise
 </Callout>
 
 (The proof of Theorem 6.1 is beyond the scope of this text.)
+
+<Callout title="Example 6.10" type="tip">
+    Suppose that $Y$ is a normally distributed random variable with mean $\mu$
+    variance $\sigma^2$. Show that
+
+    $$
+    Z = \frac{Y - \mu}{\sigma}
+    $$
+
+    has a _standard normal_ distribution, and normal distribution with mean $0$ and variance $1$.
+
+    <Accordion title="Solution">
+        We have seen in Example 4.16 that $Y - \mu$ has moment-generating function $e^{t^2 \sigma^2 / 2}$.
+        Hence,
+
+        $$
+        m_Z(t) = E \left(e^{tZ} \right) = E \left[e^{(t / \sigma) (Y - \mu)} \right] = m_{Y - \mu} \left(\frac{t}{\sigma} \right) = e^{(t / \sigma)^2 (\sigma^2 / 2)} = e^{t^2 / 2}.
+        $$
+
+        On comparing $m_Z(t)$ with the moment-generating function of a normal random variable, we see that $Z$ must be normally distributed with $E(Z) = 0$ and $V(Z) = 1$.
+    </Accordion>
+
+</Callout>
+
+<br></br>
+
+<Callout title="Example 6.11" type="tip">
+  Let $Z$ be a normally distributed random variable with mean $0$ and variance
+  $1$. Use the method of moment-generating functions to ﬁnd the probability
+  distribution of $Z^2$.
+
+  <Accordion title="Solution">
+    The moment-generating function for $Z^2$ is
+
+    $$
+    \begin{align*}
+        m_{Z^2}(t) = E \left(e^{tZ^2} \right) & = \int_{-\infty}^{\infty} e^{tz^2} f(z) dz = \int_{-\infty}^{\infty} e^{tz^2} \frac{e^{-z^2 / 2}}{\sqrt{2 \pi}} dz\\
+        & = \int_{-\infty}^{\infty} \frac{1}{\sqrt{2 \pi}} e^{-(z^2 / 2)(1 - 2t)} dz.
+    \end{align*}
+    $$
+
+    This integral can be evaluated either by consulting a table of integrals or by noting that, if $1 - 2t > 0$ (equivalently, $t < 1 / 2$), the integrand
+
+    $$
+    \frac{\exp \left[-\left(\frac{z^2}{2} \right) (1 - 2t) \right]}{\sqrt{2 \pi}} = \frac{\exp \left[-\left(\frac{z^2}{2} \right) / (1 - 2t)^{-1} \right]}{\sqrt{2 \pi}}
+    $$
+
+    is proportional to the density function of a normally distributed random variable with mean $0$ and variance $(1 - 2t)^{-1}$.
+    To make the integrand a normal density function (so that the deﬁnite integral is equal to $1$), multiply the numerator and denominator by the standard deviation, $(1 - 2t)^{-1 / 2}$.
+    Then
+
+    $$
+    m_{Z^2}(t) = \frac{1}{(1 - 2t)^{1 / 2}} \int_{-\infty}^{\infty} \frac{1}{\sqrt{2 \pi} (1 - 2t)^{-1 / 2}} \exp \left[-\left(\frac{z^2}{2} \right) / (1 - 2t)^{-1} \right] dz.
+    $$
+
+    Because the integral equals $1$, if $t < 1 / 2$,
+
+    $$
+    m_{Z^2}(t) = \frac{1}{(1 - 2t)^{1 / 2}} = (1 - 2t)^{-1 / 2}.
+    $$
+
+    A comparison of $m_{Z^2}(t)$ with the moment-generating functions in Appendix 2 shows that $m_{Z^2}(t)$ is identical to the moment-generating function for the gamma-distributed random variable with $\alpha = 1 / 2$ and $\beta = 2$.
+    Thus, using Definition 4.10, $Z^2$ has a $\chi^2$ distribution with $\nu = 1$ degree of freedom.
+    It follows that the density function for $U = Z^2$ is given by
+
+    $$
+    f_U(u) =
+    \begin{cases}
+        \frac{u^{-1 / 2} e^{-u / 2}}{\Gamma \left(\frac{1}{2} \right) 2^{1 / 2}}, & u \geq 0,\\
+        0, & \text{elsewhere.}
+    \end{cases}
+    $$
+
+  </Accordion>
+</Callout>
+
+<br></br>
 
 <Callout title="Theorem 6.2" type="note" id="thm-6-2">
     Let $Y_1, Y_2, ..., Y_n$ be independent random variables with
@@ -149,4 +253,108 @@ import ExCh6Num37 from "../../exercises/chapter-6-exercises/section-6-5-exercise
 
 ### <u>6.37</u>
 
-<ExCh6Num37 />
+<Ch6Ex37 />
+
+<Accordion title="Proof">
+  <Ch6Ex37Sol />
+</Accordion>
+
+### <u>6.38</u>
+
+<Ch6Ex38 />
+
+### <u>6.39</u>
+
+<Ch6Ex39 />
+
+### <u>6.40</u>
+
+<Ch6Ex40 />
+
+### <u>6.41</u>
+
+<Ch6Ex41 />
+
+### <u>6.42</u>
+
+<Ch6Ex42 />
+
+### <u>6.43</u>
+
+<Ch6Ex43 />
+
+### <u>6.44</u>
+
+<Ch6Ex44 />
+
+### <u>6.45</u>
+
+<Ch6Ex45 />
+
+### <u>6.46</u>
+
+<Ch6Ex46 />
+
+### <u>6.47</u>
+
+<Ch6Ex47 />
+
+### <u>6.48</u>
+
+<Ch6Ex48 />
+
+### <u>6.49</u>
+
+<Ch6Ex49 />
+
+### <u>6.50</u>
+
+<Ch6Ex50 />
+
+### <u>6.51</u>
+
+<Ch6Ex51 />
+
+### <u>6.52</u>
+
+<Ch6Ex52 />
+
+### <u>6.53</u>
+
+<Ch6Ex53 />
+
+### <u>6.54</u>
+
+<Ch6Ex54 />
+
+### <u>6.55</u>
+
+<Ch6Ex55 />
+
+### <u>6.56</u>
+
+<Ch6Ex56 />
+
+### <u>6.57</u>
+
+<Ch6Ex57 />
+
+### <u>6.58</u>
+
+<Ch6Ex58 />
+
+### <u>6.59</u>
+
+<Ch6Ex59 />
+
+### <u>6.60</u>
+
+<Ch6Ex60 />
+
+### <u>6.61</u>
+
+<Ch6Ex61 />
+
+### <u>6.62</u>
+
+<Ch6Ex62 />
