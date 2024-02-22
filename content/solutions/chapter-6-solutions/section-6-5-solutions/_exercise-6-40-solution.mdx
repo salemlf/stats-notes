@@ -1,0 +1,24 @@
+$$
+\begin{align*}
+    m_U(t) & = E \left(e^{t(Y_1^2 + Y_2^2)} \right)\\
+    & = E \left(e^{tY_1^2} \right) E \left(e^{tY_2^2} \right)\\
+    & = \left(\int_{y_1 = -\infty}^{y_1 = \infty} e^{ty_1^2} \frac{1}{\sqrt{2 \pi}} e^{-y_1^2 / 2} dy_1 \right) \left(\int_{y_2 = -\infty}^{y_2 = \infty} e^{ty_2^2} \frac{1}{\sqrt{2 \pi}} e^{-y_2^2 / 2} dy_2 \right)\\
+    & = \left(\int_{y_1 = -\infty}^{y_1 = \infty} \frac{1}{\sqrt{2 \pi}} e^{-y_1^2 (1 - 2t) / 2} dy_1 \right) \left(\int_{y_2 = -\infty}^{y_2 = \infty} \frac{1}{\sqrt{2 \pi}} e^{-y_2^2 (1 - 2t) / 2} dy_2 \right)\\
+    & = \left((1 - 2t)^{-1 / 2} \int_{y_1 = -\infty}^{y_1 = \infty} \frac{1}{(1 - 2t)^{-1 / 2} \sqrt{2 \pi}} e^{-y_1^2 / 2[(1 - 2t)^{-1 / 2}]^2} dy_1 \right)\\
+    & \times \left((1 - 2t)^{-1 / 2} \int_{y_2 = -\infty}^{y_2 = \infty} \frac{1}{(1 - 2t)^{-1 / 2} \sqrt{2 \pi}} e^{-y_2^2 / 2[(1 - 2t)^{-1 / 2}]^2} dy_2 \right)\\
+    & = \left((1 - 2t)^{-1 / 2} \cdot 1 \right) \cdot \left((1 - 2t)^{-1 / 2} \cdot 1 \right)\\
+    & = (1 - 2t)^{-1}
+\end{align*}
+$$
+
+Consulting Appendix 2, Table 2, this is the moment-generating function for a gamma distribution with $\alpha = 1$ and $\beta = 2$, or an exponential distribution with $\beta = 2$, or a $\chi^2$ distribution with $\nu = 2$.
+Thus,
+
+$$
+f_U(u) =
+\begin{cases}
+    \frac{u^{(2 / 2) - 1} e^{-u / 2}}{2^{2 / 2} \Gamma(2 / 2)}\\
+    = \frac{1}{2} e^{-u / 2}, & u > 0,\\
+    0, & \text{elsewhere.}
+\end{cases}
+$$

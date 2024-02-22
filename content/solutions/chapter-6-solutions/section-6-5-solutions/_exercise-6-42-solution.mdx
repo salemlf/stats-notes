@@ -1,0 +1,23 @@
+The elevator will be overloaded when $Y_1 < Y_2$, or $Y_1 - Y_2 < 0$, so the probability we are looking for is $P(Y_1 - Y_2 < 0)$.
+Let $U = Y_1 - Y_2$. The moment-generating function of $U$ will be
+
+$$
+\begin{align*}
+    m_U(t) & = E \left(e^{t(Y_1 - Y_2)} \right)\\
+    & = E \left(e^{tY_1} \right) E \left(e^{-tY_2} \right)\\
+    & = m_{Y_1}(t) m_{Y_2}(-t)\\
+    & = \exp \left(5000t + \frac{300^2 t^2}{2} \right) \exp \left(4000(-t) + \frac{400^2 (-t)^2}{2} \right)\\
+    & = \exp \left(1000t + \frac{500^2 t^2}{2} \right).
+\end{align*}
+$$
+
+This is the moment-generating function for a normal distribution with $\mu_U = 1000$ and $\sigma^2 = 500^2$.
+Thus,
+
+$$
+\begin{align*}
+    P(Y_1 - Y_2 < 0) & = P(U < 0)\\
+    & = \int_{u = -\infty}^{u = 0} \frac{1}{500 \sqrt{2 \pi}} e^{-(u - 1000)^2 / 2 \cdot 500^2} du\\
+    & \approx 0.0227501319482 \quad (\text{via Desmos}).
+\end{align*}
+$$
