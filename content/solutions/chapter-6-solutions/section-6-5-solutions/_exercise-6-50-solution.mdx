@@ -1,0 +1,14 @@
+$$
+\begin{align*}
+    m_{n - Y}(t) & = E \left(e^{t(n - Y)} \right)\\
+    & = E \left(e^{tn} \right) E \left(e^{-tY} \right)\\
+    & = e^{tn} [pe^{-t} + (1 - p)]^n\\
+    & = e^{tn} \sum_{i = 0}^n (pe^{-t})^{n - i} (1 - p)^i \quad (\text{by the binomial theorem})\\
+    & = e^{tn} \sum_{i = 0}^n p^{n - i} e^{-tn} e^{ti} (1 - p)^i \\
+    & = \sum_{i = 0}^n p^{n - i} e^{ti} (1 - p)^i \\
+    & = \sum_{i = 0}^n [(1 - p) e^t]^i p^{n - i} \\
+    & = [(1 - p)e^t + p]^n \quad (\text{by the binomial theorem})
+\end{align*}
+$$
+
+This is the moment-generating function for a binomial distribution with parameters $n$ and $1 - p$.

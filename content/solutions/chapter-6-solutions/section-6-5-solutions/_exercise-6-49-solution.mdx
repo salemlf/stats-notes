@@ -1,0 +1,16 @@
+By Theorem 6.2, the moment-generating function of $U = Y_1 + Y_2$ is
+
+$$
+\begin{align*}
+    m_{U}(t) & = m_{Y_1}(t) m_{Y_2}(t)\\
+    & = [pe^t + (1 - p)]^{n_1} [pe^t + (1 - p)]^{n_2}\\
+    & = [pe^t + (1 - p)]^{n_1 + n_2}.
+\end{align*}
+$$
+
+This is the moment-generating function for a binomial distribution with parameters $n_1 + n_2$ and $p$.
+Thus, the probability function for $U = Y_1 + Y_2$ is
+
+$$
+p_U(u) = \binom{n_1 + n_2}{u} p^{u} (1 - p)^{(n_1 + n_2) - u}, \quad u = 0, 1, 2, ..., n_1 + n_2.
+$$
