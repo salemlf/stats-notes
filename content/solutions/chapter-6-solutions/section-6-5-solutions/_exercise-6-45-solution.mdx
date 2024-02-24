@@ -1,0 +1,23 @@
+To begin with, the moment-generating function of $U$ will be
+
+$$
+\begin{align*}
+    m_U(t) & = E \left(e^{t(100 + 7Y_1 + 3Y_2)} \right)\\
+    & = E(e^{100t}) E(e^{7tY_1}) E(e^{3tY_2})\\
+    & = e^{100t} m_{Y_1}(7t) m_{Y_2}(3t)\\
+    & = \exp \left(100t \right) \exp \left(10(7t) + \frac{(0.5)^2 (7t)^2}{2} \right) \exp \left(4(3t) + \frac{(0.2)^2 (3t)^2}{2} \right)\\
+    & = \exp \left(182t + \frac{(1261 / 100) t^2}{2} \right).
+\end{align*}
+$$
+
+Thus, $U$ is normally distributed with mean $\mu_U = 182$ and variance $\sigma_U^2 = \frac{1261}{100}$.
+Letting the bid be $b$, we have the following:
+
+$$
+\begin{align*}
+    P(U > b) & = \int_{u = b}^{u = \infty} \frac{1}{\sqrt{1261 / 100} \sqrt{2 \pi}} e^{-(u - 182)^2 / 2(1261 / 100)} du
+\end{align*}
+$$
+
+Through guessing and checking on Desmos, this integral equals about $0.01$ when the bid is about $b \approx 190.26099199706$.
+With only the information given, independence of $Y_1$ and $Y_2$ does seem reasonable.

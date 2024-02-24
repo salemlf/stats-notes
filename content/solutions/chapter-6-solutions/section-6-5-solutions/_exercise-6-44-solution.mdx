@@ -1,0 +1,27 @@
+Let $Y_i$ be the weight of medium-sized watermelon $i$, for $i = 1, 2, ..., n$, where $n$ is currently unknown.
+Then $\sum_{i = 1}^n Y_i$ will be the weight of all the watermelons, and we can attempt to find $n$ such that $P(\sum_{i = 1}^n Y_i > 140) = 0.05$.
+Firstly, the moment-generating function of $U = \sum_{i = 1}^n Y_i$ will be
+
+$$
+\begin{align*}
+    m_U(t) & = m_{Y_1}(t) \times m_{Y_2}(t) \times \cdots \times m_{Y_n}(t)\\
+    & = \exp \left(15t + \frac{4t^2}{2} \right) \times \exp \left(15t + \frac{4t^2}{2} \right) \times \cdots \times \exp \left(15t + \frac{4t^2}{2} \right)\\
+    & = \exp \left(15nt + \frac{4nt^2}{2} \right).
+\end{align*}
+$$
+
+Thus, $U$ has a normal distribution with mean $\mu_U = 15n$ and variance $\sigma_U^2 = 4n$, and we have
+
+$$
+\begin{align*}
+    P \left(\sum_{i = 1}^n Y_i > 140 \right) & = P(U > 140)\\
+    & = \int_{u = -\infty}^{u = 140} \frac{1}{\sqrt{4n} \sqrt{2 \pi}} e^{-(u - 15n)^2 / 2 \cdot 4n} du\\
+    & \approx
+    \begin{cases}
+        0.000101738004365, & n = 8,\\
+        0.101164190482, & n = 9
+    \end{cases} \quad (\text{via Desmos}).
+\end{align*}
+$$
+
+Since $n = 9$ gives us an over $10\%$ probability of exceeding the weight limit, we will go with $n = 8$ as the maximum number of watermelons.

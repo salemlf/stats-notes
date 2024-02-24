@@ -1,0 +1,24 @@
+We know from Exercise 6.40 that if $Y_1$ and $Y_2$ are standard normal random variables then $U = Y_1^2 + Y_2^2$ has an exponential distribution with $\beta = 2$.
+Instead of finding any moment-generating functions, which would be difficult, we can let $W = \sqrt{U} = \sqrt{Y_1^2 + Y_2^2}$ and use the entirely separate method of distribution functions:
+
+$$
+\begin{align*}
+    F_W(w) & = P(W \leq w)\\
+    & = P(\sqrt{U} \leq w)\\
+    & = P(U \leq w^2)\\
+    & = F_U(w^2)\\
+    \implies f_W(w) & = F_U'(w^2) \cdot 2w\\
+    & = 2w
+    \begin{cases}
+        \frac{1}{2} e^{-(w^2) / 2}, & w > 0,\\
+        0, & \text{elsewhere}
+    \end{cases}\\
+    & =
+    \begin{cases}
+        we^{-w^2 / 2}, & w > 0,\\
+        0, & \text{elsewhere}
+    \end{cases}
+\end{align*}
+$$
+
+This is a Weibull density with $\alpha = 2$ and $m = 2$, or a Rayleigh density with $\theta = 2$.

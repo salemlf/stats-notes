@@ -1,0 +1,22 @@
+$$
+\begin{align*}
+    m_{\frac{Y_1 + Y_2}{2}}(t) & = E \left(e^{t \left(\frac{Y_1 + Y_2}{2} \right)} \right)\\
+    & = E \left(e^{\left(\frac{t}{2} \right) Y_1} e^{\left(\frac{t}{2} \right) Y_2} \right)\\
+    & = E \left(e^{\left(\frac{t}{2} \right) Y_1} \right) E \left(e^{\left(\frac{t}{2} \right) Y_2} \right)\\
+    & = m_{Y_1} \left(\frac{t}{2} \right) m_{Y_2} \left(\frac{t}{2} \right)\\
+    & = \frac{1}{1 - \frac{t}{2}} \cdot \frac{1}{1 - \frac{t}{2}}\\
+    & = \left(1 - \frac{1}{2} t \right)^{-2}
+\end{align*}
+$$
+
+Consulting Appendix 2, Table 2, this is the moment-generating function for a gamma distribution with $\alpha = 2$ and $\beta = \frac{1}{2}$.
+Thus, the density function we seek for $U = \frac{Y_1 + Y_2}{2}$ is
+
+$$
+f_U(u) =
+\begin{cases}
+    \frac{u^{2 - 1} e^{-u / (1 / 2)}}{\left(\frac{1}{2} \right)^2 \Gamma(2)}\\
+    = 4ue^{-2u}, & u > 0,\\
+    0, & \text{elsewhere.}
+\end{cases}
+$$

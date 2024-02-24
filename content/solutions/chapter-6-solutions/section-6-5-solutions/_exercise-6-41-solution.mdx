@@ -1,0 +1,17 @@
+By Theorem 6.3, $U$ has a normal distribution with
+
+$$
+\begin{align*}
+    \mu_U & = \sum_{i = 1}^n a_i \mu = a_1 \mu + a_2 \mu + ... + a_n \mu = \mu (a_1 + a_2 + ... + a_n)\\
+    \text{and } \sigma_U^2 & = \sum_{i = 1}^n a_i \sigma^2 = a_1^2 \sigma^2 + a_2^2 \sigma^2 + ... + a_n^2 \sigma^2 = \sigma^2 (a_1^2 + a_2^2 + ... + a_n^2).
+\end{align*}
+$$
+
+Thus,
+
+$$
+\begin{align*}
+    f_U(u) & = \frac{1}{\sigma \sqrt{a_1^2 + a_2^2 + ... + a_n^2} \sqrt{2 \pi}} e^{-[u - \mu (a_1 + a_2 + ... + a_n)]^2 / 2 \sigma^2 (a_1^2 + a_2^2 + ... + a_n^2)}\\
+    & = \frac{1}{\sigma \sqrt{2 \pi \sum_{i = 1}^n a_i^2}} \exp \left(\frac{-\left(u - \mu \sum_{i = 1}^n a_i \right)^2}{2 \sigma^2 \sum_{i = 1}^n a_i^2} \right).
+\end{align*}
+$$

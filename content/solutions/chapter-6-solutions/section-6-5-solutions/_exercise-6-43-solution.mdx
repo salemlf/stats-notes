@@ -1,0 +1,64 @@
+a) Using Theorem 6.3 with $a_i = \frac{1}{n}$ for $i = 1, 2, ..., n$, we can see that $\overline{Y}$ has a normal distribution with
+
+$$
+\mu_{\overline{Y}} = \sum_{i = 1}^n \frac{1}{n} \mu = \mu \text{ and } \sigma_{\overline{Y}}^2 = \sum_{i = 1}^n \frac{1}{n^2} \sigma^2 = \frac{\sigma^2}{n}.
+$$
+
+Thus,
+
+$$
+\begin{align*}
+    f_{\overline{Y}}(\overline{y}) & = \frac{1}{(\sigma / \sqrt{n}) \sqrt{2 \pi}} e^{-(\overline{y} - \mu)^2 / 2(\sigma^2 / n)}\\
+    & = \frac{\sqrt{n}}{\sigma \sqrt{2 \pi}} e^{-n(\overline{y} - \mu)^2 / 2 \sigma^2}.
+\end{align*}
+$$
+
+---
+
+b) When $\sigma^2 = 16$ and $n = 25$, we have
+
+$$
+\begin{align*}
+    P(|\overline{Y} - \mu| \leq 1) & = P(-1 \leq \overline{Y} - \mu \leq 1)\\
+    & = P(\mu - 1 \leq \overline{Y} \leq \mu + 1)\\
+    & = \int_{\overline{y} = \mu - 1}^{\overline{y} = \mu + 1} \frac{\sqrt{n}}{\sigma \sqrt{2 \pi}} e^{-n(\overline{y} - \mu) / 2 \sigma^2} d \overline{y}\\
+    & = \int_{\overline{y} = \mu - 1}^{\overline{y} = \mu + 1} \frac{\sqrt{25}}{\sqrt{16} \sqrt{2 \pi}} e^{-25(\overline{y} - \mu) / 2 \cdot 16} d \overline{y}\\
+    & \approx 0.788700452666 \quad (\text{via Desmos}).
+\end{align*}
+$$
+
+Note that this value exists irrespective of $\mu$, i.e., it is the same for any value of $\mu$.
+This makes sense, as we could also have found the value of $P(|\overline{Y} - \mu| \leq 1)$ by the alternative method of normalizing $\overline{Y}$:
+
+$$
+\begin{align*}
+    P(|\overline{Y} - \mu_{\overline{Y}}| \leq 1) & = P(|\overline{Y} - \mu| \leq 1)\\
+    & = P(-1 \leq \overline{Y} - \mu \leq 1)\\
+    & = P \left(-\frac{1}{(\sigma / \sqrt{n})} \leq \frac{\overline{Y} - \mu}{(\sigma / \sqrt{n})} \leq \frac{1}{(\sigma / \sqrt{n})} \right)\\
+    & = P \left(-\frac{\sqrt{n}}{\sigma} \leq Z \leq \frac{\sqrt{n}}{\sigma} \right) \quad \left(\text{which equals } 1 - 2P \left(Z \leq \frac{\sqrt{n}}{\sigma} \right) \right)\\
+    & = \int_{z = -\sqrt{n} / \sigma}^{z = \sqrt{n} / \sigma} \frac{1}{\sqrt{2 \pi}} e^{-z^2 / 2} dz\\
+    & = \int_{z = -\sqrt{25} / \sqrt{16}}^{z = \sqrt{25} / \sqrt{16}} \frac{1}{\sqrt{2 \pi}} e^{-z^2 / 2} dz\\
+    & \approx 0.788700452666 \quad (\text{via Desmos})
+\end{align*}
+$$
+
+The value as expressed in this form more clearly shows how it does not depend on the value of $\mu_{\overline{Y}} = \mu$.
+
+---
+
+c)
+
+$$
+\begin{align*}
+    P(|\overline{Y} - \mu| \leq 1) & = \int_{z = -\sqrt{n} / \sigma}^{z = \sqrt{n} / \sigma} \frac{1}{\sqrt{2 \pi}} e^{-z^2 / 2} dz = \int_{z = -\sqrt{n} / 4}^{z = \sqrt{n} / 4} \frac{1}{\sqrt{2 \pi}} e^{-z^2 / 2} dz\\
+    & \approx
+    \begin{cases}
+        0.866385597462, & n = 36,\\
+        0.954499736104, & n = 64,\\
+        0.97555105469, & n = 81
+    \end{cases} \quad (\text{via Desmos})
+\end{align*}
+$$
+
+For given values of $\sigma^2$ and $n$, the value of $P(|\overline{Y} - \mu| \leq 1)$ represents the probability that the random variable $\overline{Y}$ takes on a value within one unit of its population mean/expected value $\mu_{\overline{Y}} = \mu$.
+As we see above, for a fixed variance $\sigma^2$, the probability increases as $n$ increases.
