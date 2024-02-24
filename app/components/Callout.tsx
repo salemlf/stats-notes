@@ -87,11 +87,11 @@ type Props = {
   icon?: React.ReactNode;
 };
 
-function Callout({ children, type = "info", title, icon }: Props) {
+function Callout({ children, type = "info", title, icon, ...props }: Props) {
   const calloutStyles = calloutStyleMap[type];
 
   return (
-    <CalloutStyled calloutStyles={calloutStyles}>
+    <CalloutStyled calloutStyles={calloutStyles} {...props}>
       <IconTitleContainer>
         <CalloutIcon title={calloutStyles.title}>
           {icon || calloutStyles.icon}
