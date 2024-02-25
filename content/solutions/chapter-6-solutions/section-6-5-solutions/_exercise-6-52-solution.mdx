@@ -8,6 +8,31 @@ $$
 \end{align*}
 $$
 
-This is exactly the moment-generating function for a Poisson distribution with mean $\lambda_1 + \lambda_2$.
+This is exactly the moment-generating function for a Poisson distribution with mean $\lambda_1 + \lambda_2$, Thus
+
+$$
+p_U(u) = \frac{(\lambda_1 + \lambda_2)^u e^{-(\lambda_1 + \lambda_2)}}{u!}, \quad u = 0, 1, 2, ...
+$$
+
+---
 
 b)
+
+$$
+\begin{align*}
+    p(y_1 \mid y_1 + y_2 = m) & = P(Y_1 = y_1 \mid Y_1 + Y_2 = m)\\
+    & = \frac{P((Y_1 = y_1) \cap (Y_1 + Y_2 = m))}{P(Y_1 + Y_2 = m)}\\
+    & = \frac{P((Y_1 = y_1) \cap (Y_2 = m - y_1))}{P(U = m)}\\
+    & = \frac{P(Y_1 = y_1) P(Y_2 = m - y_1)}{P(U = m)} \quad (\text{by independence})\\
+    & = \frac{p_{Y_1}(y_1) p_{Y_2}(m - y_1)}{p_U(m)}\\
+    & = \frac{\frac{\lambda_1^{y_1} e^{-\lambda_1}}{y_1!} \cdot \frac{\lambda_2^{m - y_1} e^{-\lambda_2}}{(m - y_1)!}}{\frac{(\lambda_1 + \lambda_2)^m e^{-(\lambda_1 + \lambda_2)}}{m!}}\\
+    & = \frac{\lambda_1^{y_1} \lambda_2^{m - y_1}}{(\lambda_1 + \lambda_2)^m} \cdot \frac{e^{-(\lambda_1 + \lambda_2)}}{e^{-(\lambda_1 + \lambda_2)}} \cdot \frac{m!}{(m - y_1)! \cdot y_1!}\\
+    & = \frac{\lambda_1^{y_1}}{(\lambda_1 + \lambda_2)^{y_1}} \cdot \frac{\lambda_2^{m - y_1}}{(\lambda_1 + \lambda_2)^{m - y_1}} \cdot 1 \cdot \binom{m}{y_1}\\
+    & = \binom{m}{y_1} \left(\frac{\lambda_1}{\lambda_1 + \lambda_2} \right)^{y_1} \left(\frac{\lambda_2}{\lambda_1 + \lambda_2} \right)^{m - y_1}\\
+    & = \binom{m}{y_1} \left(\frac{\lambda_1}{\lambda_1 + \lambda_2} \right)^{y_1} \left(\frac{\lambda_1 + \lambda_2 - \lambda_1}{\lambda_1 + \lambda_2} \right)^{m - y_1}\\
+    & = \binom{m}{y_1} \left(\frac{\lambda_1}{\lambda_1 + \lambda_2} \right)^{y_1} \left(\frac{\lambda_1 + \lambda_2}{\lambda_1 + \lambda_2} - \frac{\lambda_1}{\lambda_1 + \lambda_2} \right)^{m - y_1}\\
+    & = \binom{m}{y_1} \left(\frac{\lambda_1}{\lambda_1 + \lambda_2} \right)^{y_1} \left(1 - \frac{\lambda_1}{\lambda_1 + \lambda_2} \right)^{m - y_1}, \quad y_1 = 0, 1, ..., m
+\end{align*}
+$$
+
+This is a binomial probability function with $n = m$ and $p = \frac{\lambda_1}{\lambda_1 + \lambda_2}$.

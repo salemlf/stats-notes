@@ -1,0 +1,59 @@
+Let $U = \sum_{i = 1}^n Y_i$.
+
+---
+
+a)
+
+$$
+\begin{align*}
+    m_U(t) & = \prod_{i = 1}^n \exp[\lambda_i (e^t - 1)]\\
+    & = \exp[(\lambda_1 + \lambda_2 + ... + \lambda_n)(e^t - 1)]\\
+    \implies p_U(u) & = \frac{(\lambda_1 + \lambda_2 + ... + \lambda_n)^u e^{-(\lambda_1 + \lambda_2 + ... + \lambda_n)}}{u!}, \quad u = 0, 1, 2, ...
+\end{align*}
+$$
+
+---
+
+b) Note that $m_{Y_2 + Y_3 + ... + Y_n}(t) = \exp[(\lambda_2 + \lambda_3 + ... + \lambda_n)(e^t - 1)] = m_{U - Y_1}(t)$.
+Thus,
+
+$$
+\begin{align*}
+    p(y_1 \mid u = m) & = \frac{P((Y_1 = y_1) \cap (Y_1 + Y_2 + ... + Y_n = m))}{P(U = m)}\\
+    & = \frac{P((Y_1 = y_1) \cap (Y_2 + Y_3 + ... + Y_n = m - y_1))}{P(U = m)}\\
+    & = \frac{P(Y_1 = y_1) P(Y_2 + Y_3 + ... + Y_n = m - y_1)}{P(U = m)} \quad (\text{by independence})\\
+    & = \frac{p_{Y_1}(y_1) p_{U - Y_1}(m - y_1)}{p_U(m)}\\
+    & = \frac{\frac{\lambda_1^{y_1} e^{-\lambda_1}}{y_1!} \frac{(\lambda_2 + \lambda_3 + ... + \lambda_n)^{m - y_1} e^{-(\lambda_2 + \lambda_3 + ... + \lambda_n)}}{(m - y_1)!}}{\frac{(\lambda_1 + \lambda_2 + ... + \lambda_n)^m e^{-(\lambda_1 + \lambda_2 + ... + \lambda_n)}}{m!}}\\
+    & = \frac{m!}{(m - y_1)! \cdot y_1!} \cdot \frac{e^{-(\lambda_1 + \lambda_2 + ... + \lambda_n)}}{e^{-(\lambda_1 + \lambda_2 + ... + \lambda_n)}}\\
+    & \cdot \frac{\lambda_1^{y_1}}{(\lambda_1 + \lambda_2 + ... + \lambda_n)^{y_1}} \cdot \frac{(\lambda_2 + ... + \lambda_n)^{m - y_1}}{(\lambda_1 + \lambda_2 + ... + \lambda_n)^{m - y_1}}\\
+    & = \binom{m}{y_1} \cdot 1 \cdot \left(\frac{\lambda_1}{\lambda_1 + \lambda_2 + ... + \lambda_n} \right)^{y_1} \left(\frac{\lambda_2 + ... + \lambda_n}{\lambda_1 + \lambda_2 + ... + \lambda_n} \right)^{m - y_1}\\
+    & = \binom{m}{y_1} \left(\frac{\lambda_1}{\lambda_1 + \lambda_2 + ... + \lambda_n} \right)^{y_1} \left(1 - \frac{\lambda_1}{\lambda_1 + \lambda_2 + ... + \lambda_n} \right)^{m - y_1}\\
+    & y_1 = 0, 1, 2, ..., m.
+\end{align*}
+$$
+
+This is a binomial probability function with $m$ trials and success probability $\frac{\lambda_1}{\lambda_1 + \lambda_2 + ... + \lambda_n}$.
+
+---
+
+c) Let $V = Y_1 + Y_2$ and note that $m_{Y_3 + Y_4 + ... + Y_n}(t) = \exp[(\lambda_3 + \lambda_4 + ... + \lambda_n)(e^t - 1)] = m_{U - V}(t)$.
+Thus,
+
+$$
+\begin{align*}
+    p(y_1 + y_2 \mid u = m) & = p(v \mid u = m)\\
+    & = \frac{P((Y_1 + Y_2 = v) \cap (Y_1 + Y_2 + ... + Y_n = m))}{P(U = m)}\\
+    & = \frac{P((V = v) \cap (Y_3 + Y_4 + ... + Y_n = m - v))}{P(U = m)}\\
+    & = \frac{P((V = v) \cap (U - V = m - v))}{P(U = m)}\\
+    & = \frac{P(V = v) P(U - V = m - v)}{P(U = m)} \quad (\text{by independence})\\
+    & = \frac{p_V(v) p_{U - V}(m - v)}{p_U(m)}\\
+    & = \frac{\frac{(\lambda_1 + \lambda_2)^v e^{-(\lambda_1 + \lambda_2)}}{v!} \frac{(\lambda_3 + \lambda_4 + ... + \lambda_n)^{m - v} e^{-(\lambda_3 + \lambda_4 + ... + \lambda_n)}}{(m - v)!}}{\frac{(\lambda_1 + \lambda_2 + ... + \lambda_n)^m e^{-(\lambda_1 + \lambda_2 + ... + \lambda_n)}}{m!}}\\
+    & = \frac{m!}{(m - v)! \cdot v!} \cdot \frac{e^{-(\lambda_1 + \lambda_2 + ... + \lambda_n)}}{e^{-(\lambda_1 + \lambda_2 + ... + \lambda_n)}}\\
+    & \cdot \frac{(\lambda_1 + \lambda_2)^v}{(\lambda_1 + \lambda_2 + ... + \lambda_n)^v} \cdot \frac{(\lambda_3 + \lambda_4 + ... + \lambda_n)^{m - v}}{(\lambda_1 + \lambda_2 + ... + \lambda_n)^{m - v}}\\
+    & = \binom{m}{v} \cdot 1 \cdot \left(\frac{\lambda_1 + \lambda_2}{\lambda_1 + \lambda_2 + ... + \lambda_n} \right)^v \left(\frac{\lambda_3 + \lambda_4 + ... + \lambda_n}{\lambda_1 + \lambda_2 + ... + \lambda_n} \right)^{m - v}\\
+    & = \binom{m}{v} \left(\frac{\lambda_1 + \lambda_2}{\lambda_1 + \lambda_2 + ... + \lambda_n} \right)^v \left(1 - \frac{\lambda_1 + \lambda_2}{\lambda_1 + \lambda_2 + ... + \lambda_n} \right)^{m - v},\\
+    & v = 0, 1, 2, ..., m.
+\end{align*}
+$$
+
+This is a binomial probability function with $m$ trials and success probability $\frac{\lambda_1 + \lambda_2}{\lambda_1 + \lambda_2 + ... + \lambda_n}$.
