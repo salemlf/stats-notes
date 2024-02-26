@@ -1,0 +1,52 @@
+a)
+
+$$
+\begin{align*}
+    m_Y(t) & = \prod_{i = 1}^r m_{W_i}(t)\\
+    & = \prod_{i = 1}^r \frac{pe^t}{1 - (1 - p)e^t}\\
+    & = \left[\frac{pe^t}{1 - (1 - p)e^t} \right]^r
+\end{align*}
+$$
+
+---
+
+b)
+
+$$
+\begin{align*}
+    m_Y'(t) & = \frac{d}{dt} \left(\left[\frac{pe^t}{1 - (1 - p)e^t} \right]^r \right)\\
+    & = r \left(\frac{pe^t}{1 - (1 - p)e^t} \right)^{r - 1} \cdot \left[\frac{pe^t \cdot (1 - (1 - p)e^t) + pe^t \cdot (1 - p)e^t}{(1 - (1 - p)e^t)^2} \right]\\
+    & = \frac{r (pe^t)^{r - 1}}{\left[1 - (1 - p)e^t \right]^{r + 1}} \cdot pe^t \left[1 - (1 - p)e^t + (1 - p)e^t \right]\\
+    & = \frac{r (pe^t)^{r - 1}}{\left[1 - (1 - p)e^t \right]^{r + 1}} \cdot pe^t \cdot 1\\
+    & = \frac{r (pe^t)^r}{\left[1 - (1 - p)e^t \right]^{r + 1}}\\
+    \implies E(Y) & = m_Y'(0) = \frac{r(pe^{(0)})^r}{\left[1 - (1 - p)e^{(0)} \right]^{r + 1}} = \frac{rp^r}{p^{r + 1}} = \frac{r}{p}\\
+    \text{and } m_Y''(t) & = \frac{r^2 (pe^t)^{r - 1} pe^t [1 - (1 - p)e^t]^{r + 1} - r(pe^t)^r (r + 1) [1 - (1 - p)e^t]^r [-(1 - p)e^t]}{[1 - (1 - p)e^t]^{2r + 2}}\\
+    & = \frac{r^2 (pe^t)^{r - 1} pe^t [1 - (1 - p)e^t]^{r + 1} - r(pe^t)^r (r + 1) [1 - (1 - p)e^t]^r [-(1 - p)e^t]}{[1 - (1 - p)e^t]^{2r + 2}}\\
+    \implies m_Y''(0) & = \frac{r^2 (pe^{(0)})^r [1 - (1 - p)e^{(0)}]^{r + 1} - r(pe^{(0)})^r (r + 1) [1 - (1 - p)e^{(0)}]^r [-(1 - p)e^{(0)}]}{[1 - (1 - p)e^{(0)}]^{2r + 2}}\\
+    & = \frac{r^2 p^r p^{r + 1} + r p^r (r + 1) p^r (1 - p)}{p^{2r + 2}}\\
+    & = \frac{p^{2r} [r^2 p + (r^2 + r)(1 - p)]}{p^{2r + 2}}\\
+    & = \frac{r^2 p + r^2 - r^2 p + r - rp}{p^2} = \frac{r^2 + r - rp}{p^2} = \frac{r^2 + r(1 - p)}{p^2} = E(Y^2)\\
+    \implies V(Y) & = E(Y^2) - E(Y)^2\\
+    & = \frac{r^2 + r(1 - p)}{p^2} - \left(\frac{r}{p} \right)^2 = \frac{r(1 - p)}{p^2}
+\end{align*}
+$$
+
+---
+
+c) Since all the $W_i$s are independent, then $W_1$ will be independent from $U = W_2 + W_3 + ... + W_r$. Then
+
+$$
+\begin{align*}
+    m_U(t) & = \prod_{i = 2}^r m_{W_i}(t)\\
+    & = \prod_{i = 2}^r \frac{pe^t}{1 - (1 - p)e^t}\\
+    & = \left[\frac{pe^t}{1 - (1 - p)e^t} \right]^{r - 1}\\
+    \implies p_U(u) & = \binom{u - 1}{(r - 1) - 1} p^{r - 1} (1 - p)^{u - (r - 1)}, \quad u = r - 1, r, ...\\
+    \implies f(w_1 \mid y = m) & = \frac{P((W_1 = w_1) \cap (W_1 + W_2 + ... + W_r = m))}{P(Y = m)}\\
+    & = \frac{P((W_1 = w_1) \cap (W_2 + ... + W_r = m - w_1))}{P(Y = m)}\\
+    & = \frac{P(W_1 = w_1)P(W_2 + ... + W_r = m - w_1)}{P(Y = m)} \quad (\text{by independence})\\
+    & = \frac{p_W(w_1) p_U(m - w_1)}{p_Y(m)}\\
+    & = \frac{p(1 - p)^{w_1 - 1} \cdot \binom{(m - w_1) - 1}{(r - 1) - 1} p^{r - 1} (1 - p)^{(m - w_1) - (r - 1)}}{\binom{m - 1}{r - 1} p^r (1 - p)^{m - r}}\\
+    & = \frac{\binom{m - w_1 - 1}{r - 2}}{\binom{m - 1}{r - 1}} \cdot \frac{p^r}{p^r} \cdot \frac{(1 - p)^{m - r}}{(1 - p)^{m - r}}\\
+    & = \frac{\binom{m - w_1 - 1}{r - 2}}{\binom{m - 1}{r - 1}} \cdot 1 \cdot 1 = \frac{\binom{m - w_1 - 1}{r - 2}}{\binom{m - 1}{r - 1}}.
+\end{align*}
+$$
