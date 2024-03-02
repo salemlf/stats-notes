@@ -1,0 +1,276 @@
+---
+title: "6.6: Multivariable Transformations Using Jacobians"
+---
+
+import Accordion from "../../../app/components/Accordion.tsx";
+import Callout from "../../../app/components/Callout.tsx";
+
+import Ch6Ex63 from "../../exercises/chapter-6-exercises/section-6-6-exercises/_exercise-6-63.mdx";
+import Ch6Ex64 from "../../exercises/chapter-6-exercises/section-6-6-exercises/_exercise-6-64.mdx";
+import Ch6Ex65 from "../../exercises/chapter-6-exercises/section-6-6-exercises/_exercise-6-65.mdx";
+import Ch6Ex66 from "../../exercises/chapter-6-exercises/section-6-6-exercises/_exercise-6-66.mdx";
+import Ch6Ex67 from "../../exercises/chapter-6-exercises/section-6-6-exercises/_exercise-6-67.mdx";
+import Ch6Ex68 from "../../exercises/chapter-6-exercises/section-6-6-exercises/_exercise-6-68.mdx";
+import Ch6Ex69 from "../../exercises/chapter-6-exercises/section-6-6-exercises/_exercise-6-69.mdx";
+import Ch6Ex70 from "../../exercises/chapter-6-exercises/section-6-6-exercises/_exercise-6-70.mdx";
+import Ch6Ex71 from "../../exercises/chapter-6-exercises/section-6-6-exercises/_exercise-6-71.mdx";
+
+import Ch6Ex63Sol from "../../solutions/chapter-6-solutions/section-6-6-solutions/_exercise-6-63-solution.mdx";
+import Ch6Ex64Sol from "../../solutions/chapter-6-solutions/section-6-6-solutions/_exercise-6-64-solution.mdx";
+import Ch6Ex65Sol from "../../solutions/chapter-6-solutions/section-6-6-solutions/_exercise-6-65-solution.mdx";
+import Ch6Ex66Sol from "../../solutions/chapter-6-solutions/section-6-6-solutions/_exercise-6-66-solution.mdx";
+import Ch6Ex67Sol from "../../solutions/chapter-6-solutions/section-6-6-solutions/_exercise-6-67-solution.mdx";
+import Ch6Ex68Sol from "../../solutions/chapter-6-solutions/section-6-6-solutions/_exercise-6-68-solution.mdx";
+import Ch6Ex69Sol from "../../solutions/chapter-6-solutions/section-6-6-solutions/_exercise-6-69-solution.mdx";
+import Ch6Ex70Sol from "../../solutions/chapter-6-solutions/section-6-6-solutions/_exercise-6-70-solution.mdx";
+import Ch6Ex71Sol from "../../solutions/chapter-6-solutions/section-6-6-solutions/_exercise-6-71-solution.mdx";
+
+<Callout title="The Bivariate Transformation Method" type="info">
+    Suppose that $Y_1$ and $Y_2$ are continuous random variables with joint density function $f_{(Y_1, Y_2)}(y_1, y_2)$ and that for all $(y_1, y_2)$, such that $f_{(Y_1, Y_2)}(y_1, y_2) > 0$,
+
+    $$
+    u_1 = h_1(y_1, y_2) \quad \text{ and } \quad u_2 = h_2(y_1, y_2)
+    $$
+
+    is a one-to-one transformation from $(y_1, y_2)$ to $(u_1, u_2)$ with inverse
+
+    $$
+    y_1 = h_1^{-1}(u_1, u_2) \quad \text{ and } \quad y_2 = h_2^{-1}(u_1, u_2).
+    $$
+
+    If $h_1^{-1}(u_1, u_2)$ and $h_2^{-1}(u_1, u_2)$ have continuous partial derivatives with respect to $u_1$ and $u_2$ and *Jacobian*
+
+    $$
+    J = \det
+    \begin{bmatrix}
+        \frac{\partial h_1^{-1}}{\partial u_1} & \frac{\partial h_1^{-1}}{\partial u_2}\\
+        \frac{\partial h_2^{-1}}{\partial u_1} & \frac{\partial h_2^{-1}}{\partial u_2}
+    \end{bmatrix} = \frac{\partial h_1^{-1}}{\partial u_1} \frac{\partial h_2^{-1}}{\partial u_2} - \frac{\partial h_2^{-1}}{\partial u_1} \frac{\partial h_1^{-1}}{\partial u_2} \neq 0,
+    $$
+
+    then the joint density of $U_1$ and $U_2$ is
+
+    $$
+    f_{U_1, U_2}(u_1, u_2) = f_{Y_1, Y_2}(h_1^{-1}(u_1, u_2), h_2^{-1}(u_1, u_2)) |J|,
+    $$
+
+    where $|J|$ is the absolute value of the Jacobian.
+
+</Callout>
+
+A word of caution is in order.
+Be sure that the bivariate transformation $u_1 = h_1(y_1, y_2), u_2 = h_2(y_1, y_2)$ is a one-to-one transformation for all $(y_1, y_2)$ such that $f_{Y_1, Y_2}(y_1, y_2) > 0$.
+This step is easily overlooked.
+If the bivariate transformation is not one-to-one and this method is blindly applied, the resulting "density" function will not have the necessary properties of a valid density function.
+
+The multivariable transformation method is also useful if we are interested in a single function of $Y_1$ and $Y_2$ - say, $U_1 = h(Y_1, Y_2)$.
+Because we have only one function of $Y_1$ and $Y_2$, we can use the method of bivariate transformations to find the joint distribution of $U_1$ and another function $U_2 = h_2(Y_1, Y_2)$ and then ﬁnd the desired marginal density of $U_1$ by integrating the joint density.
+Because we are really interested in only the distribution of $U_1$, we would typically choose the other function $U_2 = h_2(Y_1, Y_2)$ so that the bivariate transformation is easy to invert and the Jacobian is easy to work with.
+We illustrate this technique in the following example.
+
+<Callout title="Example 6.14" type="tip" id="exa-6-14">
+    Let $Y_1$ and $Y_2$ be independent exponential random variables, both with mean $\beta > 0$.
+    Find the density function of
+  
+    $$
+    U = \frac{Y_1}{Y_1 + Y_2}.
+    $$
+
+    <Accordion title="Solution">
+        The density functions for $Y_1$ and $Y_2$ are, again using $\exp(\cdot) = e^{(\cdot)}$,
+
+        $$
+        f_1(y_1) =
+        \begin{cases}
+            \frac{1}{\beta} \exp(-y_1 / \beta), & 0 < y_1,\\
+            0, & \text{otherwise,}
+        \end{cases}
+        $$
+
+        and
+
+        $$
+        f_2(y_2) =
+        \begin{cases}
+            \frac{1}{\beta} \exp(-y_2 / \beta), & 0 < y_2,\\
+            0, & \text{otherwise.}
+        \end{cases}
+        $$
+
+        Their joint density is
+
+        $$
+        f_{Y_1, Y_2}(y_1, y_2) =
+        \begin{cases}
+            \frac{1}{\beta^2} \exp[-(y_1 + y_2) / \beta], & 0 < y_1, 0 < y_2,\\
+            0, & \text{otherwise,}
+        \end{cases}
+        $$
+
+        because $Y_1$ and $Y_2$ are independent.
+
+        In this case, $f_{Y_1, Y_2}(y_1, y_2) > 0$ for all $(y_1, y_2)$ such that $0 < y_1, 0 < y_2$, and we are interested in the function $U = Y_1 / (Y_1 + Y_2)$.
+        If we consider the function $u_1 = y_1 / (y_1 + y_2)$, there are obviously many values for $(y_1, y_2)$ that will give the same value for $u_1$.
+        Let us define
+
+        $$
+        u_1 = \frac{y_1}{y_1 + y_2} = h_1(y_1, y_2) \quad \text{ and } \quad u_2 = y_1 + y_2 = h_2(y_1, y_2).
+        $$
+
+        This choice of $u_2$ yields a convenient inverse transformation:
+
+        $$
+        y_1 = u_1 u_2 = h_1^{-1}(u_1, u_2) \quad \text{ and } \quad y_2 = u_2 (1 - u_1) = h_2^{-1}(u_1, u_2).
+        $$
+
+        The Jacobian of this transformation is
+
+        $$
+        J = \det
+        \begin{bmatrix}
+            u_2 & u_1\\
+            -u_2, & 1 - u_1
+        \end{bmatrix} = u_2 (1 - u_1) - (-u_2)(u_1) = u_2,
+        $$
+
+        and the joint density of $U_1$ and $U_2$ is
+
+        $$
+        f_{U_1, U_2} =
+        \begin{cases}
+            \frac{1}{\beta^2} \exp \{-[u_1 u_2 + u_2 (1 - u_1)] / \beta \} |u_2|, & 0 < u_1 u_2, 0 < u_2 (1 - u_1),\\
+            0, & \text{otherwise.}
+        \end{cases}
+        $$
+
+        In this case, $f_{U_1, U_2}(u_1, u_2) > 0$ is $u_1$ and $u_2$ are such that $0 < u_1 u_2, 0 < u_2 (1 - u_1)$.
+        Notice that if $0 < u_1 u_2$, then
+
+        $$
+        0 < u_2 (1 - u_1) = u_2 - u_1 u_2 \quad \Leftrightarrow \quad 0 < u_1 u_2 < u_2 \quad \Leftrightarrow \quad 0 < u_1 < 1.
+        $$
+
+        If $0 < u_1 < 1$, then $0 < u_2 (1 - u_1)$ implies that $0 < u_2$.
+        Therefore, the region of support for the joint density of $U_1$ and $U_2$ is $\{(u_1, u_2): 0 < u_1 < 1, 0 < u_2 \}$, and the joint density of $U_1$ and $U_2$ is given by
+
+        $$
+        f_{U_1, U_2}(u_1, u_2) =
+        \begin{cases}
+            \frac{1}{\beta^2} u_2 e^{-u_2 / \beta}, & 0 < u_1 < 1, 0 < u_2,\\
+            0, & \text{otherwise.}
+        \end{cases}
+        $$
+
+        Using Theorem 5.5, it is easily seen that $U_1$ and $U_2$ are independent.
+        The marginal densities of $U_1$ and $U_2$ can be obtained by integrating the joint density derived earlier.
+        In Exercise 6.63 you will show that $U_1$ is uniformly distributed over $(0, 1)$ and that $U_2$ has a gamma density with parameters $\alpha = 2$ and $\beta$.
+    </Accordion>
+
+</Callout>
+
+If $Y_1, Y_2, ..., Y_k$ are jointly continuous random variables and
+
+$$
+U_1 = h_1(Y_1, Y_2, ..., Y_k), U_2 = h_2(Y_1, Y_2, ..., Y_k), ..., U_k = h_k(Y_1, Y_2, ..., Y_k),
+$$
+
+where the transformation
+
+$$
+u_1 = h_1(y_1, y_2, ..., y_k), u_2 = h_2(y_1, y_2, ..., y_k), ..., u_k = h_k(y_1, y_2, ..., y_k)
+$$
+
+is a one-to-one transformation from $(y_1, y_2, ..., y_k)$ to $(u_1, u_2, ..., u_k)$ with inverse
+
+$$
+y_1 = h_1^{-1}(u_1, u_2, ..., u_k), y_2 = h_2^{-1}(u_1, u_2, ..., u_k), ..., y_k = h_k^{-1}(u_1, u_2, ..., u_k),
+$$
+
+and $h_1^{-1}(u_1, u_2, ...,u_k), h_2^{-1}(u_1, u_2, ...,u_k), ..., h_k^{-1}(u_1, u_2, ..., u_k)$ have continuous partial derivatives with respect to $u_1, u_2, ..., u_k$ and _Jacobian_
+
+$$
+J =
+\begin{bmatrix}
+    \frac{\partial h_1^{-1}}{\partial u_1} & \frac{\partial h_1^{-1}}{\partial u_2} & \cdots & \frac{\partial h_1^{-1}}{\partial u_k}\\
+    \frac{\partial h_2^{-1}}{\partial u_1} & \frac{\partial h_2^{-1}}{\partial u_2} & \cdots & \frac{\partial h_2^{-1}}{\partial u_k}\\
+    \vdots & \vdots & \ddots & \vdots\\
+    \frac{\partial h_k^{-1}}{\partial u_1} & \frac{\partial h_k^{-1}}{\partial u_2} & \cdots & \frac{\partial h_k^{-1}}{\partial u_k}
+\end{bmatrix} \neq 0,
+$$
+
+then a result analogous to the one presented in this section can be used to ﬁnd the joint density of $U_1, U_2, ..., U_k$.
+This requires the user to ﬁnd the determinant of a $k \times k$ matrix, a skill that is not required in the rest of this text.
+
+## <u>Exercises</u>
+
+### <u>6.63</u>
+
+<Ch6Ex63 />
+
+Solution:
+
+<Ch6Ex63Sol />
+
+### <u>6.64</u>
+
+<Ch6Ex64 />
+
+Solution:
+
+<Ch6Ex64Sol />
+
+### <u>6.65</u>
+
+<Ch6Ex65 />
+
+Solution:
+
+<Ch6Ex65Sol />
+
+### <u>6.66</u>
+
+<Ch6Ex66 />
+
+Solution:
+
+<Ch6Ex66Sol />
+
+### <u>6.67</u>
+
+<Ch6Ex67 />
+
+Solution:
+
+<Ch6Ex67Sol />
+
+### <u>6.68</u>
+
+<Ch6Ex68 />
+
+Solution:
+
+<Ch6Ex68Sol />
+
+### <u>6.69</u>
+
+<Ch6Ex69 />
+
+Solution:
+
+<Ch6Ex69Sol />
+
+### <u>6.70</u>
+
+<Ch6Ex70 />
+
+Solution:
+
+<Ch6Ex70Sol />
+
+### <u>6.71</u>
+
+<Ch6Ex71 />
+
+Solution:
+
+<Ch6Ex71Sol />

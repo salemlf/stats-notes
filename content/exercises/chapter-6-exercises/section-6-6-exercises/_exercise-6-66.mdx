@@ -1,0 +1,21 @@
+Let $Y_1$ and $Y_2$ have joint density function $f_{Y_1, Y_2}(y_1, y_2)$ and let $U_1 = Y_1 + Y_2$ and $U_2 = Y_2$.
+
+a) Show that the joint density of $(U_1, U_2)$ is
+
+$$
+f_{U_1, U_2}(u_1, u_2) = f_{Y_1, Y_2}(u_1 - u_2, u_2).
+$$
+
+b) Show that the marginal density function for $U_1$ is
+
+$$
+f_{U_1}(u_1) = \int_{-\infty}^{\infty} f_{Y_1, Y_2}(u_1 - u_2, u_2) du_2.
+$$
+
+c) If $Y_1$ and $Y_2$ are independent, show that the marginal density function for $U_1$ is
+
+$$
+f_{U_1}(u_1) = f_{Y_1}(u_1 - u_2) f_{Y_2}(u_2) du_2.
+$$
+
+That is, that the density of $Y_1 + Y_2$ is the _convolution_ of the densities $f_{Y_1}(\cdot)$ and $f_{Y_2}(\cdot)$.
