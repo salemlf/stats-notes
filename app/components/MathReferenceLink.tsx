@@ -1,6 +1,8 @@
 import Accordion from "./Accordion";
 
 import Ch6Ex49 from "../../content/exercises/chapter-6-exercises/section-6-5-exercises/_exercise-6-49.mdx";
+import { MDXRemote } from "next-mdx-remote";
+import { MDXProvider } from "@mdx-js/react";
 
 const references: Record<string, string> = {
     "sec3Ex2": "/docs/exercises/section-3-2-exercises.mdx",
@@ -12,16 +14,8 @@ type Props = {
   title: string;
 };
 
-function MathReferenceLink({ referenceKey, linkText, title }: Props) {
-    const reader = new FileReader();
-    reader.onload = (evt) => {
-      console.log(evt.target?.result);
-    };
+export function MathReferenceLink ({ referenceKey, linkText, title, ...props }: Props) {
     
-    
-    const filePath = references[referenceKey];
-
-    // reader.readAsText(Ch6Ex49, "utf-8");
 
   return (
     <Accordion title={title}>
@@ -29,6 +23,7 @@ function MathReferenceLink({ referenceKey, linkText, title }: Props) {
     </Accordion>
   );
 }
+
 
 export const SomeOtherComponent = () => {
   return <p>Boop</p>;

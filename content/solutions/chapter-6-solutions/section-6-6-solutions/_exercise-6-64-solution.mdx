@@ -1,0 +1,97 @@
+a) First note that, for $i = 1, 2$,
+
+$$
+f_{Y_i}(y_i) =
+\begin{cases}
+    \frac{y_i^{\alpha_i - 1} e^{-y_i / \beta}}{\beta^{\alpha_i} \Gamma(\alpha_i)}, & 0 < y_i,\\
+    0, & \text{elsewhere}
+\end{cases}
+$$
+
+and, since $Y_1$ and $Y_2$ are independent,
+
+$$
+f_{Y_1, Y_2}(y_1, y_2) = f_{Y_1}(y_1) f_{Y_2}(y_2) =
+\begin{cases}
+    \frac{y_1^{\alpha_1 - 1} y_2^{\alpha_2 - 1} e^{-(y_1 + y_2) / \beta}}{\beta^{\alpha_1 + \alpha_2} \Gamma(\alpha_1) \Gamma(\alpha_2)}, & 0 < y_1, 0 < y_2,\\
+    0, & \text{elsewhere.}
+\end{cases}
+$$
+
+Note that the support of $f_{Y_1, Y_2}$ is $\text{supp}(f_{Y_1, Y_2}) = \{(y_1, y_2) \mid 0 < y_1, 0 < y_2 \}$.
+With the functions $U_1 = Y_1 / (Y_1 + Y_2)$ and $U_2 = Y_1 + Y_2$ in mind, let us define the transformation
+
+$$
+u_1 = \frac{y_1}{y_1 + y_2} = h_1(y_1, y_2) \quad \text{ and } \quad u_2 = y_1 + y_2 = h_2(y_1, y_2).
+$$
+
+Let $h: \left(\mathbb{R}^2 - \{(y, -y) \mid y \in \mathbb{R} \} \right) \to \mathbb{R}^2$, where $h(y_1, y_2) = (h_1(y_1), h_2(y_2)) = (u_1, u_2) = \left(\frac{y_1}{y_1 + y_2}, y_1 + y_2 \right)$, represent this transformation.
+Then we can show $h$ is one-to-one by assuming $h(v_1, v_2) = h(w_1, w_2)$ for some $(v_1, v_2), (w_1, w_2) \in \mathbb{R}$ and showing that $(v_1, v_2) = (w_1, w_2)$:
+
+$$
+\begin{align*}
+    h(v_1, v_2) = h(w_1, w_2) & \Longleftrightarrow \left(\frac{v_1}{v_1 + v_2}, v_1 + v_2 \right) = \left(\frac{w_1}{w_1 + w_2}, w_1 + w_2 \right)\\
+    & \Longleftrightarrow \left(\frac{v_1}{v_1 + v_2} \cdot (v_1 + v_2), v_1 + v_2 \right) = \left(\frac{w_1}{w_1 + w_2} \cdot (v_1 + v_2), w_1 + w_2 \right)\\
+    & \Longleftrightarrow \left(v_1, v_1 + v_2 \right) = \left(\frac{w_1}{w_1 + w_2} \cdot (w_1 + w_2), w_1 + w_2 \right)\\
+    & \Longleftrightarrow \left(v_1, v_1 + v_2 \right) = \left(w_1, w_1 + w_2 \right)\\
+    & \Longleftrightarrow (v_1, v_1 + v_2 - v_1) = (w_1, w_1 + w_2 - v_1)\\
+    & \Longleftrightarrow \left(v_1, v_2 \right) = \left(w_1, w_1 + w_2 - w_1 \right)\\
+    & \Longleftrightarrow (v_1, v_2) = (w_1, w_2).
+\end{align*}
+$$
+
+Thus, our transformation is one-to-one.
+Now to find our inverse transformation $h^{-1}(u_1, u_2) = \left(h_1^{-1}(u_1, u_2), h_2^{-1}(u_1, u_2) \right) = (y_1, y_2)$ in terms of $u_1$ and $u_2$.
+We can see $u_1 u_2 = \frac{y_1}{y_1 + y_2} \cdot (y_1 + y_2) = y_1 = h_1^{-1}(u_1, u_2)$ is easy enough.
+But to find $y_2$ solely in terms of $u_1$ and $u_2$, we can sort of work backwards to create an equation with $y_2$, $u_1$, and $u_2$ and then solve for $y_2$.
+If we start with just $y_2$ and take a guess of subtracting $y_1 + y_2 = u_2$ from it, then we will have $y_2 - u_2 = y_2 - (y_1 + y_2) = -y_1$.
+Recalling that $y_1 = u_1 u_2$, then we simply have $y_2 - u_2 = -y_1 = -u_1 u_2$.
+From there, we get $y_2 = u_2 - u_1 u_2 = u_2 (1 - u_1) = h_2^{-1}(u_1, u_2)$, and we have found an expression for $y_2$ solely as a function of $u_1$ and $u_2$.
+The next step in our process is to find the Jacobian of our inverse transformation $h^{-1}$:
+
+$$
+\begin{align*}
+    J & = \det
+    \begin{bmatrix}
+        \frac{\partial h_1^{-1}}{\partial u_1} & \frac{\partial h_1^{-1}}{\partial u_2}\\
+        \frac{\partial h_2^{-1}}{\partial u_1} & \frac{\partial h_2^{-1}}{\partial u_2}
+    \end{bmatrix}\\
+    & = \det
+    \begin{bmatrix}
+        \frac{\partial}{\partial u_1} (u_1 u_2) & \frac{\partial}{\partial u_2} (u_1 u_2)\\
+        \frac{\partial}{\partial u_1} (u_2 (1 - u_1)) & \frac{\partial}{\partial u_2} (u_2 (1 - u_1))
+    \end{bmatrix}\\
+    & = \det
+    \begin{bmatrix}
+        u_2 & u_1\\
+        -u_2 & 1 - u_1
+    \end{bmatrix} = u_2 (1 - u_1) - u_1 (-u_2) = u_2.
+\end{align*}
+$$
+
+Thus, the joint density of $U_1$ and $U_2$ is
+
+$$
+\begin{align*}
+    f_{U_1, U_2}(u_1, u_2) & = f_{Y_1, Y_2} \left(h_1^{-1}(u_1, u_2), h_2^{-1}(u_1, u_2) \right) |J|\\
+    & = f_{Y_1, Y_2}(u_1 u_2, u_2 (1 - u_1)) |u_2|\\
+    & =
+    \begin{cases}
+        \frac{(u_1 u_2)^{\alpha_1 - 1} (u_2 (1 - u_1))^{\alpha_2 - 1} \exp(-(u_1 u_2 + u_2 (1 - u_1)) / \beta)}{\beta^{\alpha_1 + \alpha_2} \Gamma(\alpha_1) \Gamma(\alpha_2)} |u_2|, & 0 < u_1 u_2, 0 < u_2 (1 - u_1),\\
+        0, & \text{elsewhere.}
+    \end{cases}
+\end{align*}
+$$
+
+It would be nice to have the support of $f_{U_1, U_2}$ expressed as one inequality solely with $u_1$ and a separate inequality solely with $u_2$.
+Notice that $0 < u_2 (1 - u_1) = u_2 - u_1 u_2 \Longleftrightarrow u_1 u_2 < u_2$, and we know $0 < u_1 u_2$, so $0 < u_1 u_2 < u_2$, implying $0 < u_1 < 1$.
+Then, knowing that $0 < u_1 < 1$, we can see that $-u_1 < 0 < 1 - u_1$, and using this when dividing both sides of $0 < u_2 (1 - u_1)$ gives us $0 < u_2$.
+Finally, noting that $0 < u_2 \implies |u_2| = u_2$, we have a nice form of $f_{U_1, U_2}$:
+
+$$
+f_{U_1, U_2}(u_1, u_2) =
+\begin{cases}
+    \frac{u_1^{\alpha_1} (1 - u_1)^{\alpha_2 - 1} u_2^{\alpha_1 + \alpha_2 - 1} e^{-u_2 / \beta}}{\beta^{\alpha_1 + \alpha_2} \Gamma(\alpha_1) \Gamma(\alpha_2)}, & 0 < u_1 < 1, 0 < u_2,\\
+    0, & \text{elsewhere.}
+\end{cases}
+$$
