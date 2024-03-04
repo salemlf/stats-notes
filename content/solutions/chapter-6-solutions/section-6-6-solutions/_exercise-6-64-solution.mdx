@@ -25,7 +25,7 @@ $$
 u_1 = \frac{y_1}{y_1 + y_2} = h_1(y_1, y_2) \quad \text{ and } \quad u_2 = y_1 + y_2 = h_2(y_1, y_2).
 $$
 
-Let $h: \left(\mathbb{R}^2 - \{(y, -y) \mid y \in \mathbb{R} \} \right) \to \mathbb{R}^2$, where $h(y_1, y_2) = (h_1(y_1), h_2(y_2)) = (u_1, u_2) = \left(\frac{y_1}{y_1 + y_2}, y_1 + y_2 \right)$, represent this transformation.
+Let $h: \left(\mathbb{R}^2 - \{(y, -y) \mid y \in \mathbb{R} \} \right) \to \mathbb{R}^2$, where $h(y_1, y_2) = (h_1(y_1, y_2), h_2(y_1, y_2)) = (u_1, u_2) = \left(\frac{y_1}{y_1 + y_2}, y_1 + y_2 \right)$, represent this transformation.
 Then we can show $h$ is one-to-one by assuming $h(v_1, v_2) = h(w_1, w_2)$ for some $(v_1, v_2), (w_1, w_2) \in \mathbb{R}$ and showing that $(v_1, v_2) = (w_1, w_2)$:
 
 $$
@@ -42,10 +42,10 @@ $$
 
 Thus, our transformation is one-to-one.
 Now to find our inverse transformation $h^{-1}(u_1, u_2) = \left(h_1^{-1}(u_1, u_2), h_2^{-1}(u_1, u_2) \right) = (y_1, y_2)$ in terms of $u_1$ and $u_2$.
-We can see $u_1 u_2 = \frac{y_1}{y_1 + y_2} \cdot (y_1 + y_2) = y_1 = h_1^{-1}(u_1, u_2)$ is easy enough.
+We can see $u_1 u_2 = \frac{y_1}{y_1 + y_2} \cdot (y_1 + y_2) = y_1 = h_1^{-1}(u_1, u_2)$ easy enough.
 But to find $y_2$ solely in terms of $u_1$ and $u_2$, we can sort of work backwards to create an equation with $y_2$, $u_1$, and $u_2$ and then solve for $y_2$.
 If we start with just $y_2$ and take a guess of subtracting $y_1 + y_2 = u_2$ from it, then we will have $y_2 - u_2 = y_2 - (y_1 + y_2) = -y_1$.
-Recalling that $y_1 = u_1 u_2$, then we simply have $y_2 - u_2 = -y_1 = -u_1 u_2$.
+Recalling that $y_1 = u_1 u_2$, we then simply have $y_2 - u_2 = -y_1 = -u_1 u_2$.
 From there, we get $y_2 = u_2 - u_1 u_2 = u_2 (1 - u_1) = h_2^{-1}(u_1, u_2)$, and we have found an expression for $y_2$ solely as a function of $u_1$ and $u_2$.
 The next step in our process is to find the Jacobian of our inverse transformation $h^{-1}$:
 
@@ -91,7 +91,74 @@ Finally, noting that $0 < u_2 \implies |u_2| = u_2$, we have a nice form of $f_{
 $$
 f_{U_1, U_2}(u_1, u_2) =
 \begin{cases}
-    \frac{u_1^{\alpha_1} (1 - u_1)^{\alpha_2 - 1} u_2^{\alpha_1 + \alpha_2 - 1} e^{-u_2 / \beta}}{\beta^{\alpha_1 + \alpha_2} \Gamma(\alpha_1) \Gamma(\alpha_2)}, & 0 < u_1 < 1, 0 < u_2,\\
+    \frac{u_1^{\alpha_1 - 1} (1 - u_1)^{\alpha_2 - 1} u_2^{\alpha_1 + \alpha_2 - 1} e^{-u_2 / \beta}}{\beta^{\alpha_1 + \alpha_2} \Gamma(\alpha_1) \Gamma(\alpha_2)}, & 0 < u_1 < 1, 0 < u_2,\\
     0, & \text{elsewhere.}
 \end{cases}
 $$
+
+---
+
+b)
+
+$$
+\begin{align*}
+    f_{U_1}(u_1) & = \int_{u_2 = -\infty}^{u_2 = \infty} f_{U_1, U_2}(u_1, u_2) du_2\\
+    & =
+    \begin{cases}
+        \int_{u_2 = 0}^{u_2 = \infty} \frac{u_1^{\alpha_1 - 1} (1 - u_1)^{\alpha_2 - 1} u_2^{\alpha_1 + \alpha_2 - 1} e^{-u_2 / \beta}}{\beta^{\alpha_1 + \alpha_2} \Gamma(\alpha_1) \Gamma(\alpha_2)} du_2\\
+        = \frac{u_1^{\alpha_1 - 1} (1 - u_1)^{\alpha_2 - 1}}{\Gamma(\alpha_1) \Gamma(\alpha_2)} \cdot \Gamma(\alpha_1 + \alpha_2) \int_{u_2 = 0}^{u_2 = \infty} \frac{u_2^{\alpha_1 + \alpha_2 - 1} e^{-u_2 / \beta}}{\beta^{\alpha_1 + \alpha_2} \Gamma(\alpha_1 + \alpha_2)} du_2\\
+        = \frac{u_1^{\alpha_1 - 1} (1 - u_1)^{\alpha_2 - 1}}{\Gamma(\alpha_1) \Gamma(\alpha_2) / \Gamma(\alpha_1 + \alpha_2)} \cdot 1\\
+        = \frac{u_1^{\alpha_1 - 1} (1 - u_1)^{\alpha_2 - 1}}{B(\alpha_1, \alpha_2)}, & 0 < u_1 < 1,\\
+        0, & \text{elsewhere.}
+    \end{cases}
+\end{align*}
+$$
+
+This is precisely the density function for a beta distribution with parameters $\alpha_1$ and $\alpha_2$.
+
+---
+
+c)
+
+$$
+\begin{align*}
+    f_{U_2}(u_2) & = \int_{u_1 = -\infty}^{u_1 = \infty} f_{U_1, U_2}(u_1, u_2) du_1\\
+    & =
+    \begin{cases}
+        \int_{u_1 = 0}^{u_1 = 1} \frac{u_1^{\alpha_1 - 1} (1 - u_1)^{\alpha_2 - 1} u_2^{\alpha_1 + \alpha_2 - 1} e^{-u_2 / \beta}}{\beta^{\alpha_1 + \alpha_2} \Gamma(\alpha_1) \Gamma(\alpha_2)} du_1\\
+        = \frac{u_2^{\alpha_1 + \alpha_2 - 1} e^{-u_2 / \beta}}{\beta^{\alpha_1 + \alpha_2} \Gamma(\alpha_1 + \alpha_2)} \int_{u_1 = 0}^{u_1 = 1} \Gamma(\alpha_1 + \alpha_2) \frac{u_1^{\alpha_1 - 1} (1 - u_1)^{\alpha_2 - 1}}{\Gamma(\alpha_1) \Gamma(\alpha_2)} du_1\\
+        = \frac{u_2^{\alpha_1 + \alpha_2 - 1} e^{-u_2 / \beta}}{\beta^{\alpha_1 + \alpha_2} \Gamma(\alpha_1 + \alpha_2)} \int_{u_1 = 0}^{u_1 = 1} \frac{u_1^{\alpha_1 - 1} (1 - u_1)^{\alpha_2 - 1}}{B(\alpha_1, \alpha_2)} du_1\\
+        = \frac{u_2^{\alpha_1 + \alpha_2 - 1} e^{-u_2 / \beta}}{\beta^{\alpha_1 + \alpha_2} \Gamma(\alpha_1 + \alpha_2)} \cdot 1\\
+        = \frac{u_2^{\alpha_1 + \alpha_2 - 1} e^{-u_2 / \beta}}{\beta^{\alpha_1 + \alpha_2} \Gamma(\alpha_1 + \alpha_2)}, & 0 < u_2,\\
+        0, & \text{elsewhere.}
+    \end{cases}
+\end{align*}
+$$
+
+This is precisely the density function for a gamma distribution with parameters $\alpha_1 + \alpha_2$ and $\beta$.
+
+---
+
+d)
+
+$$
+\begin{align*}
+    f_{U_1}(u_1) f_{U_2}(u_2) & =
+    \begin{cases}
+        \frac{u_1^{\alpha_1 - 1} (1 - u_1)^{\alpha_2 - 1}}{B(\alpha_1, \alpha_2)}, & 0 < u_1 < 1,\\
+        0, & \text{elsewhere}
+    \end{cases} \cdot
+    \begin{cases}
+        \frac{u_2^{\alpha_1 + \alpha_2 - 1} e^{-u_2 / \beta}}{\beta^{\alpha_1 + \alpha_2} \Gamma(\alpha_1 + \alpha_2)}, & 0 < u_2,\\
+        0, & \text{elsewhere}
+    \end{cases}\\
+    & =
+    \begin{cases}
+        \frac{u_1^{\alpha_1 - 1} (1 - u_1)^{\alpha_2 - 1} u_2^{\alpha_1 + \alpha_2 - 1} e^{-u_2 / \beta}}{\beta^{\alpha_1 + \alpha_2} \Gamma(\alpha_1) \Gamma(\alpha_2)}, & 0 < u_1 < 1, 0 < u_2,\\
+        0, & \text{elsewhere}
+    \end{cases}\\
+    & = f_{U_1, U_2}(u_1, u_2)
+\end{align*}
+$$
+
+Thus, $U_1$ and $U_2$ are independent by Theorem 5.4.
