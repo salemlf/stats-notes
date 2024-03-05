@@ -1,0 +1,42 @@
+a) Let $h(y_1, y_2) = (h_1(y_1, y_2), h_2(y_1, y_2)) = (y_1 + y_2, y_2) = (u_1, u_2)$, which is a one-to-one transformation (by similar reasoning to that in Exercise 6.65).
+Then $y_1 = (y_1 + y_2) - y_2 = u_1 - u_2 = h_1^{-1}(u_1, u_2)$ and $y_2 = u_2 = h_2^{-1}(u_1, u_2)$ and
+
+$$
+J = \det
+\begin{bmatrix}
+    1 & -1\\
+    0 & 1
+\end{bmatrix} = (1)(1) - (-1)(0) = 1.
+$$
+
+Thus,
+
+$$
+\begin{align*}
+    f_{U_1, U_2}(u_1, u_2) & = f_{Y_1, Y_2}(h_1^{-1}(u_1, u_2), h_2^{-1}(u_1, u_2)) |J|\\
+    & = f_{Y_1, Y_2}(u_1 - u_2, u_2) \cdot |1|\\
+    & = f_{Y_1, Y_2}(u_1 - u_2, u_2).
+\end{align*}
+$$
+
+---
+
+b)
+
+$$
+\begin{align*}
+    f_{U_1}(u_1) & = \int_{u_2 = -\infty}^{u_2 = \infty} f_{U_1, U_2}(u_1, u_2) du_2\\
+    & = \int_{u_2 = -\infty}^{u_2 = \infty} f_{Y_1, Y_2}(u_1 - u_2, u_2) du_2 \quad (\text{by part (a)})
+\end{align*}
+$$
+
+---
+
+c)
+
+$$
+\begin{align*}
+    f_{U_1}(u_1) & = \int_{u_2 = -\infty}^{u_2 = \infty} f_{Y_1, Y_2}(u_1 - u_2, u_2) du_2 \quad (\text{by part (b)})\\
+    & = \int_{u_2 = -\infty}^{u_2 = \infty} f_{Y_1}(u_1 - u_2) f_{Y_2}(u_2) du_2 \quad (\text{by independence and Theorem 5.4})
+\end{align*}
+$$
