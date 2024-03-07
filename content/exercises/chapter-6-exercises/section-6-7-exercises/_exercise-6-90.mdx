@@ -1,0 +1,21 @@
+Suppose that the number of occurrences of a certain event in time interval $(0, t)$ has a Poisson distribution.
+If we know that $n$ such events have occurred in $(0, t)$, then the actual times, measured from $0$, for the occurrences of the event in question form an ordered set of random variables, which we denote by $W_{(1)} \leq W_{(2)} \leq \cdots \leq W_{(n)}$.
+[$W_{(i)}$ actually is the waiting time from $0$ until the occurrence of the $i$th event.]
+It can be shown that the joint density function for $W_{(1)}, W_{(2)}, ..., W_{(n)}$ is given by
+
+$$
+f(w_1, w_2, ..., w_n) =
+\begin{cases}
+    \frac{n!}{t^n}, & w_1 \leq w_2 \leq \cdots \leq w_n,\\
+    0, & \text{elsewhere.}
+\end{cases}
+$$
+
+[This is the density function for an ordered sample of size $n$ from a uniform distribution on the interval $(0, t)$.]
+Suppose that telephone calls coming into a switchboard follow a Poisson distribution with a mean of ten calls per minute.
+A slow period of two minutes' duration had only four calls.
+Find the
+
+a) probability that all four calls came in during the ﬁrst minute; that is, ﬁnd $P(W_{(4)} \leq 1)$.
+
+b) expected waiting time from the start of the two-minute period until the fourth call.

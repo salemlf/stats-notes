@@ -1,0 +1,405 @@
+---
+title: "6.7: Order Statistics"
+---
+
+import Accordion from "../../../app/components/Accordion.tsx";
+import Callout from "../../../app/components/Callout.tsx";
+
+import Ch6Ex72 from "../../exercises/chapter-6-exercises/section-6-7-exercises/_exercise-6-72.mdx";
+import Ch6Ex73 from "../../exercises/chapter-6-exercises/section-6-7-exercises/_exercise-6-73.mdx";
+import Ch6Ex74 from "../../exercises/chapter-6-exercises/section-6-7-exercises/_exercise-6-74.mdx";
+import Ch6Ex75 from "../../exercises/chapter-6-exercises/section-6-7-exercises/_exercise-6-75.mdx";
+import Ch6Ex76 from "../../exercises/chapter-6-exercises/section-6-7-exercises/_exercise-6-76.mdx";
+import Ch6Ex77 from "../../exercises/chapter-6-exercises/section-6-7-exercises/_exercise-6-77.mdx";
+import Ch6Ex78 from "../../exercises/chapter-6-exercises/section-6-7-exercises/_exercise-6-78.mdx";
+import Ch6Ex79 from "../../exercises/chapter-6-exercises/section-6-7-exercises/_exercise-6-79.mdx";
+import Ch6Ex80 from "../../exercises/chapter-6-exercises/section-6-7-exercises/_exercise-6-80.mdx";
+import Ch6Ex81 from "../../exercises/chapter-6-exercises/section-6-7-exercises/_exercise-6-81.mdx";
+import Ch6Ex82 from "../../exercises/chapter-6-exercises/section-6-7-exercises/_exercise-6-82.mdx";
+import Ch6Ex83 from "../../exercises/chapter-6-exercises/section-6-7-exercises/_exercise-6-83.mdx";
+import Ch6Ex84 from "../../exercises/chapter-6-exercises/section-6-7-exercises/_exercise-6-84.mdx";
+import Ch6Ex85 from "../../exercises/chapter-6-exercises/section-6-7-exercises/_exercise-6-85.mdx";
+import Ch6Ex86 from "../../exercises/chapter-6-exercises/section-6-7-exercises/_exercise-6-86.mdx";
+import Ch6Ex87 from "../../exercises/chapter-6-exercises/section-6-7-exercises/_exercise-6-87.mdx";
+import Ch6Ex88 from "../../exercises/chapter-6-exercises/section-6-7-exercises/_exercise-6-88.mdx";
+import Ch6Ex89 from "../../exercises/chapter-6-exercises/section-6-7-exercises/_exercise-6-89.mdx";
+import Ch6Ex90 from "../../exercises/chapter-6-exercises/section-6-7-exercises/_exercise-6-90.mdx";
+import Ch6Ex91 from "../../exercises/chapter-6-exercises/section-6-7-exercises/_exercise-6-91.mdx";
+
+import Ch6Ex72Sol from "../../solutions/chapter-6-solutions/section-6-7-solutions/_exercise-6-72-solution.mdx";
+import Ch6Ex73Sol from "../../solutions/chapter-6-solutions/section-6-7-solutions/_exercise-6-73-solution.mdx";
+import Ch6Ex74Sol from "../../solutions/chapter-6-solutions/section-6-7-solutions/_exercise-6-74-solution.mdx";
+import Ch6Ex75Sol from "../../solutions/chapter-6-solutions/section-6-7-solutions/_exercise-6-75-solution.mdx";
+import Ch6Ex76Sol from "../../solutions/chapter-6-solutions/section-6-7-solutions/_exercise-6-76-solution.mdx";
+import Ch6Ex77Sol from "../../solutions/chapter-6-solutions/section-6-7-solutions/_exercise-6-77-solution.mdx";
+import Ch6Ex78Sol from "../../solutions/chapter-6-solutions/section-6-7-solutions/_exercise-6-78-solution.mdx";
+import Ch6Ex79Sol from "../../solutions/chapter-6-solutions/section-6-7-solutions/_exercise-6-79-solution.mdx";
+import Ch6Ex80Sol from "../../solutions/chapter-6-solutions/section-6-7-solutions/_exercise-6-80-solution.mdx";
+import Ch6Ex81Sol from "../../solutions/chapter-6-solutions/section-6-7-solutions/_exercise-6-81-solution.mdx";
+import Ch6Ex82Sol from "../../solutions/chapter-6-solutions/section-6-7-solutions/_exercise-6-82-solution.mdx";
+import Ch6Ex83Sol from "../../solutions/chapter-6-solutions/section-6-7-solutions/_exercise-6-83-solution.mdx";
+import Ch6Ex84Sol from "../../solutions/chapter-6-solutions/section-6-7-solutions/_exercise-6-84-solution.mdx";
+import Ch6Ex85Sol from "../../solutions/chapter-6-solutions/section-6-7-solutions/_exercise-6-85-solution.mdx";
+import Ch6Ex86Sol from "../../solutions/chapter-6-solutions/section-6-7-solutions/_exercise-6-86-solution.mdx";
+import Ch6Ex87Sol from "../../solutions/chapter-6-solutions/section-6-7-solutions/_exercise-6-87-solution.mdx";
+import Ch6Ex88Sol from "../../solutions/chapter-6-solutions/section-6-7-solutions/_exercise-6-88-solution.mdx";
+import Ch6Ex89Sol from "../../solutions/chapter-6-solutions/section-6-7-solutions/_exercise-6-89-solution.mdx";
+import Ch6Ex90Sol from "../../solutions/chapter-6-solutions/section-6-7-solutions/_exercise-6-90-solution.mdx";
+import Ch6Ex91Sol from "../../solutions/chapter-6-solutions/section-6-7-solutions/_exercise-6-91-solution.mdx";
+
+Let $Y_1, Y_2, ..., Y_n$ denote independent continuous random variables with distribution function $F(y)$ and density function $f(y)$.
+We denote the ordered random variables $Y_i$ by $Y_{(1)}, Y_{(2)}, ..., Y_{(n)}$, where $Y_{(1)} \leq Y_{(2)} \leq \cdots \leq Y_{(n)}$.
+Using this notation,
+
+$$
+Y_{(1)} = \min(Y_1, Y_2, ..., Y_n)
+$$
+
+is the minimum of the random variables $Y_i$, and
+
+$$
+Y_{(n)} = \max(Y_1, Y_2, ..., Y_n)
+$$
+
+is the maximum of the random variables $Y_i$.
+Because $Y_{(n)}$ is the maximum of $Y_1, Y_2, ..., Y_n$, the event $(Y_{(n)} \leq y)$ will occur if and only if the events $(Y_i \leq y)$ occur for every $i = 1, 2, ..., n$.
+That is,
+
+$$
+P(Y_{(n)} \leq y) = P(Y_1 \leq y, Y_2 \leq y, ..., Y_n \leq y).
+$$
+
+Because the $Y_i$s are independent and $P(Y_i \leq y) = F(y)$ for $i = 1, 2, ..., n$, it follows that the distribution function of $Y_{(n)}$ is given by
+
+$$
+F_{Y_{(n)}}(y) = P(Y_{(n)} \leq y) = P(Y_1 \leq y) P(Y_2 \leq y) \cdots P(Y_n \leq y) = [F(y)]^n.
+$$
+
+Letting $g_{(n)}(y)$ denote the density function of $Y_{(n)}$, we see that, on taking derivatives of both sides,
+
+$$
+g_{(n)}(y) = n[F(y)]^{n - 1} f(y).
+$$
+
+The density function for $Y_{(1)}$ can be found in a similar manner.
+The distribution function of $Y_{(1)}$ is
+
+$$
+F_{Y_{(1)}}(y) = P(Y_{(1)} \leq y) = 1 - P(Y_{(1)} > y).
+$$
+
+Because $Y_{(1)}$ is the minimum of $Y_1, Y_2, ..., Y_n$, it follows that the event $(Y_{(1)} > y)$ occurs if and only if the events $(Y_i > y)$ occur for $i = 1, 2, ..., n$.
+Because the $Y_i$s are independent and $P(Y_i > y) = 1 - F(y)$ for $i = 1, 2, ..., n$, we see that
+
+$$
+\begin{align*}
+    F_{Y_{(1)}} & = P(Y_{(1)} \leq y) = 1 - P(Y_{(1)} > y)\\
+    & = 1 - P(Y_1 > y, Y_2 > y, ..., Y_n > y)\\
+    & = 1 - [P(Y_1 > y) P(Y_2 > y) \cdots P(Y_n > y)]\\
+    & = 1 - [1 - F(y)]^n.
+\end{align*}
+$$
+
+Thus, if $g_{(1)}(y)$ denotes the density function of $Y_{(1)}$, differentiation of both sides of the last expression yields
+
+$$
+g_{(1)}(y) = n[1 - F(y)]^{n - 1} f(y).
+$$
+
+Let us now consider the case $n = 2$ and find the joint density function for $Y_{(1)}$ and $Y_{(2)}$.
+The event $(Y_{(1)} \leq y_1, Y_{(2)} \leq y_2)$ means that either $(Y_1 \leq y_1, Y_2 \leq y_2)$ or $(Y_2 \leq y_1, Y_1 \leq y_2)$.
+[Notice that $Y_{(1)}$ could be either $Y_1$ or $Y_2$, whichever is smaller.]
+Therefore, $y_1 \leq y_2$, $P(Y_{(1)} \leq y_1, Y_{(2)} \leq y_2)$ is equal to the probability of the union of the two events $(Y_1 \leq y_1, Y_2 \leq y_2)$ and $(Y_2 \leq y_1, Y_1 \leq y_2)$.
+That is,
+
+$$
+P(Y_{(1)} \leq y_1, Y_{(2)} \leq y_2) = P[(Y_1 \leq y_1, Y_2 \leq y_2) \cup (Y_2 \leq y_1, Y_1 \leq y_2)].
+$$
+
+Using the additive law of probability and recalling that $y_1 \leq y_2$, we see that
+
+$$
+P(Y_{(1)} \leq y_1, Y_{(2)} \leq y_2) = P(Y_1 \leq y_1, Y_2 \leq y_2) + P(Y_2 \leq y_1, Y_1 \leq y_2) - P(Y_1 \leq y_1, Y_2 \leq y_1).
+$$
+
+Because $Y_1$ and $Y_2$ are independent and $P(Y_i \leq w) = F(w)$, for $i = 1, 2$, it follows that, for $y_1 \leq y_2$,
+
+$$
+\begin{align*}
+    P(Y_{(1)} \leq y_1, Y_{(2)} \leq y_2) & = F(y_1)F(y_2) + F(y_2)F(y_1) - F(y_1)F(y_1)\\
+    & = 2F(y_1)F(y_2) - [F(y_1)]^2.
+\end{align*}
+$$
+
+If $y_1 > y_2$ (recall that $Y_{(1)} \leq Y_{(2)}$),
+
+$$
+\begin{align*}
+    P(Y_{(1)} \leq y_1, Y_{(2)} \leq y_2) & = P(Y_{(1)} \leq y_2, Y_{(2)} \leq y_2)\\
+    & = P(Y_1 \leq y_2, Y_2 \leq y_2) = [F(y)]^2.
+\end{align*}
+$$
+
+Summarizing, the joint distribution function of $Y_{(1)}$ and $Y_{(2)}$ is
+
+$$
+F_{Y_{(1)}, Y_{(2)}}(y_1, y_2) =
+\begin{cases}
+    2F(y_1)F(y_2) - [F(y_1)]^2, & y_1 \leq y_2,\\
+    [F(y_2)]^2, & y_1 > y_2.
+\end{cases}
+$$
+
+Letting $g_{(1)(2)}(y_1, y_2)$ denote the joint density of $Y_{(1)}$ and $Y_{(2)}$, we see that, on differentiating first with respect to $y_2$ and then with respect to $y_1$,
+
+$$
+g_{(1)(2)}(y_1, y_2) =
+\begin{cases}
+    2f(y_1)f(y_2), & y_1 \leq y_2,\\
+    0, & \text{elsewhere.}
+\end{cases}
+$$
+
+The same method can be used to find the joint density of $Y_{(1)}, Y_{(2)}, ..., Y_{(n)}$, which turns out to be
+
+$$
+g_{(1)(2) \cdots (n)}(y_1, y_2, ..., y_n) =
+\begin{cases}
+    n! f(y_1) f(y_2) \cdots f(y_n), & y_1 \leq y_2 \leq \cdots \leq y_n,\\
+    0, & \text{elsewhere.}
+\end{cases}
+$$
+
+The marginal density function for any of the order statistics can be found from this joint density function, but we will not pursue this matter formally in this text.
+
+Although a rigorous derivation of the density function of the $k$th-order statistic ($k$ an integer, $1 < k < n$) is somewhat complicated, the resulting density function has an intuitively sensible structure.
+Once that structure is understood, the density can be written down with little difficulty.
+Think of the density function of a continuous random variable at a particular point as being proportional to the probability that the variable is "close" to that point.
+That is, if $Y$ is a continuous random variable with density function $f(y)$, then
+
+$$
+P(y \leq Y \leq y + dy) \approx f(y) dy.
+$$
+
+Now consider the $k$th-order statistic, $Y_{(k)}$.
+If the $k$th-largest value is near $y_k$, then $k - 1$ of the $Y$s must be less than $y_k$, one of the $Y$s must be near $y_k$, and the remaining $n - k$ of the $Y$s must be larger than $y_k$.
+Recall the multinomial distribution, Section 5.9.
+In the present case, we have three classes of the values of $Y$:
+
+$$
+\begin{align*}
+    \text{Class 1: } & Y \text{s that have values less than } y_k \text{ need } k - 1.\\
+    \text{Class 2: } & Y \text{s that have values near } y_k \text{ need } 1.\\
+    \text{Class 3: } & Y \text{s that have values larger than } y_k \text{ need } n - k.
+\end{align*}
+$$
+
+The probabilities of each of these classes are, respectively, $p_1 = P(Y < y_k) = F(y_k)$, $p_2 = P(y_k \leq Y \leq y_k + dy_k) \approx f(y_k) dy_k$, and $p_3 = P(Y > y_k) = 1 - F(y_k)$.
+Using the multinomial probabilities discussed earler, we see that
+
+$$
+\begin{align*}
+    P(y_k \leq Y_{(k)} \leq y_k + dy_k) & \approx P[(k - 1) \text{ from class 1, 1 from class 2, } (n - k) \text{ from class 3}]\\
+    & \approx \binom{n}{k - 1 \quad 1 \quad n - k} p_1^{k - 1} p_2^1 p_3^{n - k}\\
+    & \approx \frac{n!}{(k - 1)! \, 1! \, (n - k)!} \{[F(y_k)]^{k - 1} f(y_k) dy_k [1 - F(y_k)]^{n - k} \}\\
+    \text{and } g_{(k)}(y_k) dy_k & \approx \frac{n!}{(k - 1)! \, 1! \, (n - k)!} [F(y_k)]^{k - 1} f(y_k) [1 - F(y_k)]^{n - k} dy_k.
+\end{align*}
+$$
+
+<Callout title="Theorem 6.5" type="note" id="thm-6-5">
+    Let $Y_1, ..., Y_n$ be independent identically distributed continuous random variables with common distribution function $F(y)$ and common density function $f(y)$.
+    If $Y_{(k)}$ denotes the $k$th-order statistic, then the density function of $Y_{(k)}$ is given by
+
+    $$
+    g_{(k)}(y_k) = \frac{n!}{(k - 1)! \, (n - k)!} [F(y_k)]^{k - 1} [1 - F(y_k)]^{n - k} f(y_k), \quad -\infty < y_k < \infty.
+    $$
+
+    If $j$ and $k$ are two integers such that $1 \leq j < k \leq n$, the joint density of $Y_{(j)}$ and $Y_{(k)}$ is given by
+
+    $$
+    \begin{align*}
+    g_{(j)(k)}(y_j, y_k) & = \frac{n!}{(j - 1)! \, (k - 1 - j)! \, (n - k)!}\\
+    & \times [F(y_j)]^{j - 1} [F(y_k) - F(y_j)]^{k - 1 - j} [1 - F(y_k)]^{n - k}\\
+    & \times f(y_j) f(y_k), \quad -\infty < y_j < y_k < \infty.
+    \end{align*}
+    $$
+
+</Callout>
+
+The heuristic, intuitive derivation of the joint density function given in Theorem 6.5 is similar to that given earlier for the density of a single order statistic.
+For $y_j < y_k$, the joint density can be interpreted as the probability that the $j$th largest observation is close to $y_j$ _and_ the $k$th largest is close to $y_k$.
+Define five classes of values of $Y$:
+
+$$
+\begin{align*}
+    \text{Class 1: } & Y \text{s that have values less than } y_j \text{ need } j - 1.\\
+    \text{Class 2: } & Y \text{s that have values near } y_j \text{ need } 1.\\
+    \text{Class 3: } & Y \text{s that have values between } y_j \text{ and } y_k \text{ need } n - k.\\
+    \text{Class 4: } & Y \text{s that have values near } y_k \text{ need } 1.\\
+    \text{Class 5: } & Y \text{s that have values larger than } y_k \text{ need } n - k.
+\end{align*}
+$$
+
+Again, use the multinomial distribution to complete the heuristic argument.
+
+## <u>Exercises</u>
+
+### <u>6.72</u>
+
+<Ch6Ex72 />
+
+Solution:
+
+<Ch6Ex72Sol />
+
+### <u>6.73</u>
+
+<Ch6Ex73 />
+
+Solution:
+
+<Ch6Ex73Sol />
+
+### <u>6.74</u>
+
+<Ch6Ex74 />
+
+Solution:
+
+<Ch6Ex74Sol />
+
+### <u>6.75</u>
+
+<Ch6Ex75 />
+
+Solution:
+
+<Ch6Ex75Sol />
+
+### <u>6.76</u>
+
+<Ch6Ex76 />
+
+Solution:
+
+<Ch6Ex76Sol />
+
+### <u>6.77</u>
+
+<Ch6Ex77 />
+
+Solution:
+
+<Ch6Ex77Sol />
+
+### <u>6.78</u>
+
+<Ch6Ex78 />
+
+Solution:
+
+<Ch6Ex78Sol />
+
+### <u>6.79</u>
+
+<Ch6Ex79 />
+
+Solution:
+
+<Ch6Ex79Sol />
+
+### <u>6.80</u>
+
+<Ch6Ex80 />
+
+Solution:
+
+<Ch6Ex80Sol />
+
+### <u>6.81</u>
+
+<Ch6Ex81 />
+
+Solution:
+
+<Ch6Ex81Sol />
+
+### <u>6.82</u>
+
+<Ch6Ex82 />
+
+Solution:
+
+<Ch6Ex82Sol />
+
+### <u>6.83</u>
+
+<Ch6Ex83 />
+
+Solution:
+
+<Ch6Ex83Sol />
+
+### <u>6.84</u>
+
+<Ch6Ex84 />
+
+Solution:
+
+<Ch6Ex84Sol />
+
+### <u>6.85</u>
+
+<Ch6Ex85 />
+
+Solution:
+
+<Ch6Ex85Sol />
+
+### <u>6.86</u>
+
+<Ch6Ex86 />
+
+Solution:
+
+<Ch6Ex86Sol />
+
+### <u>6.87</u>
+
+<Ch6Ex87 />
+
+Solution:
+
+<Ch6Ex87Sol />
+
+### <u>6.88</u>
+
+<Ch6Ex88 />
+
+Solution:
+
+<Ch6Ex88Sol />
+
+### <u>6.89</u>
+
+<Ch6Ex89 />
+
+Solution:
+
+<Ch6Ex89Sol />
+
+### <u>6.90</u>
+
+<Ch6Ex90 />
+
+Solution:
+
+<Ch6Ex90Sol />
+
+### <u>6.91</u>
+
+<Ch6Ex91 />
+
+Solution:
+
+<Ch6Ex91Sol />
