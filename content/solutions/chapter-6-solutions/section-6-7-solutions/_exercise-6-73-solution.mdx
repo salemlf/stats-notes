@@ -1,0 +1,36 @@
+a)
+
+$$
+\begin{align*}
+    f_{U_2}(u_2) & = n[F(u_2)]^{n - 1} f(u_2)\\
+    & = 2 \left[
+    \begin{cases}
+        u_2, & 0 \leq u_2 \leq 1,\\
+        0, & \text{elsewhere}
+    \end{cases} \right]^{2 - 1}
+    \begin{cases}
+        1, & 0 \leq u_2 \leq 1,\\
+        0, & \text{elsewhere}
+    \end{cases}\\
+    & =
+    \begin{cases}
+        2u_2, & 0 \leq u_2 \leq 1,\\
+        0, & \text{elsewhere}
+    \end{cases}
+\end{align*}
+$$
+
+---
+
+b)
+
+$$
+\begin{align*}
+    E(U_2^m) & = \int_{u_2 = 0}^{u_2 = 1} u_2^m \cdot 2u_2 du_2\\
+    & = \frac{2}{m + 2} u_2^{m + 2} \biggr|_{u_2 = 0}^{u_2 = 1}\\
+    & = \frac{2}{m + 2} (1)^{m + 2} - \frac{2}{m + 2} (0)^{m + 2} = \frac{2}{m + 2}\\
+    \implies E(U_2) & = E(U_2^1) = \frac{2}{(1) + 2} = \frac{2}{3}\\
+    E(U_2^2) & = \frac{2}{(2) + 2} = \frac{2}{4} = \frac{1}{2}\\
+    V(U_2) & = E(U_2^2) - E(U_2)^2 = \frac{1}{2} - \left(\frac{2}{3} \right)^2 = \frac{9}{18} - \frac{8}{18} = \frac{1}{18}
+\end{align*}
+$$
