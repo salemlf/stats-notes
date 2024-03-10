@@ -1,0 +1,120 @@
+We can do this by finding and factoring the joint density of $Y_{(1)} / Y_{(n)}$ and $Y_{(n)}$ using the bivariate transformation method.
+First, referring to Exercise 6.77, note that the joint density function of $Y_{(1)}$ and $Y_{(n)}$ will be, letting $j = 1$ and $k = n$,
+
+$$
+\begin{align*}
+    f_{Y_{(1)}, Y_{(n)}}(y_1, y_n) & = g_{(1)(n)}(y_1, y_n)\\
+    & =
+    \begin{cases}
+        \frac{n!\, y_1^{1 - 1} (y_n - y_1)^{n - 1 - 1} (1 - \frac{y_n}{\theta})^{n - n}}{(1 - 1)! \, (n - 1 - 1)! \, (n - n)! \theta^n}\\
+        = \frac{n(n - 1)(y_n - y_1)^{n - 2}}{\theta^n}, & 0 \leq y_1 < y_n \leq \theta,\\
+        0, & \text{elsewhere.}
+    \end{cases}
+\end{align*}
+$$
+
+Now rewrite $U_1 = Y_{(1)} / Y_{(n)}$ and $U_n = Y_{(n)}$, and define
+
+$$
+h(y_1, y_n) = (h_1(y_1, y_n), h_2(y_1, y_n)) = (y_1 / y_n, y_n) = (u_1, u_n).
+$$
+
+If $(v_1, v_n), (w_1, w_n) \in \left(\mathbb{R}^2 - \{(y, 0) \mid y \in \mathbb{R} \} \right) = \{(y_1, y_2) \in \mathbb{R}^2 \mid y_2 \neq 0 \}$, then
+
+$$
+\begin{align*}
+    h(v_1, v_n) = h(w_1, w_n) & \Longleftrightarrow (v_1 / v_n, v_n) = (w_1 / w_n, w_n)\\
+    & \Longleftrightarrow ((v_1 / v_n) \cdot v_n, v_n) = ((w_1 / w_n) \cdot v_n, w_n)\\
+    & \Longleftrightarrow (v_1, v_n) = ((w_1 / w_n) \cdot w_n, w_n)\\
+    & \Longleftrightarrow (v_1, v_n) = (w_1, w_n).
+\end{align*}
+$$
+
+That is, $h$ is a one-to-one transformation.
+Additionally, $h_1^{-1}(u_1, u_n) = u_1 u_n = (y_1 / y_n)y_n = y_1$ and $h_2^{-1}(u_1, u_n) = u_n = y_n$.
+The Jacobian of $h^{-1}$ is then
+
+$$
+J  = \det
+\begin{bmatrix}
+    \frac{\partial h_1^{-1}}{\partial u_1} & \frac{\partial h_1^{-1}}{\partial u_n}\\
+    \frac{\partial h_2^{-1}}{\partial u_1} & \frac{\partial h_2^{-1}}{\partial u_n}
+\end{bmatrix} = \det
+\begin{bmatrix}
+    u_n & u_1\\
+    0 & 1
+\end{bmatrix} = (u_n)(1) - (u_1)(0) = u_n.
+$$
+
+Thus, the joint density of $U_1$ and $U_2$ will be
+
+$$
+\begin{align*}
+    f_{U_1, U_n}(u_1, u_n) & = f_{Y_{(1)}, Y_{(n)}}(h_1^{-1}(u_1, u_n), h_2^{-1}(u_1, u_n)) |J|\\
+    & = |u_n| \cdot
+    \begin{cases}
+        \frac{n(n - 1)(u_n - u_1 u_n)^{n - 2}}{\theta^n}, & 0 \leq u_1 u_n < u_n \leq \theta,\\
+        0, & \text{elsewhere.}
+    \end{cases}
+\end{align*}
+$$
+
+To get a simpler form of this, notice that $0 \leq u_1 u_n < u_n \Longleftrightarrow 0 \leq u_1 < 1$, and $u_n$ will still independently exist in the range $0 < u_n \leq \theta$.
+Thus,
+
+$$
+\begin{align*}
+    f_{U_1, U_n}(u_1, u_n) & = |u_n| \cdot
+    \begin{cases}
+        \frac{n(n - 1) (u_n - u_1 u_n)^{n - 2}}{\theta^n}, & 0 \leq u_1 u_n < u_n \leq \theta,\\
+        0, & \text{elsewhere}
+    \end{cases}\\
+    & =
+    \begin{cases}
+        \frac{n(n - 1) u_n^{n - 1} (1 - u_1)^{n - 2}}{\theta^n}, & 0 \leq u_1 < 1, 0 < u_n \leq \theta,\\
+        0, & \text{elsewhere.}
+    \end{cases}
+\end{align*}
+$$
+
+Then
+
+$$
+\begin{align*}
+    f_{U_1}(u_1) & =
+    \begin{cases}
+        \int_{u_n = 0}^{u_n = \theta} \frac{n(n - 1) u_n^{n - 1} (1 - u_1)^{n - 2}}{\theta^n} du_n\\
+        = \frac{(n - 1) u_n^n (1 - u_1)^{n - 2}}{\theta^n} \biggr|_{u_n = 0}^{u_n = \theta}\\
+        = \frac{(n - 1) (\theta)^n (1 - u_1)^{n - 2}}{\theta^n} - \frac{(n - 1)(0)^n (1 - u_1)^{n - 2}}{\theta^n}\\
+        = (n - 1)(1 - u_1)^{n - 2}, & 0 \leq u_1 < 1,\\
+        0, & \text{elsewhere}
+    \end{cases}\\
+    \text{and } f_{U_n}(u_n) & =
+    \begin{cases}
+        \int_{u_1 = 0}^{u_1 = 1} \frac{n(n - 1) u_n^{n - 1} (1 - u_1)^{n - 2}}{\theta^n} du_1\\
+        = \frac{nu_n^{n - 1}}{\theta^n} \int_{v = 1}^{v = 0} (n - 1)v^{n - 2} \cdot (-1) dv\\
+        = \frac{nu_n^{n - 1}}{\theta^n} \int_{v = 0}^{v = 1} (n - 1)v^{n - 2} dv\\
+        = \frac{nu_n^{n - 1}}{\theta^n} \left[v^{n - 1} \right]_{v = 0}^{v = 1}\\
+        = \frac{nu_n^{n - 1}}{\theta^n} [(1)^{n - 1} - (0)^{n - 1}]\\
+        = \frac{nu_n^{n - 1}}{\theta^n}, & 0 < u_n \leq \theta,\\
+        0, & \text{elsewhere}
+    \end{cases}\\
+    \implies f_{U_1}(u_1) f_{U_n}(u_n) & =
+    \begin{cases}
+        (n - 1)(1 - u_1)^{n - 2}, & 0 \leq u_1 < 1,\\
+        0, & \text{elsewhere}
+    \end{cases} \cdot
+    \begin{cases}
+        \frac{nu_n^{n - 1}}{\theta^n}, & 0 < u_n \leq \theta,\\
+        0, & \text{elsewhere}
+    \end{cases}\\
+    & =
+    \begin{cases}
+        \frac{n(n - 1) u_n^{n - 1} (1 - u_1)^{n - 2}}{\theta^n}, & 0 \leq u_1 < 1, 0 < u_n \leq \theta,\\
+        0, & \text{elsewhere}
+    \end{cases}\\
+    & = f_{U_1, U_n}(u_1, u_n),
+\end{align*}
+$$
+
+meaning $U_1 = Y_{(1)} / Y_{(n)}$ and $U_n = Y_{(n)}$ are, in fact, independent.

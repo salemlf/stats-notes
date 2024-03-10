@@ -1,0 +1,18 @@
+With $\theta = 1$, we have
+
+$$
+\begin{align*}
+    f_{Y_{(k)}}(y_k) & =
+    \begin{cases}
+        \frac{1}{\theta B(k, n - (k - 1))} \cdot \left(\frac{y_k}{\theta} \right)^{k - 1} \left(1 - \frac{y_k}{\theta} \right)^{(n - (k - 1)) - 1}, & 0 \leq y_k \leq \theta,\\
+        0, & \text{elsewhere}
+    \end{cases}\\
+    & =
+    \begin{cases}
+        \frac{y_k^{k - 1} (1 - y_k)^{(n - k + 1) - 1}}{B(k, n - k + 1)}, & 0 \leq y_k \leq 1,\\
+        0, & \text{elsewhere.}
+    \end{cases}
+\end{align*}
+$$
+
+This is exactly a beta density function with $\alpha = k$ and $\beta = n - k + 1$.
