@@ -1,0 +1,26 @@
+If $Y_1$ and $Y_2$ are the respective wait times, then their total will be $U = Y_1 + Y_2$ with
+
+$$
+\begin{align*}
+    m_U(t) & = m_{Y_1}(t) m_{Y_2}(t)\\
+    & = \left(1 - \frac{1}{2} t \right)^{-1} \cdot \left(1 - \frac{1}{2} t \right)^{-1}\\
+    & = \left(1 - \frac{1}{2} t \right)^{-2}\\
+    \implies f_U(u) & =
+    \begin{cases}
+        \frac{u^{2 - 1} e^{-u / (1 / 2)}}{\left(\frac{1}{2} \right)^2 \Gamma(2)}, & u > 0,\\
+        0, & \text{elsewhere}
+    \end{cases} \quad \left(\text{a gamma density with $\alpha = 2, \beta = \frac{1}{2}$} \right)\\
+    & =
+    \begin{cases}
+        4ue^{-2u}, & u > 0,\\
+        0, & \text{elsewhere}
+    \end{cases}\\
+    \implies P(U > 1.5) & = 1 - P \left(U \leq \frac{3}{2} \right)\\
+    & = 1 - \int_{u = 0}^{u = 3/2} 4ue^{-2u} du\\
+    & = 1 - \left[-2ue^{-2u} \biggr|_{u = 0}^{u = 3/2} - \int_{u = 0}^{u = 3/2} -2e^{-2u} du \right]\\
+    & = 1 - \left[\left(-2 \left(\frac{3}{2} \right) e^{-2(3/2)} + 2(0)e^{-2(0)} \right) - e^{-2u} \biggr|_{u = 0}^{u = 3/2} \right]\\
+    & = 1 - \left[-3e^{-3} - \left(e^{-2(3 / 2)} - e^{-2(0)} \right) \right]\\
+    & = 1 - \left[1 - 4e^{-3} \right]\\
+    & = 4e^{-3} \approx 0.199148273471.
+\end{align*}
+$$

@@ -1,0 +1,52 @@
+a) First note that, by independence, $f_{Z_1, Z_2}(z_1, z_2) = \frac{1}{2 \pi} e^{-(z_1^2 + z_2^2) / 2}$.
+Let $h: \mathbb{R}^2 \to \mathbb{R}^2$ be the transformation defined by $h(z_1, z_2) = (h_1(z_1, z_2), h_2(z_1, z_2)) = (z_1, z_1 + z_2) = (u_1, u_2)$.
+Then, assuming two points $(v_1, v_2), (w_1, w_2) \in \mathbb{R}^2$ have $(v_1, v_1 + v_2) = h(v_1, v_2) = h(w_1, w_2) = (w_1, w_1 + w_2)$, we immediately have $v_1 = w_1$, which we can subtract from $v_1 + v_2 = w_1 + w_2$ to get $v_2 = w_2$, making $h$ one-to-one.
+As for the inverse transformation, we immediately have $z_1 = u_1 = h_1^{-1}(u_1, u_2)$, meaning $u_2 - u_1 = (z_1 + z_2) - z_1 = z_2 = h_2^{-1}(u_1, u_2)$.
+The Jacobian of $h$ is thus
+
+$$
+J = \det
+\begin{bmatrix}
+    \frac{\partial h_1^{-1}}{\partial u_1} & \frac{\partial h_1^{-1}}{\partial u_2}\\
+    \frac{\partial h_2^{-1}}{\partial u_1} & \frac{\partial h_2^{-1}}{\partial u_2}
+\end{bmatrix} = \det
+\begin{bmatrix}
+    1 & 0\\
+    -1 & 1
+\end{bmatrix} = (1)(1) - (0)(-1) = 1
+$$
+
+and the joint density of $U_1$ and $U_2$ is
+
+$$
+\begin{align*}
+    f_{U_1, U_2}(u_1, u_2) & = f_{Y_1, Y_2}(h_1^{-1}(u_1, u_2), h_2^{-1}(u_1, u_2)) |J|\\
+    & = \frac{1}{2 \pi} e^{-(u_1^2 + (u_2 - u_1)^2) / 2}.
+\end{align*}
+$$
+
+---
+
+b) By Theorem 5.12, $E(U_1) = 0$, $E(U_2) = 0$, $V(U_1) = 1$, $V(U_2) = 1 + 1 = 2$, and $\text{Cov}(U_1, U_2) = \text{Cov}(Z_1, Z_1) + \text{Cov}(Z_1, Z_2) = 1 + 0 = 1$.
+
+---
+
+c) Since we see that $\text{Cov}(U_1, U_2) = 1 \neq 0$, the contrapositive of Theorem 5.11 tells us that $U_1$ and $U_2$ are not independent.
+
+---
+
+d) Noting that $\mu_{U_1} = 0$, $\mu_{U_2} = 0$, $\sigma_{U_1}^2 = 1$, $\sigma_{U_2}^2 = 2$, and $\rho_{U_1, U_2} = \frac{\text{Cov}(U_1, U_2)}{\sigma_{U_1} \sigma_{U_2}} = \frac{1}{1 \cdot \sqrt{2}}$, let
+
+$$
+\begin{align*}
+    Q & = \frac{1}{1 - \rho_{U_1, U_2}^2} \left[\frac{(u_1 - \mu_{U_1})^2}{\sigma_{U_1}^2} - 2 \rho_{U_1, U_2} \frac{(u_1 - \mu_{U_1})(u_2 - \mu_{U_2})}{\sigma_{U_1} \sigma_{U_2}} + \frac{(u_2 - \mu_{U_2})^2}{\sigma_{U_2}^2} \right]\\
+    & = \frac{1}{1 - \left(\frac{1}{\sqrt{2}} \right)^2} \left[\frac{(u_1 - 0)^2}{1} - 2 \cdot \frac{1}{\sqrt{2}} \cdot \frac{(u_1 - 0)(u_2 - 0)}{1 \cdot \sqrt{2}} + \frac{(u_2 - 0)^2}{2} \right]\\
+    & = \frac{1}{1 - \frac{1}{2}} \left[u_1^2 - u_1 u_2 + \frac{u_2^2}{2} \right] = 2 \left[u_1^2 - u_1 u_2 + \frac{u_2^2}{2} \right]\\
+    & = 2u_1^2 - 2u_1 u_2 + u_2^2 = u_1^2 + (u_2^2 - 2u_1 u_2 + u_1^2) = u_1^2 + (u_2 - u_1)^2\\
+    \implies & f_{U_1, U_2}(u_1, u_2) = \frac{1}{2 \pi} e^{-(u_1^2 + (u_2 - u_1)^2) / 2}\\
+    & = \frac{1}{2 \pi \cdot 1 \cdot \sqrt{2} \cdot \sqrt{1 - \left(\frac{1}{\sqrt{2}} \right)^2}} e^{-(u_1^2 + (u_2 - u_1)^2) / 2}\\
+    & = \frac{1}{2 \pi \sigma_{U_1} \sigma_{U_2} \sqrt{1 - \rho_{U_1, U_2}^2}} e^{-Q / 2}.
+\end{align*}
+$$
+
+This is exactly a bivariate normal density with the five parameters stated above.

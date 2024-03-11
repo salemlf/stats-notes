@@ -1,0 +1,101 @@
+Let $U = \sum_{i = 1}^n Y_i$.
+
+---
+
+a) Let $n_i = n$ and $p_i = p$ for $i = 1, 2, ..., n$. Then
+
+$$
+\begin{align*}
+    m_U(t) & = \prod_{i = 1}^n m_{Y_i}(t)\\
+    & = \prod_{i = 1}^n [pe^t + (1 - p)]^n\\
+    & = [pe^t + (1 - p)]^{n^2}.
+\end{align*}
+$$
+
+This is the moment-generating function for a binomial distribution with parameters $n^2$ and $p$.
+
+---
+
+b) Let $p_i = p$ for $i = 1, 2, ..., n$. Then
+
+$$
+\begin{align*}
+    m_U(t) & = \prod_{i = 1}^n m_{Y_i}(t)\\
+    & = \prod_{i = 1}^n [pe^t + (1 - p)]^{n_i}\\
+    & = [pe^t + (1 - p)]^{n_1 + n_2 + ... + n_n}.
+\end{align*}
+$$
+
+This is the moment-generating function for a binomial distribution with parameters $n_1 + n_2 + ... + n_n$ and $p$.
+
+---
+
+c) Let $p_i = p$ for $i = 1, 2, ..., n$. If all $Y_i$s are independent, then in particular, $Y_1$ will be independent from $X = Y_2 + Y_3 + ... + Y_n$, which will have
+
+$$
+\begin{align*}
+    m_X(t) & = [pe^t + (1 - p)]^{n_2 + n_3 + ... + n_n}\\
+    \implies p_X(x) & = \binom{n_2 + n_3 + ... + n_n}{x} p^x (1 - p)^{(n_2 + n_3 + ... + n_n) - x},\\
+    x & = 0, 1, 2, ..., n_2 + n_3 + ... + n_n.
+\end{align*}
+$$
+
+Thus,
+
+$$
+\begin{align*}
+    p(y_1 \mid u = m) & = \frac{P((Y_1 = y_1) \cap (Y_1 + Y_2 + ... + Y_n = m))}{P(U = m)}\\
+    & = \frac{P((Y_1 = y_1) \cap (Y_2 + ... + Y_n = m - y_1))}{P(U = m)}\\
+    & = \frac{P((Y_1 = y_1) \cap (X = m - y_1))}{P(U = m)}\\
+    & = \frac{P(Y_1 = y_1) P(X = m - y_1)}{P(U = m)} \quad (\text{by independence})\\
+    & = \frac{p_{Y_1}(y_1) p_X(m - y_1)}{p_U(m)}\\
+    & = \frac{\binom{n_1}{y_1} p^{y_1} (1 - p)^{n_1 - y_1} \cdot \binom{n_2 + n_3 + ... + n_n}{m - y_1} p^{m - y_1} (1 - p)^{(n_2 + n_3 + ... + n_n) - (m - y_1)}}{\binom{n_1 + n_2 + ... + n_n}{m} p^m (1 - p)^{(n_1 + n_2 + ... + n_n) - m}}\\
+    & = \frac{\binom{n_1}{y_1} \binom{n_2 + n_3 + ... + n_n}{m - y_1}}{\binom{n_1 + n_2 + ... + n_n}{m}} \cdot \frac{p^m}{p^m} \cdot \frac{(1 - p)^{(n_1 + n_2 + ... + n_n) - m}}{(1 - p)^{(n_1 + n_2 + ... + n_n) - m}}\\
+    & = \frac{\binom{n_1}{y_1} \binom{n_2 + n_3 + ... + n_n}{m - y_1}}{\binom{n_1 + n_2 + ... + n_n}{m}} \cdot 1 \cdot 1 \\
+    & = \frac{\binom{n_1}{y_1} \binom{N - n_1}{m - y_1}}{\binom{N}{m}}, \quad y_1 = 0, 1, 2, ..., m, \quad y_1 \leq n_1, \quad m - y_1 \leq N - n_1,\\
+\end{align*}
+$$
+
+where $N = n_1 + n_2 + ... + n_n$. This is a hypergeometric probability function with a population of $N$, a sample size of $m$, and a number of success states $n_1$ in the population.
+
+---
+
+d) Let $p_i = p$ for $i = 1, 2, ..., n$. By similar reasoning as in part (c), letting $Z = Y_3 + Y_4 + ... + Y_n$,
+
+$$
+p_Z(z) = \binom{n_3 + n_4 + ... + n_n}{z} p^z (1 - p)^{(n_3 + n_4 + ... + n_n) - z}, \quad z = 0, 1, 2, ..., n_3 + n_4 + ... + n_n.
+$$
+
+Additionally, let $V = Y_1 + Y_2$, which is independent from $Z$. We will have
+
+$$
+p_V(v) = \binom{n_1 + n_2}{v} p^v (1 - p)^{(n_1 + n_2) - v}, v = 0, 1, 2, ..., n_1 + n_2.
+$$
+
+Thus,
+
+$$
+\begin{align*}
+    p(v \mid u = m) & = \frac{P((Y_1 + Y_2 = v) \cap (Y_1 + Y_2 + ... + Y_n = m))}{P(U = m)}\\
+    & = \frac{P((V = v) \cap (Z = m - v))}{P(U = m)}\\
+    & = \frac{P(V = v) P(Z = m - v)}{P(U = m)}\\
+    & = \frac{p_V(v) p_Z(m - v)}{p_U(m)}\\
+    & = \frac{\binom{n_1 + n_2}{v} p^v (1 - p)^{(n_1 + n_2) - v} \cdot \binom{n_3 + n_4 + ... + n_n}{m - v} p^{m - v} (1 - p)^{(n_3 + n_4 + ... + n_n) - (m - v)}}{\binom{n_1 + n_2 + ... + n_n}{m} p^m (1 - p)^{(n_1 + n_2 + ... + n_n) - m}}\\
+    & = \frac{\binom{n_1 + n_2}{v} \binom{n_3 + n_4 + ... + n_n}{m - v}}{\binom{n_1 + n_2 + ... + n_n}{m}} \cdot \frac{p^m}{p^m} \cdot \frac{(1 - p)^{(n_1 + n_2 + ... + n_n) - m}}{(1 - p)^{(n_1 + n_2 + ... + n_n) - m}}\\
+    & = \frac{\binom{n_1 + n_2}{v} \binom{n_3 + n_4 + ... + n_n}{m - v}}{\binom{n_1 + n_2 + ... + n_n}{m}} \cdot 1 \cdot 1\\
+    & = \frac{\binom{n_1 + n_2}{v} \binom{N - (n_1 + n_2)}{m - v}}{\binom{N}{m}},\\
+    & v = 0, 1, 2, ..., m, \quad v \leq n_1 + n_2, \quad m - v \leq N - (n_1 + n_2).
+\end{align*}
+$$
+
+This is a hypergeometric probability function with a population of $N$, a sample size of $m$, and a number of success states $n_1 + n_2$ in the population.
+
+---
+
+e) If all the $p_i$s are different, then when we attempt to find the moment-generating function of $U$ we get stuck at
+
+$$
+m_U(t) = [p_1 e^t + (1 - p_1)]^{n_1} [p_2 e^t + (1 - p_2)]^{n_2} \cdots [p_n e^t + (1 - p_n)]^{n_n},
+$$
+
+which we cannot immediately simplify into a function of the form matching a binomial moment-generating function, as we did in parts (a)-(d), making this method much less useful.

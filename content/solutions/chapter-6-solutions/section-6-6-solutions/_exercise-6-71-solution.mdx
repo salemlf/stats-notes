@@ -1,0 +1,130 @@
+a) Let $h(y_1, y_2) = (h_1^{y_1, y_2}, h_2(y_1, y_2)) = (y_1 + y_2, y_1 / y_2) = (u_1, u_2)$.
+Then, assuming $(v_1, v_2), (w_1, w_2) \in \text{supp}(f_{Y_1, Y_2})$,
+
+$$
+\begin{align*}
+    h(v_1, v_2) = h(w_1, w_2) & \Longleftrightarrow \left(v_1 + v_2, \frac{v_1}{v_2} \right) = \left(w_1 + w_2, \frac{w_1}{w_2} \right)\\
+    & \Longleftrightarrow \left((v_1 + v_2) \cdot \frac{v_1}{v_2}, \frac{v_1}{v_2} \right) = \left((w_1 + w_2) \cdot \frac{v_1}{v_2}, \frac{w_1}{w_2} \right)\\
+    & \Longleftrightarrow \left(\frac{v_1 (v_1 + v_2)}{v_2}, \frac{v_1}{v_2} \right) = \left((w_1 + w_2) \cdot \frac{w_1}{w_2}, \frac{w_1}{w_2} \right)\\
+    & \Longleftrightarrow \left(\frac{v_1 (v_1 + v_2)}{v_2}, \frac{v_1}{v_2} \right) = \left(\frac{w_1 (w_1 + w_2)}{w_2}, \frac{w_1}{w_2} \right)\\
+    & \Longleftrightarrow \left(\frac{v_1 (v_1 + v_2)}{v_2}, \frac{v_1}{v_2} \right) = \left(\frac{w_1 (w_1 + w_2)}{w_2}, \frac{w_1}{w_2} \right)\\
+    & \Longleftrightarrow \left(\frac{v_1 (v_1 + v_2)}{v_2} \cdot \frac{1}{\frac{v_1}{v_2} + 1}, \frac{v_1}{v_2} \right) = \left(\frac{w_1 (w_1 + w_2)}{w_2} \cdot \frac{1}{\frac{v_1}{v_2} + 1}, \frac{w_1}{w_2} \right)\\
+    & \Longleftrightarrow \left(\frac{v_1 (v_1 + v_2)}{v_2} \cdot \frac{1}{\frac{v_1 + v_2}{v_2}}, \frac{v_1}{v_2} \right) = \left(\frac{w_1 (w_1 + w_2)}{w_2} \cdot \frac{1}{\frac{w_1}{w_2} + 1}, \frac{w_1}{w_2} \right)\\
+    & \Longleftrightarrow \left(\frac{v_1 (v_1 + v_2)}{v_2} \cdot \frac{v_2}{v_1 + v_2}, \frac{v_1}{v_2} \right) = \left(\frac{w_1 (w_1 + w_2)}{w_2} \cdot \frac{w_2}{w_1 + w_2}, \frac{w_1}{w_2} \right)\\
+    & \Longleftrightarrow \left(v_1, \frac{v_1}{v_2} \right) = \left(w_1, \frac{w_1}{w_2} \right)\\
+    & \Longleftrightarrow \left(v_1, \frac{v_1}{v_2} \cdot \frac{1}{\frac{v_1}{v_2} + 1} \right) = \left(w_1, \frac{w_1}{w_2} \cdot \frac{1}{\frac{v_1}{v_2} + 1} \right)\\
+    & \Longleftrightarrow \left(v_1, \frac{v_1}{v_2} \cdot \frac{v_2}{v_1 + v_2} \right) = \left(w_1, \frac{w_1}{w_2} \cdot \frac{w_2}{w_1 + w_2} \right)\\
+    & \Longleftrightarrow \left(v_1, \frac{v_1}{v_1 + v_2} \right) = \left(w_1, \frac{w_1}{w_1 + w_2} \right)\\
+    & \Longleftrightarrow \left(v_1, \frac{v_1}{v_1 + v_2} \cdot (v_1 + v_2) \right) = \left(w_1, \frac{w_1}{w_1 + w_2} \cdot (v_1 + v_2) \right)\\
+    & \Longleftrightarrow \left(v_1, v_1 \right) = \left(w_1, \frac{w_1}{w_1 + w_2} \cdot (w_1 + w_2) \right)\\
+    & \Longleftrightarrow \left(v_1, v_1 \right) = \left(w_1, w_1 \right)\\
+    & \Longleftrightarrow \left(v_1, \frac{v_1}{\frac{v_1}{v_2}} \right) = \left(w_1, \frac{w_1}{\frac{v_1}{v_2}} \right)\\
+    & \Longleftrightarrow \left(v_1, v_2 \right) = \left(w_1, \frac{w_1}{\frac{w_1}{w_2}} \right)\\
+    & \Longleftrightarrow \left(v_1, v_2 \right) = \left(w_1, w_2 \right).
+\end{align*}
+$$
+
+Thus, $h$ is a one-to-one transformation.
+Rewriting the above process in terms of $u_1$ and $u_2$ can assist us in finding the inverse transformation.
+For instance, we have
+
+$$
+\begin{align*}
+    y_1 + y_2 = u_1 & \Longleftrightarrow \frac{(y_1 + y_2) \cdot \frac{y_1}{y_2}}{\frac{y_1}{y_2} + 1} = \frac{u_1 \cdot u_2}{u_2 + 1}\\
+    & \Longleftrightarrow \frac{(y_1 + y_2) \cdot \frac{y_1}{y_2}}{\frac{y_1 + y_2}{y_2}} = \frac{u_1 u_2}{u_2 + 1}\\
+    & \Longleftrightarrow (y_1 + y_2) \cdot \frac{y_1}{y_2} \cdot \frac{y_2}{(y_1 + y_2)} = \frac{u_1 u_2}{u_2 + 1}\\
+    & \Longleftrightarrow y_1 = \frac{u_1 u_2}{u_2 + 1} = h_1^{-1}(u_1, u_2)\\
+    \text{and } \frac{y_1}{y_2} = u_2 & \Longleftrightarrow \frac{y_1}{y_2} \cdot \frac{y_1 + y_2}{\frac{y_1}{y_2}} \cdot \frac{1}{\frac{y_1}{y_2} + 1} = u_2 \cdot \frac{u_1}{u_2} \cdot \frac{1}{u_2 + 1}\\
+    & \Longleftrightarrow \frac{y_1 + y_2}{\frac{y_1 + y_2}{y_2}} = \frac{u_1}{u_2 + 1}\\
+    & \Longleftrightarrow y_2 = \frac{u_1}{u_2 + 1} = h_2^{-1}(u_1, u_2).
+\end{align*}
+$$
+
+Then the Jacobian will be
+
+$$
+\begin{align*}
+    J & = \det
+    \begin{bmatrix}
+        \frac{\partial}{\partial u_1} \left(u_1 u_2 (u_2 + 1)^{-1} \right) & \frac{\partial}{\partial u_2} \left(u_1 u_2 (u_2 + 1)^{-1} \right)\\
+        \frac{\partial}{\partial u_1} \left(u_1 (u_2 + 1)^{-1} \right) & \frac{\partial}{\partial u_2} \left(u_1 (u_2 + 1)^{-1} \right)
+    \end{bmatrix}\\
+    & = \det
+    \begin{bmatrix}
+        \frac{u_2}{u_2 + 1} & \frac{u_1}{(u_2 + 1)^2}\\
+        \frac{1}{u_2 + 1} & -\frac{u_1}{(u_2 + 1)^2}
+    \end{bmatrix}\\
+    & = \left(\frac{u_2}{u_2 + 1} \right) \left(-\frac{u_1}{(u_2 + 1)^2} \right) - \left(\frac{u_1}{(u_2 + 1)^2} \right) \left(\frac{1}{u_2 + 1} \right)\\
+    & = \frac{-u_1 u_2 - u_1}{(u_2 + 1)^3} = \frac{-u_1 (u_2 + 1)}{(u_2 + 1)^3} = \frac{-u_1}{(u_2 + 1)^2}.
+\end{align*}
+$$
+
+Then
+
+$$
+\begin{align*}
+    f_{Y_1, Y_2}(y_1, y_2) & =
+    \begin{cases}
+        \frac{1}{\beta^2} e^{-(y_1 + y_2) / \beta}, & 0 < y_1, 0 < y_2,\\
+        0, & \text{elsewhere}
+    \end{cases}\\
+    \implies f_{U_1, U_2}(u_1, u_2) & = f_{Y_1, Y_2}(h_1^{-1}(u_1, u_2), h_2^{-1}(u_1, u_2)) |J|\\
+    & = \left|\frac{-u_1}{(u_2 + 1)^2} \right| \cdot
+    \begin{cases}
+        \frac{1}{\beta^2} \exp \left[-\frac{1}{\beta} \left(\frac{u_1 u_2}{u_2 + 1} + \frac{u_1}{u_2 + 1} \right) \right]\\
+        = \frac{1}{\beta^2} \exp \left[-\frac{1}{\beta} \left(\frac{u_1 u_2 + u_1}{u_2 + 1}\right) \right]\\
+        = \frac{1}{\beta^2} \exp \left[-\frac{1}{\beta} \left(\frac{u_1 (u_2 + 1)}{u_2 + 1}\right) \right]\\
+        = \frac{1}{\beta^2} e^{-u_1 / \beta}, & 0 < \frac{u_1 u_2}{u_2 + 1}, 0 < \frac{u_1}{u_2 + 1},\\
+        0, & \text{elsewhere}
+    \end{cases}
+\end{align*}
+$$
+
+To get a simpler form for the support, first notice that, as seen above, $0 < \frac{u_1 u_2}{u_2 + 1}$ and $0 < \frac{u_1}{u_2 + 1}$ implies
+
+$$
+0 + 0 < \frac{u_1 u_2}{u_2 + 1} + \frac{u_1}{u_2 + 1} \Longleftrightarrow 0 < \frac{u_1 u_2 + u_1}{u_2 + 1} = \frac{u_1 (u_2 + 1)}{u_2 + 1} = u_1.
+$$
+
+Then, because $0 < \frac{u_1 u_2}{u_2 + 1}$, we also have $0 < \frac{u_2 + 1}{u_1 u_2}$, to which we can multiply $0 < \frac{u_1}{u_2 + 1}$ to obtain
+
+$$
+0 = 0 \cdot 0 < \frac{(u_2 + 1)}{u_1 u_2} \cdot \frac{u_1}{(u_2 + 1)} = \frac{1}{u_2} \Longleftrightarrow 0 < u_2.
+$$
+
+Thus,
+
+$$
+f_{U_1, U_2}(u_1, u_2) =
+\begin{cases}
+    \frac{1}{\beta^2} u_1 e^{-u_1 / \beta} \frac{1}{(1 + u_2)^2}, & 0 < u_1, 0 < u_2,\\
+    0, & \text{elsewhere.}
+\end{cases}
+$$
+
+---
+
+b)
+
+$$
+\begin{align*}
+    f_{U_1}(u_1) & =
+    \begin{cases}
+        \int_{u_2 = 0}^{u_2 = \infty} \frac{1}{\beta^2} u_1 e^{-u_1 / \beta} \frac{1}{(1 + u_2)^2} du_2\\
+        = \frac{1}{\beta^2} u_1 e^{-u_1 / \beta} \int_{v = 1}^{v = \infty} \frac{1}{v^2} dv\\
+        = \frac{1}{\beta^2} u_1 e^{-u_1 / \beta} \left[-v^{-1} \right]_{v = 1}^{v = \infty}\\
+        = \frac{1}{\beta^2} u_1 e^{-u_1 / \beta} \left[0 + 1 \right]\\
+        = \frac{1}{\beta^2} u_1 e^{-u_1 / \beta}, & 0 < u_1,\\
+        0, & \text{elsewhere}
+    \end{cases}\\
+    \text{and } f_{U_2}(u_2) & =
+    \begin{cases}
+        \int_{u_1 = 0}^{u_1 = \infty} \frac{1}{\beta^2} u_1 e^{-u_1 / \beta} \frac{1}{(1 + u_2)^2} du_1\\
+        = \frac{1}{(1 + u_2)^2} \frac{u_1^{2 - 1} e^{-u_1 / \beta}}{\beta^2 \Gamma(2)} du_1\\
+        = \frac{1}{(1 + u_2)^2} \cdot 1 = \frac{1}{(1 + u_2)^2}, & 0 < u_2,\\
+        0, & \text{elsewhere.}
+    \end{cases}
+\end{align*}
+$$
+
+Hence, $f_{U_1, U_2}$ factors into $f_{U_1}$ and $f_{U_2}$, making $U_1$ and $U_2$ independent.

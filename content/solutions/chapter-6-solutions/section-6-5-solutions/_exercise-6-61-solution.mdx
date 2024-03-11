@@ -1,0 +1,12 @@
+Since $W = Y_1 + Y_2$ and $Y_1$ and $Y_2$ are independent, then
+
+$$
+\begin{align*}
+    m_W(t) & = m_{Y_1}(t) m_{Y_2}(t)\\
+    \implies m_{Y_2}(t) & = \frac{m_W(t)}{m_{Y_1}(t)}\\
+    & = \frac{\exp(\lambda (e^t - 1))}{\exp(\lambda_1 (e^t - 1))}\\
+    & = \exp((\lambda - \lambda_1)(e^t - 1)).
+\end{align*}
+$$
+
+This is the moment-generating function for a Poisson distribution with mean $\lambda - \lambda_1 > 0$.

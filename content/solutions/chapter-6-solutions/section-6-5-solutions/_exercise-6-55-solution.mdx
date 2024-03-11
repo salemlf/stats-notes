@@ -1,0 +1,13 @@
+Letting $Y$ be the number of customers in a two-hour period with mean $2 \lambda = 2 \cdot 7 = 14$, the probability will be
+
+$$
+\begin{align*}
+    P(Y \geq 20) & = 1 - P(Y \leq 19)\\
+    & = 1 - \sum_{i = 0}^{19} \frac{14^i e^{-14}}{i!}\\
+    & = 1 - e^{-14} \sum_{i = 0}^{19} \frac{14^i}{i!}\\
+    & = 1 - e^{-14} \cdot \frac{14023443820563833}{12626917875}\\
+    & \approx 0.07650494024185705603,
+\end{align*}
+$$
+
+(via Wolframalpha).

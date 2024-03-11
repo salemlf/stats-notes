@@ -1,0 +1,61 @@
+a)
+
+$$
+\begin{align*}
+    g_{(j)(k)}(y_j, y_k) & = \frac{n!}{(j - 1)! \, (k - 1 - j)! \, (n - k)!} [F(y_j)]^{j - 1} [F(y_k) - F(y_j)]^{k - 1 - j}\\
+    & \times  [1 - F(y_k)]^{n - k} f(y_j) f(y_k)\\
+    & =
+    \begin{cases}
+        \frac{n!}{(j - 1)! \, (k - 1 - j)! \, (n - k)!} \left(\frac{1}{\theta} y_j \right)^{j - 1} \left(\frac{1}{\theta} (y_k - y_j) \right)^{k - 1 - j}\\
+        \times \left(1 - \frac{1}{\theta} y_k \right)^{n - k} \cdot \frac{1}{\theta} \cdot \frac{1}{\theta}\\
+        = \frac{1}{\theta^k} \cdot \frac{n! \, y_j^{j - 1} (y_k - y_j)^{k - 1 - j} \left(1 - \frac{1}{\theta} y_k \right)^{n - k}}{(j - 1)! \, (k - 1 - j)! \, (n - k)!}, & 0 \leq y_j < y_k \leq \theta \\
+        0, & \text{elsewhere}
+    \end{cases}
+\end{align*}
+$$
+
+---
+
+b)
+
+$$
+\begin{align*}
+    E(Y_{(j)} Y_{(k)}) & = \int_{y_k = 0}^{y_k = \theta} \int_{y_j = 0}^{y_j = y_k} y_j y_k \cdot \frac{1}{\theta^k} \cdot \frac{n! \, y_j^{j - 1} (y_k - y_j)^{k - 1 - j} \left(1 - \frac{1}{\theta} y_k \right)^{n - k}}{(j - 1)! \, (k - 1 - j)! \, (n - k)!} dy_j dy_k\\
+    & = \int_{y_k = 0}^{y_k = \theta} y_k \cdot \frac{\frac{1}{\theta^k} \left(1 - \frac{y_k}{\theta} \right)^{n - k}}{(n - k)! / n!} \int_{y_j = 0}^{y_j = y_k} y_j \cdot \frac{y_j^{j - 1} (y_k - y_j)^{(k - j) - 1}}{\Gamma(j) \Gamma(k - j)} dy_j dy_k\\
+    & = \int_{y_k = 0}^{y_k = \theta} \frac{y_k}{\theta} \cdot \frac{\left(\frac{y_k}{\theta} \right)^{k - 1} \left(1 - \frac{y_k}{\theta} \right)^{n - k}}{(k - 1)! \, (n - k)! / n!} \int_{y_j = 0}^{y_j = y_k} \frac{y_j}{y_k} \cdot \frac{\left(\frac{y_j}{y_k} \right)^{j - 1} \left(\frac{y_k - y_j}{y_k} \right)^{(k - j) - 1}}{\Gamma(j) \Gamma(k - j) / \Gamma(k)} dy_j dy_k\\
+    & = \int_{y_k = 0}^{y_k = \theta} \frac{y_k}{\theta} \cdot \frac{\left(\frac{y_k}{\theta} \right)^{k - 1} \left(1 - \frac{y_k}{\theta} \right)^{n - k}}{B(k, n - (k - 1))} \int_{y_j = 0}^{y_j = y_k} \frac{y_j}{y_k} \cdot \frac{\left(\frac{y_j}{y_k} \right)^{j - 1} \left(1 - \frac{y_j}{y_k} \right)^{(k - j) - 1}}{B(j, k - j)} dy_j dy_k\\
+    & = \int_{y_k = 0}^{y_k = \theta} \frac{y_k}{\theta} \cdot \frac{\left(\frac{y_k}{\theta} \right)^{k - 1} \left(1 - \frac{y_k}{\theta} \right)^{n - k}}{B(k, n - (k - 1))} \int_{u = 0}^{u = 1} u \cdot \frac{u^{j - 1} (1 - u)^{(k - j) - 1}}{B(j, k - j)} \cdot y_k du dy_k\\
+    & = \theta \int_{y_k = 0}^{y_k = \theta} \frac{y_k}{\theta} \cdot \frac{\left(\frac{y_k}{\theta} \right)^{(k + 1) - 1} \left(1 - \frac{y_k}{\theta} \right)^{n - k}}{B(k, n - (k - 1))} \int_{u = 0}^{u = 1} u \cdot \frac{u^{j - 1} (1 - u)^{(k - j) - 1}}{B(j, k - j)} du dy_k\\
+    & = \theta \int_{y_k = 0}^{y_k = \theta} \frac{y_k}{\theta} \cdot \frac{\left(\frac{y_k}{\theta} \right)^{(k + 1) - 1} \left(1 - \frac{y_k}{\theta} \right)^{n - k}}{B(k, n - (k - 1))} \cdot \frac{j}{j + (k - j)} dy_k\\
+    & = \frac{j \theta B(k + 1, n - (k - 1))}{k B(k, n - (k - 1))} \int_{v = 0}^{v = 1} v \cdot \frac{v^{(k + 1) - 1} (1 - v)^{(n - (k - 1)) - 1}}{B(k + 1, n - (k - 1))} \cdot \theta dv\\
+    & = \frac{j \theta^2 B(k + 1, n - (k - 1))}{k B(k, n - (k - 1))} \int_{v = 0}^{v = 1} v \cdot \frac{v^{(k + 1) - 1} (1 - v)^{(n - (k - 1)) - 1}}{B(k + 1, n - (k - 1))} dv\\
+    & = \frac{j \theta^2 B(k + 1, n - (k - 1))}{k B(k, n - (k - 1))} \cdot \frac{k + 1}{(k + 1) + (n - (k - 1))}\\
+    & = \frac{j \theta^2 (k + 1)}{k(n + 2)} \cdot \frac{B(k + 1, n - k + 1)}{B(k, n - k + 1)}\\
+    & = \frac{j \theta^2 (k + 1)}{k(n + 2)} \cdot \frac{\Gamma(k + 1) \Gamma(n - k + 1)}{\Gamma(n + 2)} \cdot \frac{\Gamma(n + 1)}{\Gamma(k) \Gamma(n - k + 1)}\\
+    & = \frac{j \theta^2 (k + 1)}{k(n + 2)} \cdot \frac{\Gamma(k + 1) \Gamma(n + 1)}{\Gamma(n + 2) \Gamma(k)}\\
+    & = \frac{j \theta^2 (k + 1)}{k(n + 2)} \cdot \frac{k! \, n!}{(n + 1)! \, (k - 1)!}\\
+    & = \frac{j \theta^2 (k + 1)}{k(n + 2)} \cdot \frac{k}{(n + 1)} = \frac{j(k + 1) \theta^2}{(n + 1)(n + 2)}\\
+    \implies & \text{Cov}(Y_{(j)}, Y_{(k)}) = E(Y_{(j)} Y_{(k)}) - E(Y_{(j)}) E(Y_{(k)})\\
+    & = \frac{j(k + 1) \theta^2}{(n + 1)(n + 2)} - \frac{k \theta}{n + 1} \cdot \frac{j \theta}{n + 1}\\
+    & = \frac{j(k + 1) \theta^2 (n + 1) - jk(n + 2) \theta^2}{(n + 1)^2 (n + 2)}\\
+    & = \frac{j \theta^2 [(k + 1)(n + 1) - k(n + 2)]}{(n + 1)^2 (n + 2)}\\
+    & = \frac{j \theta^2 [(kn + n + k + 1) - (kn + 2k)]}{(n + 1)^2 (n + 2)}\\
+    & = \frac{j(n - k + 1) \theta^2}{(n + 1)^2 (n + 2)}
+\end{align*}
+$$
+
+---
+
+c) By Theorem 5.12,
+
+$$
+\begin{align*}
+    V(Y_{(k)} - Y_{(j)}) & = V(Y_{(k)}) + V(Y_{(j)}) + 2(1)(-1) \text{Cov}(Y_{(k)}, Y_{(j)})\\
+    & = \frac{k(n - k + 1) \theta^2}{(n + 1)^2 (n + 2)} + \frac{j(n - j + 1) \theta^2}{(n + 1)^2 (n + 2)} - \frac{2j(n - k + 1) \theta^2}{(n + 1)^2 (n + 2)}\\
+    & = \frac{\theta^2 [k(n - k + 1) + j(n - j + 1) - 2j(n - k + 1)]}{(n + 1)^2 (n + 2)}\\
+    & = \frac{\theta^2 [kn - k^2 + k + jn - j^2 + j - 2jn + 2jk - 2j]}{(n + 1)^2 (n + 2)}\\
+    & = \frac{\theta^2 [(kn - jn) - (k^2 - jk) + (jk - j^2) + (k - j)]}{(n + 1)^2 (n + 2)}\\
+    & = \frac{\theta^2 [(k - j)n - (k - j)k + (k - j)j + (k - j)]}{(n + 1)^2 (n + 2)}\\
+    & = \frac{\theta^2 (k - j)(n - k + j + 1)}{(n + 1)^2 (n + 2)}.
+\end{align*}
+$$

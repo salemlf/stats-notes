@@ -1,0 +1,48 @@
+a)
+
+$$
+\begin{align*}
+    F_{Y_{(n)}}(y_n) & = \left[
+    \begin{cases}
+        \frac{1}{\theta} y_n, & 0 \leq y_n \leq \theta,\\
+        0, & \text{elsewhere}
+    \end{cases} \right]^n\\
+    & =
+    \begin{cases}
+        \frac{1}{\theta^n} y_n^n, & 0 \leq y_n \leq \theta,\\
+        0, & \text{elsewhere}
+    \end{cases}
+\end{align*}
+$$
+
+---
+
+b)
+
+$$
+f_{Y_{(n)}}(y_n) =
+\begin{cases}
+    \frac{n}{\theta^n} y_n^{n - 1}, & 0 \leq y_n \leq \theta,\\
+    0, & \text{elsewhere}
+\end{cases}
+$$
+
+---
+
+c)
+
+$$
+\begin{align*}
+    E(Y_{(n)}^m) & = \int_{y_n = 0}^{y_n = \theta} y_n^m \cdot \frac{n}{\theta^n} y_n^{n - 1} dy_n\\
+    & = \frac{n}{\theta^n (m + n)} y_n^{m + n} \biggr|_{y_n = 0}^{y_n = \theta}\\
+    & = \frac{n}{\theta^n (m + n)} (\theta)^{m + n} - \frac{n}{\theta^n (m + n)} (0)^{m + n}\\
+    & = \frac{n \theta^m}{m + n}\\
+    \implies E(Y_{(n)}) & = E(Y_{(n)}^1) = \frac{n \theta^{(1)}}{(1) + n} = \frac{n \theta}{n + 1}\\
+    E(Y_{(n)}^2) & = \frac{n \theta^{(2)}}{(2) + n} = \frac{n \theta^2}{n + 2}\\
+    V(Y_{(n)}) & = \frac{n}{n + 2} \theta^2 - \left(\frac{n}{n + 1} \theta \right)^2\\
+    & = \frac{n(n + 1)^2 \theta^2 - n^2 (n + 2) \theta^2}{(n + 1)^2 (n + 2)}\\
+    & = \frac{n \theta^2 [(n + 1)^2 - n(n + 2)]}{(n + 1)^2 (n + 2)}\\
+    & = \frac{n \theta^2 [(n^2 + 2n + 1) - (n^2 + 2n)]}{(n + 1)^2 (n + 2)}\\
+    & = \frac{n \theta^2}{(n + 1)^2 (n + 2)}
+\end{align*}
+$$

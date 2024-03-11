@@ -1,0 +1,31 @@
+By <a href="/docs/chapter-6/section-6-5#thm-6-3" target="_blank">Theorem 6.3,</a> both $U_1$ and $U_2$ are normally distributed with mean $0$ and variance $2 \sigma^2$.
+Then
+
+$$
+\begin{align*}
+    m_{U_1, U_2}(t_1, t_2) & = E(e^{t_1 U_1 + t_2 U_2})\\
+    & = \int_{u_1 = -\infty}^{u_1 = \infty} \int_{u_2 = -\infty}^{u_2 = \infty} e^{t_1 u_1 + t_2 u_2} \cdot \frac{1}{\sqrt{2} \sigma \sqrt{2 \pi}} e^{-u_1^2 / 4 \sigma^2} \cdot \frac{1}{\sqrt{2} \sigma \sqrt{2 \pi}} e^{-u_2 / 4 \sigma^2} du_2 du_1\\
+    & = \int_{u_1 = -\infty}^{u_1 = \infty} e^{t_1 u_1} \frac{1}{\sqrt{2} \sigma \sqrt{2 \pi}} e^{-u_1^2 / 4 \sigma^2} \int_{u_2 = -\infty}^{u_2 = \infty} e^{t_2 u_2} \frac{1}{\sqrt{2} \sigma \sqrt{2 \pi}} e^{-u_2^2 / 4 \sigma^2} du_2 du_1\\
+    & = \left(\int_{u_1 = -\infty}^{u_1 = \infty} e^{t_1 u_1} \frac{1}{\sqrt{2} \sigma \sqrt{2 \pi}} e^{-u_1^2 / 4 \sigma^2} du_1 \right) \left(\int_{u_2 = -\infty}^{u_2 = \infty} e^{t_2 u_2} \frac{1}{\sqrt{2} \sigma \sqrt{2 \pi}} e^{-u_2^2 / 4 \sigma^2} du_2 \right)\\
+    & = m_{U_1}(t_1) m_{U_2}(t_2).
+\end{align*}
+$$
+
+Alternatively,
+
+$$
+\begin{align*}
+    m_{U_1, U_2}(t_1, t_2) & = E \left(e^{t_1 U_1 + t_2 U_2} \right)\\
+    & = E \left(e^{t_1 (Y_1 + Y_2) + t_2 (Y_1 - Y_2)} \right)\\
+    & = E \left(e^{(t_1 + t_2) Y_1 + (t_1 - t_2) Y_2} \right)\\
+    & = E \left(e^{(t_1 + t_2) Y_1} \right) E \left(e^{(t_1 - t_2) Y_2} \right) \quad (\text{by independence})\\
+    & = m_{Y_1}(t_1 + t_2) m_{Y_2}(t_1 - t_2)\\
+    & = \exp \left(0(t_1 + t_2) + \frac{(t_1 + t_2)^2 \sigma^2}{2} \right) \exp \left(0(t_1 - t_2) + \frac{(t_1 - t_2)^2 \sigma^2}{2} \right)\\
+    & = \exp \left(\frac{\sigma^2 (t_1^2 + 2t_1 t_2 + t_2^2)}{2} \right) \exp \left(\frac{\sigma^2 (t_1^2 - 2t_1 t_2 + t_2^2)}{2} \right)\\
+    & = \exp \left(\frac{\sigma^2 (2t_1^2 + 2t_2^2)}{2} \right)\\
+    & = \exp \left(0t_1 + \frac{t_1^2 \cdot 2 \sigma^2}{2} \right) \exp \left(0t_2 + \frac{t_2^2 \cdot 2 \sigma^2}{2} \right)\\
+    & = m_{U_1}(t_1) m_{U_2}(t_2).
+\end{align*}
+$$
+
+Hence, $U_1$ and $U_2$ are independent by the hint provided.
