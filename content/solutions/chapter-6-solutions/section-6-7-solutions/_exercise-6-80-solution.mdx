@@ -4,22 +4,25 @@ $$
 \begin{align*}
     F(y) & =
     \begin{cases}
+        0, & y \leq 0,\\
         \int_{t = 0}^{t = y} \frac{t^{2 - 1} (1 - t)^{2 - 1}}{B(2, 2)} dt\\
         = \int_{t = 0}^{t = y} 6t(1 - t) dt\\
         = [3t^2 - 2t^3]_{t = 0}^{t = y}\\
-        = 3y^2 - 2y^3, & 0 \leq y \leq 1,\\
-        0, & \text{elsewhere}
+        = 3y^2 - 2y^3, & 0 < y < 1,\\
+        1, & 1 \leq y
     \end{cases}\\
     \implies F_{Y_{(n)}}(y_n) & = [F(y_n)]^n\\
     & = \left[
     \begin{cases}
-        3y_n^2 - 2y_n^3, & 0 \leq y_n \leq 1,\\
-        0, & \text{elsewhere}
+        0, & y_n \leq 0,\\
+        3y_n^2 - 2y_n^3, & 0 < y_n < 1,\\
+        1, & 1 \leq y_n
     \end{cases} \right]^n\\
     & =
     \begin{cases}
-        (3y_n^2 - 2y_n^3)^n, & 0 \leq y_n \leq 1,\\
-        0, & \text{elsewhere.}
+        0, & y_n \leq 0,\\
+        (3y_n^2 - 2y_n^3)^n, & 0 < y_n < 1,\\
+        1, & 1 \leq y_n.
     \end{cases}
 \end{align*}
 $$
@@ -33,7 +36,8 @@ $$
     f_{Y_{(n)}}(y_n) & = F_{Y_{(n)}}'(y_n)\\
     & =
     \begin{cases}
-        n(3y_n^2 - 2y_n^3)^{n - 1} (6y_n - 6y_n^2), & 0 \leq y_n \leq 1,\\
+        n(3y_n^2 - 2y_n^3)^{n - 1} (6y_n - 6y_n^2)\\
+        = 6ny_n^{2n - 1} (1 - y_n)(3 - 2y_n)^{n - 1}, & 0 < y_n < 1,\\
         0, & \text{elsewhere}
     \end{cases}
 \end{align*}
@@ -45,7 +49,7 @@ c)
 
 $$
 \begin{align*}
-    E(Y_{(2)}) & = \int_{y_2 = 0}^{y_2 = 1} y_2 \cdot 2(3y_2^2 - 2y_2^3)^{2 - 1} (6y_2 - 6y_2^2) dy_2\\
+    E(Y_{(2)}) & = \int_{y_2 = 0}^{y_2 = 1} y_2 \cdot 12y_2^{4 - 1} (1 - y_2)(3 - 2y_2)^{2 - 1} dy_2\\
     & = \int_{y_2 = 0}^{y_2 = 1} (24y_2^6 - 60y_2^5 + 36y_2^4) dy_2\\
     & = \left[\frac{24}{7} y_2^7 - 10y_2^6 + \frac{36}{5} y_2^5 \right]_{y_2 = 0}^{y_2 = 1}\\
     & = \left(\frac{24}{7} (1)^7 - 10(1)^6 + \frac{36}{5} (1)^5 \right) - \left(\frac{24}{7} (0)^7 - 10(0)^6 + \frac{36}{5} (0)^5 \right)\\

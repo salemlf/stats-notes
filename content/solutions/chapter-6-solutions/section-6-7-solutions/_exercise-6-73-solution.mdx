@@ -5,8 +5,9 @@ $$
     f_{U_2}(u_2) & = n[F(u_2)]^{n - 1} f(u_2)\\
     & = 2 \left[
     \begin{cases}
+        0, & u_2 < 0,\\
         u_2, & 0 \leq u_2 \leq 1,\\
-        0, & \text{elsewhere}
+        1, & 1 < u_2
     \end{cases} \right]^{2 - 1}
     \begin{cases}
         1, & 0 \leq u_2 \leq 1,\\

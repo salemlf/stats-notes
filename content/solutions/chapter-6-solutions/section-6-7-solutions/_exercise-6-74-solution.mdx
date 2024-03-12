@@ -4,13 +4,15 @@ $$
 \begin{align*}
     F_{Y_{(n)}}(y_n) & = \left[
     \begin{cases}
+        0, & y_n < 0,\\
         \frac{1}{\theta} y_n, & 0 \leq y_n \leq \theta,\\
-        0, & \text{elsewhere}
+        1, & \theta < y_n
     \end{cases} \right]^n\\
     & =
     \begin{cases}
+        0, & y_n < 0,\\
         \frac{1}{\theta^n} y_n^n, & 0 \leq y_n \leq \theta,\\
-        0, & \text{elsewhere}
+        1, & \theta < y_n
     \end{cases}
 \end{align*}
 $$

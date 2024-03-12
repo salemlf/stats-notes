@@ -5,9 +5,10 @@ $$
     f_{U_1}(u_1) & = n[1 - F(u_1)]^{n - 1} f(u_1)\\
     & = 2 \left[1 -
     \begin{cases}
+        0, & u_1 < 0,\\
         u_1, & 0 \leq u_1 \leq 1,\\
-        0, & \text{elsewhere}
-    \end{cases} \right]^{2 - 1}
+        1, & 1 < u_1
+    \end{cases} \right]^{2 - 1} \cdot
     \begin{cases}
         1, & 0 \leq u_1 \leq 1,\\
         0, & \text{elsewhere}

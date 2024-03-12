@@ -5,13 +5,15 @@ $$
     f_{Y_{(k)}}(y_k) & = \frac{n!}{(k - 1)! \, (n - k)!} [F(y_k)]^{k - 1} [1 - F(y_k)]^{n - k} f(y_k)\\
     & = \frac{n!}{(k - 1)! \, (n - k)!} \left[
     \begin{cases}
+        0, & y_k < 0,\\
         \frac{y_k}{\theta}, & 0 \leq y_k \leq \theta,\\
-        0, & \text{elsewhere}
+        1, & \theta < y_k
     \end{cases} \right]^{k - 1}\\
     & \times \left[1 -
     \begin{cases}
+        0, & y_k < 0,\\
         \frac{y_k}{\theta}, & 0 \leq y_k \leq \theta,\\
-        0, & \text{elsewhere}
+        1, & \theta < y_k
     \end{cases} \right]^{n - k} \cdot
     \begin{cases}
         \frac{1}{\theta}, & 0 \leq y_k \leq \theta,\\
@@ -50,7 +52,7 @@ $$
     & = \theta^2 \int_{u = 0}^{u = 1} u^2 \cdot \frac{u^{k - 1} (1- u)^{(n - (k - 1)) - 1}}{B(k, n - (k - 1))} du \quad (\text{letting $u = y_k / \theta$ so $du = dy_k / \theta$})\\
     & = \theta^2 \left[\frac{k(n - (k - 1))}{(n + 1)^2 (n + 2)} + \left(\frac{k}{n + 1} \right)^2 \right]\\
     & (\text{the integral equals $E(U^2) = V(U) + E(U)^2$ for a beta random}\\
-    & \text{variable $Y$ with $\alpha = k$ and $\beta = n - (k - 1)$})\\
+    & \text{variable $U$ with $\alpha = k$ and $\beta = n - (k - 1)$})\\
     \implies V(Y_{(k)}) & = E(Y_{(k)}^2) - E(Y_{(k)})^2\\
     & = \theta^2 \left[\frac{k(n - (k - 1))}{(n + 1)^2 (n + 2)} + \left(\frac{k}{n + 1} \right)^2 \right] - \left(\frac{k \theta}{n + 1} \right)^2\\
     & = \frac{k(n - k + 1) \theta^2}{(n + 1)^2 (n + 2)} + \left(\frac{k}{n + 1} \right)^2 \theta^2 - \left(\frac{k}{n + 1} \right)^2 \theta^2\\
