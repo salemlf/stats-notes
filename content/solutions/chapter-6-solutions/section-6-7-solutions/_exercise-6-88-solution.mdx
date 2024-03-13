@@ -1,0 +1,45 @@
+a) Let $F(y)$ be the distribution function.
+Then
+
+$$
+\begin{align*}
+    F(y) & =
+    \begin{cases}
+        0, & y \leq \theta,\\
+        \int_{t = \theta}^{t = y} e^{\theta - t} dt\\
+        = -e^{\theta - t} \biggr|_{t = \theta}^{t = y}\\
+        = -e^{\theta - (y)} + e^{\theta - (\theta)}\\
+        =  1 - e^{\theta - y}, & \theta < y
+    \end{cases}\\
+    \implies f_{Y_{(1)}}(y_1) & = n[1 - F(y_1)]^{n - 1} f(y_1)\\
+    & = n \left[1 -
+    \begin{cases}
+        0, & y_1 \leq \theta,\\
+        1 - e^{\theta - y_1}, & \theta < y_1
+    \end{cases} \right]^{n - 1} \cdot
+    \begin{cases}
+        e^{\theta - y_1}, & \theta < y_1,\\
+        0, & \text{elsewhere}
+    \end{cases}\\
+    & =
+    \begin{cases}
+        n(e^{\theta - y_1})^n, & \theta < y_1,\\
+        0, & \text{elsewhere.}
+    \end{cases}
+\end{align*}
+$$
+
+---
+
+b)
+
+$$
+\begin{align*}
+    E(Y_{(1)}) & = \int_{y_1 = \theta}^{y_1 = \infty} y_1 \cdot n(e^{-(y_1 - \theta )})^n dy_1\\
+    & = \int_{u = 0}^{u = \infty} n(u + \theta) e^{-nu} du \quad (\text{letting $u = y_1 - \theta$ so $du = dy_1$})\\
+    & = \int_{u = 0}^{u = \infty} nue^{-nu} du + \int_{u = 0}^{u = \infty} n \theta e^{-nu} du\\
+    & = \frac{1}{n} \int_{u = 0}^{u = \infty} \frac{u^{2 - 1} e^{-u / (1 / n)}}{\left(\frac{1}{n} \right)^2 \Gamma(2)} du + \left[-\theta e^{-nu} \right]_{u = 0}^{u = \infty}\\
+    & = \frac{1}{n} \cdot 1 + \left[0 + \theta e^{-n(0)} \right]\\
+    & = \frac{1}{n} + \theta
+\end{align*}
+$$

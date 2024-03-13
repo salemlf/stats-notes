@@ -1,0 +1,73 @@
+Let the common distribution function be $F(y)$ and common density function be $f(y)$.
+
+a)
+
+$$
+\begin{align*}
+    f_{Y_{(k)}}(y_k) & = \frac{n!}{(k - 1)! \, (n - k)!} [F(y_k)]^{k - 1} [1 - F(y_k)]^{n - k} f(y_k)\\
+    & = \frac{n!}{(k - 1)! \, (n - k)!} \left[
+    \begin{cases}
+        0, & y_k \leq 0,\\
+        1 - e^{-y_k / \beta}, & 0 < y_k
+    \end{cases} \right]^{k - 1}\\
+    & \times \left[1 -
+    \begin{cases}
+        0, & y_k \leq 0,\\
+        1 - e^{-y_k / \beta}, & 0 < y_k
+    \end{cases} \right]^{n - k} \cdot
+    \begin{cases}
+        \frac{1}{\beta} e^{-y_k / \beta}, & 0 < y_k,\\
+        0, & \text{elsewhere}
+    \end{cases}\\
+    & =
+    \begin{cases}
+        \frac{n!}{(k - 1)! \, (n - k)!} \left(1 - e^{-y_k / \beta} \right)^{k - 1} \frac{1}{\beta} \left(e^{-y_k / \beta} \right)^{n - k + 1}, & 0 < y_k,\\
+        0, & \text{elsewhere}
+    \end{cases}
+\end{align*}
+$$
+
+---
+
+b)
+
+$$
+\begin{align*}
+    f_{Y_{(j)}, Y_{(k)}}(y_j, y_k) & = \frac{n!}{(j - 1)! \, (k - 1 - j)! \, (n - k)!} [F(y_j)]^{j - 1}\\
+    & \times [F(y_k) - F(y_j)]^{k - 1 - j} [1 - F(y_k)]^{n - k} f(y_j) f(y_k) \quad -\infty < y_j < y_k < \infty\\
+    & = \frac{n!}{(j - 1)! \, (k - 1 - j)! \, (n - k)!} \left[
+    \begin{cases}
+        0, & y_j \leq 0,\\
+        1 - e^{-y_j / \beta}, & 0 < y_j
+    \end{cases} \right]^{j - 1}\\
+    & \times \left[
+    \begin{cases}
+        0, & y_k \leq 0,\\
+        1 - e^{-y_k / \beta}, & 0 < y_k
+    \end{cases} -
+    \begin{cases}
+        0, & y_j \leq 0,\\
+        1 - e^{-y_j / \beta}, & 0 < y_j
+    \end{cases} \right]^{k - 1 - j}\\
+    & \times \left[1 -
+    \begin{cases}
+        0, & y_k \leq 0,\\
+        1 - e^{-y_k / \beta}, & 0 < y_k
+    \end{cases} \right]^{n - k} \cdot
+    \begin{cases}
+        \frac{1}{\beta} e^{-y_j / \beta}, & 0 < y_j,\\
+        0, & \text{elsewhere}
+    \end{cases}\\
+    & \times
+    \begin{cases}
+        \frac{1}{\beta} e^{-y_k / \beta}, & 0 < y_k,\\
+        0, & \text{elsewhere}
+    \end{cases} \quad -\infty < y_j < y_k < \infty\\
+    & =
+    \begin{cases}
+        \frac{n!}{(j - 1)! \, (k - 1 - j)! \, (n - k)!} \left(1 - e^{-y_j / \beta} \right)^{j - 1}\\
+        \times \left(e^{-y_j / \beta} - e^{-y_k / \beta} \right)^{k - 1 - j} \left(e^{-y_k / \beta} \right)^{n - k + 1} \frac{1}{\beta^2} e^{-y_j / \beta}, & 0 < y_j < y_k,\\
+        0, & \text{elsewhere}
+    \end{cases}
+\end{align*}
+$$

@@ -1,0 +1,121 @@
+a) Let $F(w)$ and $f(w)$ be the distribution and density functions, respectively, of the common exponential distribution.
+Then the joint density function of the order statistics $W_{(j - 1)}$ and $W_{(j)}$, from the $n$ components, is
+
+$$
+\begin{align*}
+    f_{W_{(j - 1)}, W_{(j)}}(w_{j - 1}, w_j) & = \frac{n!}{((j - 1) - 1)! \, (j - 1 - (j - 1))! \, (n - j)!}\\
+    & \times [F(w_{j - 1})]^{(j - 1) - 1} [F(w_j) - F(w_{j - 1})]^{j - 1 - (j - 1)}\\
+    & \times [1 - F(w_j)]^{n - j} f(w_{j - 1}) f(w_j), \quad -\infty < w_{j - 1} < w_j < \infty\\
+    & = \frac{n!}{(j - 2)! \, (n - j)!} \left[
+    \begin{cases}
+        0, & w_{j - 1} \leq 0,\\
+        1 - e^{-w_{j - 1} / \theta}, & 0 < w_{j - 1}
+    \end{cases} \right]^{j - 2}\\
+    & \times \left[1 -
+    \begin{cases}
+        0, & w_j \leq 0,\\
+        1 - e^{-w_j / \theta}, & 0 < w_j
+    \end{cases} \right]^{n - j}
+    \begin{cases}
+        \frac{1}{\theta} e^{-w_{j - 1} / \theta}, & 0 < w_{j - 1},\\
+        0, & \text{elsewhere}
+    \end{cases}\\
+    & \times
+    \begin{cases}
+        \frac{1}{\theta} e^{-w_j / \theta}, & 0 < w_j,\\
+        0, & \text{elsewhere}
+    \end{cases}, \quad -\infty < w_{j - 1} < w_j < \infty\\
+    & =
+    \begin{cases}
+        \frac{n!}{(j - 2)! \, (n - j)!} \left(1 - e^{-w_{j - 1} / \theta} \right)^{j - 2}\\
+        \times \left(e^{-w_j / \theta} \right)^{n - j} \frac{1}{\theta^2} e^{-(w_{j - 1} + w_j) / \theta}, & 0 < w_{j - 1} < w_j < \infty,\\
+        0, & \text{elsewhere.}
+    \end{cases}
+\end{align*}
+$$
+
+We can use this joint density to find the density of $T_j = W_{(j)} - W_{(j - 1)}$ by letting $U = W_{j - 1}$ and using the bivariate transformation method.
+Define the transformation $h$ by
+
+$$
+\begin{align*}
+    h(w_{j - 1}, w_j) & = (h_1(w_{j - 1}, w_j), h_2(w_{j - 1}, w_j)) = (w_j - w_{j - 1}, w_{j - 1}) = (t_j, u)\\
+    \implies h^{-1}(t_j, u) & = (h_1^{-1}(t_j, u), h_2^{-1}(t_j, u))\\
+    & = (u, t_j + u) = (w_{j - 1}, (w_j - w_{j - 1}) + w_{j - 1}) = (w_{j - 1}, w_j).
+\end{align*}
+$$
+
+Then $h$ is one-to-one and the Jacobian of $h^{-1}$ is
+
+$$
+J = \det
+\begin{bmatrix}
+    \frac{\partial h_1^{-1}}{\partial t_j} & \frac{\partial h_1^{-1}}{\partial u}\\
+    \frac{\partial h_2^{-1}}{\partial t_j} & \frac{\partial h_2^{-1}}{\partial u}
+\end{bmatrix} =
+\begin{bmatrix}
+    0 & 1\\
+    1 & 1
+\end{bmatrix} = (0)(1) - (1)(1) = -1.
+$$
+
+Thus, the joint density of $T_j$ and $U$ is
+
+$$
+\begin{align*}
+    f_{T_j, U}(t_j, u) & = f_{W_{(j - 1)}, W_{(j)}}(h_1^{-1}(t_j, u), h_2^{-1}(t_j, u)) |J|\\
+    & = |-1| \cdot
+    \begin{cases}
+        \frac{n!}{(j - 2)! \, (n - j)!} \left(1 - e^{-u / \theta} \right)^{j - 2}\\
+        \times \left(e^{-(t_j + u) / \theta} \right)^{n - j} \frac{1}{\theta^2} e^{-(u + (t_j + u)) / \theta}, & 0 < u < t_j + u < \infty,\\
+        0, & \text{elsewhere}
+    \end{cases}\\
+    & =
+    \begin{cases}
+        \frac{n!}{(j - 2)! \, (n - j)!} \left(1 - e^{-u / \theta} \right)^{j - 2}\\
+        \times \frac{1}{\theta^2} e^{-[(n - j + 1)t_j + (n - j + 2)u] / \theta}, & 0 < t_j, 0 < u\\
+        0, & \text{elsewhere.}
+    \end{cases}
+\end{align*}
+$$
+
+We can now integrate this joint density with respect to $u$ to find the marginal density of $T_j$:
+
+$$
+\begin{align*}
+    & \int_{u = 0}^{u = \infty} \frac{n!}{(j - 2)! \, (n - j)!} \left(1 - e^{-u / \theta} \right)^{j - 2} \frac{1}{\theta^2} e^{-[(n - j + 1)t_j + (n - j + 2)u] / \theta} du\\
+    & = \frac{1}{\theta} e^{-(n - j + 1)t_j / \theta} \int_{u = 0}^{u = \infty} \frac{n!}{(j - 2)! \, (n - j)!} \left(1 - e^{-u / \theta} \right)^{j - 2} \left(e^{-u / \theta} \right)^{n - j + 1} \frac{1}{\theta} e^{-u / \theta} du\\
+    & = \frac{1}{\theta} e^{-(n - j + 1)t_j / \theta} \int_{v = 1}^{v = 0} \frac{n!}{(j - 2)! \, (n - j)!} (1 - v)^{j - 2} v^{n - j + 1} (-1) dv \\
+    & (\text{letting $v = e^{-u / \theta}$ so $dv = -(1 / \theta)e^{-u / \theta} du$})\\
+    & = \frac{n - j + 1}{\theta} e^{-(n - j + 1)t_j / \theta} \int_{v = 0}^{v = 1} \frac{n!}{(n - j + 1)! \, (j - 2)!} v^{(n - j + 2) - 1} (1 - v)^{(j - 1) - 1} dv\\
+    & = \frac{n - j + 1}{\theta} e^{-(n - j + 1)t_j / \theta} \int_{v = 0}^{v = 1} \frac{((n - j + 2) + (j - 1) - 1)!}{((n - j + 2) - 1)! \, ((j - 1) - 1)!} v^{(n - j + 2) - 1} (1 - v)^{(j - 1) - 1} dv\\
+    & = \frac{1}{\theta / (n - j + 1)} e^{-t_j / (\theta / (n - j + 1))} \int_{v = 0}^{v = 1} \frac{v^{(n - j + 2) - 1} (1 - v)^{(j - 1) - 1}}{B(n - j + 2, j - 1)} dv\\
+    & = \frac{1}{\theta / (n - j + 1)} e^{-t_j / (\theta / (n - j + 1))} \cdot 1 = \frac{1}{\theta / (n - j + 1)} e^{-t_j / (\theta / (n - j + 1))}\\
+    & \implies f_{T_j}(t_j) =
+    \begin{cases}
+        \frac{1}{\theta / (n - j + 1)} e^{-t_j / (\theta / (n - j + 1))}, & 0 < t_j,\\
+        0, & \text{elsewhere.}
+    \end{cases}
+\end{align*}
+$$
+
+This is exactly an exponential density with mean $\theta / (n - j + 1)$.
+
+---
+
+b)
+
+$$
+\begin{align*}
+    U_r & = (n - r)W_r + \sum_{j = 1}^r W_j\\
+    & = (n - r)W_r + W_r + \sum_{j = 1}^{r - 1} W_j \\
+    & = (n - r + 1)W_r + \sum_{j = 1}^{r - 1} W_j \\
+    & = (n - r + 1)W_r + \sum_{j = 1}^{r - 1} (n - n + j - j + 1)W_j\\
+    & = (n - r + 1)W_r + \sum_{j = 1}^{r - 1} (n - j + 1)W_j - \sum_{j = 1}^{r - 1} (n - j)W_j\\
+    & = \sum_{j = 1}^r (n - j + 1)W_j - \sum_{j = 1}^{r - 1} (n - j)W_j \\
+    & = \left(nW_1 + \sum_{j = 2}^r (n - j + 1)W_j \right) - \sum_{j = 2}^r (n - j + 1)W_{j - 1}\\
+    & = nW_1 + \sum_{j = 2}^r \left[(n - j + 1)W_j - (n - j + 1)W_{j - 1} \right] \\
+    & = nW_1 + \sum_{j = 2}^r (n - j + 1)(W_j - W_{j - 1})\\
+    & = \sum_{j = 1}^r (n - j + 1)T_j
+\end{align*}
+$$
