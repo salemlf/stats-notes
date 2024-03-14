@@ -1,0 +1,18 @@
+If a random variable $U$ is normally distributed with mean $\mu$ and variance $\sigma^2$ and $Y = e^U$ [equivalently, $U = \ln(Y)$], then $Y$ is said to have a _log-normal distribution_.
+The log-normal distribution is often used in the biological and physical sciences to model sizes, by volume or weight, of various quantities, such as crushed coal particles, bacteria colonies, and individual animals.
+Let $U$ and $Y$ be as stated.
+Show that
+
+a) the density function for $Y$ is
+
+$$
+f(y) =
+\begin{cases}
+    \left(\frac{1}{y \sigma \sqrt{2 \pi}} \right) e^{-(\ln(y \ mu))^2 / (2 \sigma^2)}, & y > 0,\\
+    0, & \text{elsewhere.}
+\end{cases}
+$$
+
+b) $E(Y) = e^{\mu + (\sigma^2 / 2)}$ and $V(Y) = e^{2 \mu + \sigma^2} (e^{\sigma^2} - 1)$.
+[*Hint:* Recall that $E(Y) = E(e^U)$ and $E(Y^2) = E(e^{2U})$, where $U$ is normally distributed with mean $\mu$ and variance $\sigma^2$.
+Recall that the moment-generating function of $U$ is $m_U(t) = e^{tU}$.]

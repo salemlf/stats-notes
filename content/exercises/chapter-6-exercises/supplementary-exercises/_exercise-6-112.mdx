@@ -1,0 +1,19 @@
+If a random variable $U$ has a gamma distribution with parameters $\alpha > 0$ and $\beta > 0$, then $Y = e^U$ [equivalently, $U = \ln(Y)$] is said to have a _log-gamma distribution_.
+The log-gamma distribution is used by actuaries as part of an important model for the distribution of insurance claims.
+Let $U$ and $Y$ be as stated.
+
+a) Show that the density function for $Y$ is
+
+$$
+f(y) =
+\begin{cases}
+    \left[\frac{1}{\Gamma(\alpha) \beta^{\alpha}} \right] y^{-(1 + \beta) / \beta} (\ln(y))^{\alpha - 1}, & y > 1,\\
+    0, & \text{elsewhere.}
+\end{cases}
+$$
+
+b) If $\beta < 1$, show that $E(Y) = (1 - \beta)^{-\alpha}$.
+[See the hint for part (c).]
+
+c) If $\beta < .5$, show that $V(Y) = (1 - 2 \beta)^{-\alpha} - (1 - \beta)^{-2 \alpha}$.
+[*Hint:* Recall that $E(Y) = E(e^U)$ and $E(Y^2) = E(e^{2U})$, where $U$ is gamma distributed with parameters $\alpha > 0$ and $\beta > 0$, and that the moment-generating function of a gamma-distributed random variable only exists if $t < \beta - 1$; see Example 4.13.]
