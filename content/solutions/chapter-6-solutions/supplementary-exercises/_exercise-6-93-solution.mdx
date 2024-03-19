@@ -1,0 +1,56 @@
+First note that the joint density function of $I$ and $R$ is
+
+$$
+\begin{align*}
+    f_{I, R}(i, r) & = f_I(i) f_R(r)\\
+    & =
+    \begin{cases}
+        1, & 0 \leq i \leq 1,\\
+        0, & \text{elsewhere}
+    \end{cases} \cdot
+    \begin{cases}
+        2r, & 0 \leq r \leq 1,\\
+        0, & \text{elsewhere}
+    \end{cases}\\
+    & =
+    \begin{cases}
+        2r, & 0 \leq r \leq 1,\\
+        0, & \text{elsewhere.}
+    \end{cases}
+\end{align*}
+$$
+
+We can use the method of transformations now.
+Fix $I = i$ for some value where $0 \leq i \leq 1$.
+Then consider $W$ as a function solely of $R$: $h(R) = W = i^2 R$.
+This implies $R = h^{-1}(W) = \frac{W}{i^2}$ and $\left|\frac{dh^{-1}(w)}{dw} \right| = \left|\frac{1}{i^2} \right| = \frac{1}{i^2}$.
+Thus,
+
+$$
+\begin{align*}
+    f_{I, W}(i, w) & = f_{I, R}(i, h^{-1}(w)) \left|\frac{dh^{-1}(w)}{dw} \right|\\
+    & = \frac{1}{i^2} \cdot
+    \begin{cases}
+        \frac{2w}{i^2}, & 0 \leq i \leq 1, 0 \leq \frac{w}{i^2} \leq 1,\\
+        0, & \text{elsewhere}
+    \end{cases}\\
+    & =
+    \begin{cases}
+        \frac{2w}{i^4}, & 0 \leq \sqrt{w} \leq i \leq 1,\\
+        0, & \text{elsewhere.}
+    \end{cases}
+\end{align*}
+$$
+
+We can now find $f_W(w)$, the marginal density of $W$ by integrating $f_{I, W}(i, w)$ with respect to $i$:
+
+$$
+f_W(w) =
+\begin{cases}
+    \int_{i = \sqrt{w}}^{i = 1} \frac{2w}{i^4} di\\
+    = -\frac{2w}{3} i^{-3} \biggr|_{i = \sqrt{w}}^{i = 1}\\
+    = -\frac{2w}{3} (1)^{-3} + \frac{2w}{3} (\sqrt{w})^{-3}\\
+    = \frac{2}{3 \sqrt{w}} - \frac{2w}{3}, & 0 \leq \sqrt{w} \leq 1 \Longleftrightarrow 0 \leq w \leq 1,\\
+    0, & \text{elsewhere.}
+\end{cases}
+$$

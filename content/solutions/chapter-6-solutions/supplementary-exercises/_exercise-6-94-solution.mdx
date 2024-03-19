@@ -1,0 +1,29 @@
+First note that $Y_1$ and $Y_2$ are both gamma distributed with $\alpha = \beta = 2$.
+Then
+
+$$
+\begin{align*}
+    m_U(t) & = E(e^{tU}) = E(e^{t((1 / 2) Y_1 + Y_2)})\\
+    & = E(e^{tY_1 / 2}) E(e^{tY_2 / 2})\\
+    & = m_{Y_1}(t / 2) m_{Y_2}(t / 2)\\
+    & = (1 - 2(t / 2))^{-2} (1 - 2(t / 2))^{-2}\\
+    & = (1 - t)^{-4}.
+\end{align*}
+$$
+
+This is the moment-generating function for a gamma random variable with $\alpha = 4$ and $\beta = 1$, making the density function
+
+$$
+\begin{align*}
+    f_U(u) & =
+    \begin{cases}
+        \frac{u^{4 - 1} e^{-u / 1}}{1^4 \Gamma(4)}, & u > 0,\\
+        0, & \text{elsewhere}
+    \end{cases}\\
+    & =
+    \begin{cases}
+        \frac{1}{6} u^3 e^{-u}, & u > 0,\\
+        0, & \text{elsewhere.}
+    \end{cases}
+\end{align*}
+$$
