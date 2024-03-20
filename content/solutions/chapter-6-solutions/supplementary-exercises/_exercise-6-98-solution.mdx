@@ -1,0 +1,91 @@
+We can use the bivariate method of transformation by rewriting $U_1 = Y_1 / (Y_1 + Y_2)$ and letting $U_2 = Y_1 + Y_2$, then finding $f_{U_1, U_2}(u_1, u_2)$, then integrating it with respect to $u_2$ to find the marginal density of $U_1$.
+Let $h: \mathbb{R}_{> 0}^2 \to \mathbb{R}^2$ be defined by
+
+$$
+\begin{align*}
+    (u_1, u_2) & = h(y_1, y_2) = (h_1(y_1, y_2), h_2(y_1, y_2)) = \left(\frac{y_1}{y_1 + y_2}, y_1 + y_2 \right)\\
+    \implies (y_1, y_2) & = h^{-1}(u_1, u_2) = (h_1^{-1}(u_1, u_2), h_2^{-1}(u_1, u_2)) = (u_1 u_2, (1 - u_1)u_2).
+\end{align*}
+$$
+
+Assuming $(v_1, v_2), (w_1, w_2) \in \mathbb{R}_{> 0}^2$,
+
+$$
+\begin{align*}
+    & h(v_1, v_2) = h(w_1, w_2)\\
+    \Longleftrightarrow & \left(\frac{v_1}{v_1 + v_2}, v_1 + v_2 \right) = \left(\frac{w_1}{w_1 + w_2}, w_1 + w_2 \right)\\
+    \Longleftrightarrow & \left(\frac{v_1}{v_1 + v_2} \cdot (v_1 + v_2), v_1 + v_2 \right) = \left(\frac{w_1}{w_1 + w_2} \cdot (v_1 + v_2), w_1 + w_2 \right)\\
+    \Longleftrightarrow & \left(v_1, v_1 + v_2 \right) = \left(\frac{w_1}{w_1 + w_2} \cdot (w_1 + w_2), w_1 + w_2 \right)\\
+    \Longleftrightarrow & \left(v_1, v_1 + v_2 - v_1 \right) = \left(w_1, w_1 + w_2 - v_1 \right)\\
+    \Longleftrightarrow & \left(v_1, v_2 \right) = \left(w_1, w_1 + w_2 - w_1 \right)\\
+    \Longleftrightarrow & \left(v_1, v_2 \right) = \left(w_1, w_2 \right),\\
+\end{align*}
+$$
+
+thus, $h$ is one-to-one by definition.
+Then the Jacobian of $h$ is
+
+$$
+J = \det
+\begin{bmatrix}
+    \frac{\partial h_1^{-1}}{\partial u_1} & \frac{\partial h_1^{-1}}{\partial u_2}\\
+    \frac{\partial h_2^{-1}}{\partial u_1} & \frac{\partial h_2^{-1}}{\partial u_2}
+\end{bmatrix} = \det
+\begin{bmatrix}
+    u_2 & u_1\\
+    -u_2 & 1 - u_1
+\end{bmatrix} = u_2 (1 - u_1) - u_1 (-u_2) = u_2.
+$$
+
+The last part we need is $f_{Y_1, Y_2}$, which will be the following by the independence of $Y_1$ and $Y_2$:
+
+$$
+f_{Y_1, Y_2}(y_1, y_2) =
+\begin{cases}
+    e^{-(y_1 + y_2)}, & y_1 > 0, y_2 > 0,\\
+    0, & \text{elsewhere.}
+\end{cases}
+$$
+
+Thus,
+
+$$
+\begin{align*}
+    f_{U_1, U_2}(u_1, u_2) & = f_{Y_1, Y_2}(h_1^{-1}(u_1, u_2), h_2^{-1}(u_1, u_2)) |J|\\
+    & = |u_2| \cdot
+    \begin{cases}
+        e^{-(u_1 u_2 + (1 - u_1)u_2)}, & u_1 u_2 > 0, (1 - u_1)u_2 > 0,\\
+        0, & \text{elsewhere}
+    \end{cases}\\
+    & =
+    \begin{cases}
+        u_2 e^{-u_2}, & 0 < u_1 < 1, 0 < u_2\\
+        0, & \text{elsewhere.}
+    \end{cases}
+\end{align*}
+$$
+
+The support shown above can be found via the following sequence of steps:
+
+$$
+\begin{align*}
+    0 < u_1 u_2 & \\
+    \text{and } 0 < (1 - u_1)u_2 & \Longleftrightarrow 0 < u_2 - u_1 u_2\\
+    & \Longleftrightarrow u_1 u_2 < u_2\\
+    & \Longleftrightarrow 0 < u_1 u_2 < u_2\\
+    & \Longleftrightarrow 0 < u_1 < 1 \text{ and } 0 < u_2.
+\end{align*}
+$$
+
+Thus,
+
+$$
+f_{U_1}(u_1) =
+\begin{cases}
+    \int_{u_2 = 0}^{u_2 = \infty} u_2 e^{-u_2} du_2\\
+    = -u_2 e^{-u_2} \biggr|_{u_2 = 0}^{u_2 = \infty} - \int_{u_2 = 0}^{u_2 = \infty} -e^{-u_2} du_2\\
+    = 0 + (0)e^{-(0)} - \left[e^{-u_2} \right]_{u_2 = 0}^{u_2 = \infty}\\
+    = -\left[0 - e^{-(0)} \right] = -(-1) = 1, & 0 < u_1 < 1,\\
+    0, & \text{elsewhere.}
+\end{cases}
+$$

@@ -1,0 +1,32 @@
+Using information from Exercise 6.98, this is asking to show that $U_1 = Y_1 / (Y_1 + Y_2)$ is independent of $U_2 = Y_1 + Y_2$.
+Then
+
+$$
+\begin{align*}
+    f_{U_2}(u_2) & =
+    \begin{cases}
+        \int_{u_1 = 0}^{u_1 = 1} u_2 e^{-u_2} du_1\\
+        = u_1 u_2 e^{-u_2} \biggr|_{u_1 = 0}^{u_1 = 1}\\
+        = (1) u_2 e^{-u_2} - (0) u_2 e^{-u_2}\\
+        = u_2 e^{-u_2} & 0 < u_2\\
+        0, & \text{elsewhere}
+    \end{cases}\\
+    \implies f_{U_1}(u_1) f_{U_2}(u_2) & =
+    \begin{cases}
+        1, & 0 < u_1 < 1,\\
+        0, & \text{elsewhere}
+    \end{cases} \cdot
+    \begin{cases}
+        u_2 e^{-u_2}, & 0 < u_2,\\
+        0, & \text{elsewhere}
+    \end{cases}\\
+    & =
+    \begin{cases}
+        u_2 e^{-u_2}, & 0 < u_1 < 1, 0 < u_2,\\
+        0, & \text{elsewhere}
+    \end{cases}\\
+    & = f_{U_1, U_2}(u_1, u_2).
+\end{align*}
+$$
+
+Thus, $U_1 = Y_1 / (Y_1 + Y_2)$ and $U_2 = Y_1 + Y_2$ are independent.

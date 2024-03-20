@@ -1,0 +1,102 @@
+a) Fix $Y_2 = y_2$ where $0 < y_2 \leq 1$.
+Then $U_1 = h(Y_1) = Y_1 / y_2$ and $Y_1 = h^{-1}(U_1) = y_2 U_1$, and
+
+$$
+\begin{align*}
+    f_{U_1, Y_2}(u_1, y_2) & = f_{Y_1, Y_2}(h^{-1}(u_1), y_2) \left|\frac{dh^{-1}(u_1)}{du_1} \right|\\
+    & = |y_2| \cdot
+    \begin{cases}
+        1, & 0 \leq y_2 u_1 \leq 1, 0 < y_2 \leq 1,\\
+        0, & \text{elsewhere,}
+    \end{cases}\\
+    & =
+    \begin{cases}
+        y_2, & 0 \leq u_1 < 1, 0 < y_2 \leq 1 \text{ and}\\
+        & 1 \leq u_1, 0 < y_2 \leq \frac{1}{u_1},\\
+        0, & \text{elsewhere.}
+    \end{cases}
+\end{align*}
+$$
+
+The support for the joint density above was obtained by noting that, since $0 < y_2 \leq 1$ must always be true, then $0 < y_2 u \leq 1 \Longleftrightarrow 0 < y_2 \leq \frac{1}{u_1}$ and $\frac{1}{u_1} \leq 1 \Longleftrightarrow 1 \leq u_1$.
+Otherwise, if $0 \leq u_1 \leq 1$, then $0 \leq y_2 u_1 \leq 1$ when $0 < y_2 \leq 1$, as desired.
+And $u_1$ cannot be negative, as this would prevent $0 \leq y_2 u_1 \leq 1$.
+So integrating $f_{U_1, Y_2}$ with respect to $y_2$ will give us the marginal density of $U_1$:
+
+$$
+f_{U_1}(u_1) =
+\begin{cases}
+    \int_{y_2 = 0}^{y_2 = 1} y_2 dy_2\\
+    = \frac{y_2^2}{2} \biggr|_{y_2 = 0}^{y_2 = 1}\\
+    = \frac{(1)^2}{2} - \frac{(0)^2}{2} = \frac{1}{2}, & 0 \leq u_1 < 1,\\
+    \int_{y_2 = 0}^{y_2 = 1 / u_1} y_2 dy_2\\
+    = \frac{y_2^2}{2} \biggr|_{y_2 = 0}^{y_2 = 1 / u_1}\\
+    = \frac{(1 / u_1)^2}{2} - \frac{(0)^2}{2}\\
+    = \frac{1}{2u_1^2}, & 1 \leq u_1,\\
+    0, & \text{elsewhere.}
+\end{cases}
+$$
+
+---
+
+b) Fix $Y_1 = y_1$ where $0 < y_1 \leq 1$ so that $U_2 = h(Y_2) = -\ln(y_1 Y_2)$ and $Y_2 = h^{-1}(U_2) = \frac{1}{y_1} e^{-U_2}$.
+Then
+
+$$
+\begin{align*}
+    f_{Y_1, U_2}(y_1, u_2) & = f_{Y_1, Y_2}(y_1, h^{-1}(u_2)) \left|\frac{dh^{-1}(u_2)}{du_2} \right|\\
+    & = \left|-\frac{1}{y_1} e^{-u_2} \right| \cdot
+    \begin{cases}
+        1, & 0 < y_1 \leq 1, 0 < \frac{1}{y_1} e^{-u_2} \leq 1,\\
+        0, & \text{elsewhere,}
+    \end{cases}\\
+    & =
+    \begin{cases}
+        \frac{1}{y_1} e^{-u_2}, & 0 < e^{-u_2} \leq y_1 \leq 1\\
+        0, & \text{elsewhere.}
+    \end{cases}
+\end{align*}
+$$
+
+Note that $0 < e^{-u_2} \leq 1 \Longleftrightarrow -u_2 \leq 0 \Longleftrightarrow 0 \leq u_2$, so this will be the support of $f_{U_2}$.
+Thus,
+
+$$
+f_{U_2}(u_2) =
+\begin{cases}
+    \int_{y_1 = e^{-u_2}}^{y_1 = 1} \frac{1}{y_1} e^{-u_2} dy_1\\
+    = e^{-u_2} \ln(y_1) \biggr|_{y_1 = e^{-u_2}}^{y_1 = 1}\\
+    = e^{-u_2} \ln(1) - e^{-u_2} \ln(e^{-u_2})\\
+    = u_2 e^{-u_2}, & 0 \leq u_2,\\
+    0, & \text{elsewhere.}
+\end{cases}
+$$
+
+---
+
+c) Fix $Y_1 = y_1$ where $0 < y_1 \leq 1$ so that $U_3 = h(Y_2) = y_1 Y_2$ and $Y_2 = h^{-1}(U_3) = \frac{1}{y_1} U_3$.
+Then
+
+$$
+\begin{align*}
+    f_{Y_1, U_3}(y_1, u_3) & = f_{Y_1, Y_2}(y_1, h^{-1}(u_3)) \left|\frac{dh^{-1}(u_3)}{du_3} \right|\\
+    & = \left|\frac{1}{y_1} \right| \cdot
+    \begin{cases}
+        1, & 0 < y_1 \leq 1, 0 < \frac{1}{y_1} u_3 \leq 1,\\
+        0, & \text{elsewhere,}
+    \end{cases}\\
+    & =
+    \begin{cases}
+        \frac{1}{y_1}, & 0 < u_3 \leq y_1 \leq 1,\\
+        0, & \text{elsewhere,}
+    \end{cases}\\
+    \implies f_{U_3}(u_3) & =
+    \begin{cases}
+        \int_{y_1 = u_3}^{y_1 = 1} \frac{1}{y_1} dy_1\\
+        = \ln(y_1) \biggr|_{y_1 = u_3}^{y_1 = 1}\\
+        = \ln(1) - \ln(u_3)\\
+        = -\ln(u_3), & 0 < u_3 \leq 1,\\
+        0, & \text{elsewhere.}
+    \end{cases}
+\end{align*}
+$$

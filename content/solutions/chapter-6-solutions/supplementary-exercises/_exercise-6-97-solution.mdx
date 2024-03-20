@@ -1,0 +1,27 @@
+First note that $0 \leq Y_1 \leq 4$ and $0 \leq Y_2 \leq 3$, so $0 \leq Y_1 + Y_2 \leq 7$.
+Per the hint,
+
+$$
+\begin{align*}
+    p_W(w) & = \sum_{y_1 = 0}^w p_{Y_1, Y_2}(y_1, w - y_1)\\
+    & = \sum_{y_1 = 0}^w p_{Y_1}(y_1) p_{Y_2}(w - y_1)\\
+    & = \sum_{y_1 = 0}^w \binom{4}{y_1} \left(\frac{1}{5} \right)^{y_1} \left(\frac{4}{5} \right)^{4 - y_1} \binom{3}{w - y_1} \left(\frac{1}{2} \right)^{w - y_1} \left(\frac{1}{2} \right)^{3 - (w - y_1)}\\
+    & = \left(\frac{1}{2} \right)^3 \sum_{y_1 = 0}^w \binom{4}{y_1} \binom{3}{w - y_1} \left(\frac{1}{5} \right)^{y_1} \left(\frac{4}{5} \right)^{4 - y_1}, \quad 0 \leq w \leq 7.
+\end{align*}
+$$
+
+Thus, we have the following list of values defining the distribution of $W$:
+
+$$
+\begin{array}{c|c}
+    w & p_W(w)\\ \hline
+    0 & 0.0512 \\ \hline
+    1 & 0.2048 \\ \hline
+    2 & 0.3264 \\ \hline
+    3 & 0.2656 \\ \hline
+    4 & 0.1186 \\ \hline
+    5 & 0.0294 \\ \hline
+    6 & 0.0038 \\ \hline
+    7 & 0.0002 \\ \hline
+\end{array}
+$$
