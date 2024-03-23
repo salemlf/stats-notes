@@ -10,9 +10,9 @@
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
-    "fumadocs-core": "8.2.0",
-    "fumadocs-mdx": "^8.0.3",
-    "fumadocs-ui": "8.2.0",
+    "fumadocs-core": "^10.1.1",
+    "fumadocs-mdx": "^8.2.6",
+    "fumadocs-ui": "^10.1.1",
     "katex": "^0.16.9",
     "next": "^14.1.4",
     "next-mdx-remote": "^4.4.1",
