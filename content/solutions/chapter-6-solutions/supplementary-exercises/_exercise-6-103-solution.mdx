@@ -1,0 +1,22 @@
+Fix $Y_2 = y_2$ so that $h(Y_1) = U = Y_1 / y_2$ and $h^{-1}(U) = Y_1 = y_2 U$.
+Then
+
+$$
+\begin{align*}
+    f_{U, Y_2}(u, y_2) & = f_{Y_1, Y_2}(h^{-1}(u), y_2) \left|\frac{dh^{-1}(u)}{du} \right|\\
+    & = |y_2| \cdot
+    \begin{cases}
+        \frac{1}{2 \pi} e^{-((y_2 u)^2 + y_2^2) / 2}, & -\infty < y_2 u < \infty, -\infty < y_2 < \infty,\\
+        0, & \text{elsewhere,}
+    \end{cases}\\
+    & = \frac{|y_2|}{2 \pi} e^{-[y_2^2 (u^2 + 1)] / 2}, \quad -\infty < u < \infty, -\infty < y_2 < \infty,\\
+    \implies f_U(u) & = \int_{y_2 = -\infty}^{y_2 = \infty} \frac{|y_2|}{2 \pi} e^{-y_2^2 (u^2 + 1) / 2} dy_2\\
+    & = \int_{y_2 = 0}^{y_2 = \infty} \frac{2y_2}{2 \pi} e^{-y_2^2 (u^2 + 1) / 2} dy_2 \quad (\text{because the integrand is even})\\
+    & = \int_{v = 0}^{v = \infty} \frac{e^{-v (u^2 + 1) / 2}}{2 \pi} dv \quad (\text{letting $v = y_2^2$ so $dv = 2y_2 dy_2$})\\
+    & = \frac{1}{\pi} \left(\frac{1}{u^2 + 1} \right) \int_{v = 0}^{v = \infty} \frac{1}{\left(\frac{2}{u^2 + 1} \right)} e^{-v / (2 / (u^2 + 1))} dv\\
+    & = \frac{1}{\pi (u^2 + 1)} \cdot 1 \quad (\text{the integrand was an exponential density})\\
+    & = \frac{1}{\pi (u^2 + 1)}, \quad -\infty < u < \infty.
+\end{align*}
+$$
+
+This is the density function for a Cauchy distribution with a location parameter of $0$ and a scale parameter of $1$.

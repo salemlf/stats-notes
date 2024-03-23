@@ -1,0 +1,43 @@
+Firstly, the density of the first-order statistic will be
+
+$$
+\begin{align*}
+    f_{Y_{(1)}}(y_1) & = n[1 - F(y_1)]^{n - 1} f(y_1)\\
+    & = 5 \left[1 -
+    \begin{cases}
+        0, & y_1 \leq 0,\\
+        1 - e^{-y_1 / 15}, & 0 < y_1
+    \end{cases} \right]^{5 - 1} \cdot
+    \begin{cases}
+        \frac{1}{15} e^{-y_1 / 15}, & 0 < y_1,\\
+        0, & \text{elsewhere}
+    \end{cases}\\
+    & =
+    \begin{cases}
+        \frac{1}{3} e^{-y_1 / 3}, & 0 < y_1,\\
+        0, & \text{elsewhere,}
+    \end{cases}
+\end{align*}
+$$
+
+a)
+
+$$
+\begin{align*}
+    P(Y_{(1)} > 9) & = \int_{y_1 = 9}^{y_1 = \infty} \frac{1}{3} e^{-y_1 / 3} dy_1\\
+    & = -e^{-y_1 / 3} \biggr|_{y_1 = 9}^{y_1 = \infty}\\
+    & = 0 + e^{-(9) / 3} = e^{-3} \approx 0.0497870683679
+\end{align*}
+$$
+
+---
+
+b)
+
+$$
+\begin{align*}
+    P(Y_{(1)} < 12) & = \int_{y_1 = 0}^{y_1 = 12} \frac{1}{3} e^{-y_1 / 3} dy_1\\
+    & = -e^{-y_1 / 3} \biggr|_{y_1 = 0}^{y_1 = 12}\\
+    & = -e^{-(12) / 3} + e^{-(0) / 3} = 1 - e^{-4} \approx 0.981684361111
+\end{align*}
+$$

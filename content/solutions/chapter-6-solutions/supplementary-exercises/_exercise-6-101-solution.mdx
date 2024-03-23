@@ -1,0 +1,33 @@
+Let things be defined as in the hint.
+Then $X$ has density function
+
+$$
+f_X(x) =
+\begin{cases}
+    \frac{1}{1 - (-1)} = \frac{1}{2}, & -1 \leq x \leq 1,\\
+    0, & \text{elsewhere.}
+\end{cases}
+$$
+
+We can then use this to find the distribution function of $U = |X|$:
+
+$$
+\begin{align*}
+    F_U(u) & = P(U \leq u) = P(|X| \leq u)\\
+    & = P(-u \leq X \leq u)\\
+    & =
+    \begin{cases}
+        0, & u < 0,\\
+        \int_{x = -u}^{x = u} \frac{1}{2} dx\\
+        = \frac{1}{2} x \big|_{x = -u}^{x = u}\\
+        = \frac{1}{2} (u) - \frac{1}{2} (-u)\\
+        = u, & 0 \leq u \leq 1,\\
+        1, & 1 < u
+    \end{cases}\\
+    \implies f_U(u) & =
+    \begin{cases}
+        1, & 0 \leq u \leq 1,\\
+        0, & \text{elsewhere.}
+    \end{cases}
+\end{align*}
+$$
